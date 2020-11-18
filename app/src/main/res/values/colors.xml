@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/ui_blue_theme_primary_color</color>
+    <color name="colorPrimaryDark">@color/ui_blue_theme_primary_dark_color</color>
+    <color name="colorAccent">@color/ui_blue_theme_primary_accent_color</color>
+    <color name="colorAccentDark">@color/ui_blue_theme_primary_dark_color</color>
+    <color name="contentBackground">@color/ui_blue_theme_window_background_color</color>
+    <color name="themeTextColor">@color/ui_blue_theme_text_color</color>
+    <color name="textOnPrimaryColor">@color/ui_blue_theme_text_on_primary_color</color>
+
+
+    <color name="lightStatusBar">@color/ui_blue_theme_primary_color</color>
+    <color name="darkStatusBar">@color/ui_blue_theme_primary_color</color>
+
+    <color name="colorIconLabel">@color/ui_blue_theme_primary_color</color>
+    <color name="colorIconDarkLabel">@color/ui_blue_theme_primary_dark_color</color>
+
+    <color name="indicatorDefaultTextColor">@color/yellow_indicator_default_text_color</color>
+    <color name="indicatorSelectedTextColor">@color/ui_blue_theme_primary_dark_color</color>
+    <color name="indicatorColor">@color/ui_blue_theme_primary_dark_color</color>
+
+    <color name="chat_bubble_background_color">#ffffff</color>
+    <color name="system_bubble_background_color">#afafaf</color>
+    <color name="chat_content_color">#000000</color>
+    <color name="system_content_color">#ffffff</color>
+    <color name="user_input_background_color">#dbedff</color>
+    <color name="action_panel_color">#ffffff</color>
+    <color name="content_panel_color">#f7f7f7</color>
+    <color name="splitLine">#efefef</color>
+    <color name="splitLineDark">#eaeaea</color>
+    <color name="toolbarTitleColor">@color/white</color>
+    <color name="toolbarSubtitleColor">@color/white</color>
+    <color name="toolbarColor">#FFFFFF</color>
+    <color name="bottom_navigation_bar_btn_press_color">@color/ui_blue_theme_primary_color</color>
+    <color name="bottom_navigation_bar_btn_checked_color">@color/ui_blue_theme_primary_dark_color
+    </color>
+    <!--<color name="link_color">#175280</color>-->
+    <color name="link_color">@color/ui_blue_theme_primary_dark_color</color>
+
+    <color name="colorWhiteQuarterTrans">#44ffffff</color>
+    <color name="colorWhiteHalfTrans">#88ffffff</color>
+    <color name="colorBlackHalfTransDark">#AA000000</color>
+    <color name="colorBlackHalfTrans">#88000000</color>
+    <color name="colorBlackHalfTransLight">#66000000</color>
+    <color name="colorBlackHalfTransLightLight">#33000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparentWhite">#00FFFFFF</color>
+    <color name="colorGray500">#BDBDBD</color>
+    <color name="colorGray600">#757575</color>
+
+    <color name="session_time">#c2c2c2</color>
+    <color name="session_preview">#c2c2c2</color>
+    <color name="chat_background">#f1f1f1</color>
+    <color name="collapsing_toolbar_layout_content_scrim">@color/colorPrimary</color>
+
+    <!--<color name="bottom_navigation_tint">#56bcff</color>-->
+    <color name="bottom_navigation_tint">@color/ui_blue_theme_primary_color</color>
+
+    <color name="form_item_description">#383838</color>
+
+    <color name="select_item_travel_tag_background">#009688</color>
+    <color name="select_item_travel_tag_active_background">
+        @color/ui_blue_theme_primary_accent_color
+    </color>
+
+    <color name="qr_scan_corner_color">#f57257</color>
+    <color name="qr_scan_mark_color">#33FFFFFF</color>
+
+    <!--<color name="button_positive_default">#4fadf5</color>-->
+    <!--<color name="button_positive_focus">#7bd7ff</color>-->
+    <!--<color name="button_positive_press">#228cde</color>-->
+    <!---->
+    <!--<color name="button_danger_default">#CC0000</color>-->
+    <!--<color name="button_danger_focus">#FF0000</color>-->
+    <!--<color name="button_danger_press">#990000</color>-->
+
+
+    <color name="button_positive_default">@color/ui_blue_theme_primary_color</color>
+    <color name="button_positive_focus">@color/ui_blue_theme_primary_accent_color</color>
+    <color name="button_positive_press">@color/ui_blue_theme_primary_dark_color</color>
+
+
+    <color name="button_danger_default">@color/button_yellow_danger_default</color>
+    <color name="button_danger_focus">@color/button_yellow_danger_focus</color>
+    <color name="button_danger_press">@color/button_yellow_danger_press</color>
+
+
+    <color name="button_disabled">#00000000</color>
+
+    <color name="check_green">#00CC33</color>
+
+    <color name="white">#ffffff</color>
+    <color name="white_light">#eeffffff</color>
+    <color name="black">#000000</color>
+    <color name="very_dark">#333333</color>
+    <color name="dark">#666666</color>
+    <color name="darkGray">#757575</color>
+    <color name="red">#ff0000</color>
+    <color name="goldYellow">#ffc107</color>
+
+
+    <color name="half_black">#10000000</color>
+
+
+    <!--<color name="daterangepicker_header_background">#66CCFF</color>-->
+    <!--<color name="daterangepicker_header_year_text">#E3F2FF</color>-->
+    <color name="daterangepicker_header_background">
+        @color/ui_blue_theme_primary_dark_color
+    </color>
+    <color name="daterangepicker_header_year_text">@color/ui_blue_theme_text_on_primary_color
+    </color>
+
+
+    <!--Features Menu Icon Background Color-->
+    <color name="feature_menu_client_resource_manage_background_color">#86E548</color>
+    <color name="feature_menu_company_information_manage_background_color">#4794E6</color>
+    <color name="feature_menu_intent_scheme_manage_background_color">#F7B41D</color>
+    <color name="feature_menu_order_travel_manage_background_color">#F7B41D</color>
+    <color name="feature_menu_department_manage_background_color">#DD864B</color>
+    <color name="feature_menu_employee_resource_manage_background_color">#9349E2</color>
+    <color name="feature_menu_cash_follow_manage_background_color">#D871DB</color>
+    <color name="feature_menu_attractions_resource_manage_background_color">#9349E2</color>
+    <color name="feature_menu_hotel_resource_manage_background_color">#4794E6</color>
+    <color name="feature_menu_hotel_purchase_manage_background_color">#E54F48</color>
+    <color name="feature_menu_guide_resource_manage_background_color">#55CECB</color>
+    <color name="feature_menu_guide_purchase_manage_background_color">#B5DB4D</color>
+    <color name="feature_menu_car_team_purchase_manage_background_color">#48E5B8</color>
+    <color name="feature_menu_restaurant_resource_manage_background_color">#FFA892</color>
+    <color name="feature_menu_restaurant_purchase_manage_background_color">#D871DB</color>
+
+    <!--UI green theme-->
+    <color name="ui_green_theme_primary_color">#2cd8bc</color>
+    <color name="ui_green_theme_text_on_primary_color">#ffffff</color>
+    <color name="ui_green_theme_primary_accent_color">#81ECDA</color>
+    <color name="ui_green_theme_primary_dark_color">#06CDAC</color>
+    <color name="ui_green_theme_window_background_color">#F8F8F8</color>
+    <color name="ui_green_theme_window_background_accent_color">#ffffff</color>
+    <color name="ui_green_theme_window_background_dark_color">#ebebeb</color>
+    <color name="ui_green_theme_text_color">#333333</color>
+    <color name="ui_green_theme_text_dark_color">#249C89</color>
+    <color name="ui_green_positive_color">#f6af2d</color>
+    <color name="ui_green_positive_accent_color">#15bfa4</color>
+    <color name="ui_green_positive_disable_color">#f7b948</color>
+
+
+    <!--UI blue theme-->
+    <color name="ui_blue_theme_primary_color">#409eff</color>
+    <color name="ui_blue_theme_text_on_primary_color">#ffffff</color>
+    <color name="ui_blue_theme_primary_accent_color">#25aade</color>
+    <color name="ui_blue_theme_primary_dark_color">#3087c9</color>
+    <color name="ui_blue_theme_window_background_color">#F8F8F8</color>
+    <color name="ui_blue_theme_window_background_accent_color">#ffffff</color>
+    <color name="ui_blue_theme_window_background_dark_color">#ebebeb</color>
+    <color name="ui_blue_theme_text_color">#333333</color>
+    <color name="ui_blue_theme_text_dark_color">#249C89</color>
+    <color name="ui_blue_positive_color">#f6af2d</color>
+    <color name="ui_blue_positive_accent_color">#15bfa4</color>
+    <color name="ui_blue_positive_disable_color">#f7b948</color>
+
+
+
+    <!--yellow-->
+    <color name="yellow_50">#fffde7</color>
+    <color name="yellow_100">#fff9c4</color>
+    <color name="yellow_200">#fff59d</color>
+    <color name="yellow_300">#fff176</color>
+    <color name="yellow_400">#ffee58</color>
+    <color name="yellow_500">#ffeb3b</color>
+    <color name="yellow_600">#fdd835</color>
+    <color name="yellow_700">#fbc02d</color>
+    <color name="yellow_800">#f9a825</color>
+    <color name="yellow_900">#f57f17</color>
+    <color name="yellow_a100">#ffff8d</color>
+    <color name="yellow_a200">#ffff00</color>
+    <color name="yellow_a400">#ffea00</color>
+    <color name="yellow_a700">#ffd600</color>
+
+    <!--window-->
+    <color name="yellow_window_background">#ffffff</color>
+
+    <!--status bar-->
+    <color name="yellow_status_bar_dark">@color/yellow_a700</color>
+    <color name="yellow_status_bar_light">@color/yellow_a100</color>
+    <color name="yellow_status_bar_gray">@color/grey_100</color>
+
+    <!--appbar-->
+    <color name="yellow_app_bar">@color/yellow_700</color>
+    <color name="yellow_app_bar_gray">@color/grey_100</color>
+
+    <!--navigation bar-->
+    <color name="yellow_bottom_navigation_tint_color">@color/yellow_800</color>
+
+    <!--magic indicator-->
+    <color name="yellow_indicator_default_text_color">@color/very_dark</color>
+    <color name="yellow_indicator_selected_text_color">@color/yellow_700</color>
+    <color name="yellow_indicator_color">@color/yellow_700</color>
+
+    <!--text color-->
+    <color name="yellow_link_color">@color/yellow_900</color>
+
+    <!--image color-->
+    <color name="yellow_color_icon_label">@color/yellow_800</color>
+    <color name="yellow_color_icon_dark_label">@color/yellow_900</color>
+
+    <!--date range picker-->
+    <color name="yellow_daterangepicker_header_background">@color/yellow_800</color>
+    <color name="yellow_daterangepicker_header_year_text">@color/yellow_50</color>
+
+
+    <!--yellow button-->
+    <color name="button_yellow_positive_default">@color/yellow_700</color>
+    <color name="button_yellow_positive_focus">@color/yellow_600</color>
+    <color name="button_yellow_positive_press">@color/yellow_800</color>
+
+    <color name="button_yellow_danger_default">@color/deep_orange_500</color>
+    <color name="button_yellow_danger_focus">@color/deep_orange_400</color>
+    <color name="button_yellow_danger_press">@color/deep_orange_700</color>
+
+
+    <!--amber-->
+    <!--与yellow配合使用-->
+    <color name="amber_50">#fff8e1</color>
+    <color name="amber_100">#ffecb3</color>
+    <color name="amber_200">#ffe082</color>
+    <color name="amber_300">#ffd54f</color>
+    <color name="amber_400">#ffca28</color>
+    <color name="amber_500">#ffc107</color>
+    <color name="amber_600">#ffb300</color>
+    <color name="amber_700">#ffa000</color>
+    <color name="amber_800">#ff8f00</color>
+    <color name="amber_900">#ff6f00</color>
+    <color name="amber_a100">#ffe57f</color>
+    <color name="amber_a200">#ffd740</color>
+    <color name="amber_a400">#ffc400</color>
+    <color name="amber_a700">#ffab00</color>
+
+    <!--deep orange-->
+    <color name="deep_orange_50">#fbe9e7</color>
+    <color name="deep_orange_100">#ffccbc</color>
+    <color name="deep_orange_200">#ffab91</color>
+    <color name="deep_orange_300">#ff8a65</color>
+    <color name="deep_orange_400">#ff7043</color>
+    <color name="deep_orange_500">#ff5722</color>
+    <color name="deep_orange_600">#f4511e</color>
+    <color name="deep_orange_700">#e64a19</color>
+    <color name="deep_orange_800">#d84315</color>
+    <color name="deep_orange_900">#bf360c</color>
+    <color name="deep_orange_a100">#ff9e80</color>
+    <color name="deep_orange_a200">#ff6e40</color>
+    <color name="deep_orange_a400">#ff3d00</color>
+    <color name="deep_orange_a700">#dd2c00</color>
+
+    <!--gray-->
+    <color name="grey_50">#fafafa</color>
+    <color name="grey_100">#f5f5f5</color>
+    <color name="grey_200">#eeeeee</color>
+    <color name="grey_300">#e0e0e0</color>
+    <color name="grey_400">#bdbdbd</color>
+    <color name="grey_500">#9e9e9e</color>
+    <color name="grey_600">#757575</color>
+    <color name="grey_700">#616161</color>
+    <color name="grey_800">#424242</color>
+    <color name="grey_900">#212121</color>
+
+    <!--green-->
+    <color name="green_50">#e8f5e9</color>
+    <color name="green_100">#c8e6c9</color>
+    <color name="green_200">#a5d6a7</color>
+    <color name="green_300">#81c784</color>
+    <color name="green_400">#66bb6a</color>
+    <color name="green_500">#4caf50</color>
+    <color name="green_600">#43a047</color>
+    <color name="green_700">#388e3c</color>
+    <color name="green_800">#2e7d32</color>
+    <color name="green_900">#1b5e20</color>
+    <color name="green_a100">#b9f6ca</color>
+    <color name="green_a200">#69f0ae</color>
+    <color name="green_a400">#00e676</color>
+    <color name="green_a700">#00c853</color>
+
+    <!--light green-->
+    <color name="light_green_50">#f1f8e9</color>
+    <color name="light_green_100">#dcedc8</color>
+    <color name="light_green_200">#c5e1a5</color>
+    <color name="light_green_300">#aed581</color>
+    <color name="light_green_400">#9ccc65</color>
+    <color name="light_green_500">#8bc34a</color>
+    <color name="light_green_600">#7cb342</color>
+    <color name="light_green_700">#689f38</color>
+    <color name="light_green_800">#558b2f</color>
+    <color name="light_green_900">#33691e</color>
+    <color name="light_green_a100">#ccff90</color>
+    <color name="light_green_a200">#b2ff59</color>
+    <color name="light_green_a400">#76ff03</color>
+    <color name="light_green_a700">#64dd17</color>
+
+    <!--blue-->
+    <color name="blue_50">#e3f2fd</color>
+    <color name="blue_100">#bbdefb</color>
+    <color name="blue_200">#90caf9</color>
+    <color name="blue_300">#64b5f6</color>
+    <color name="blue_400">#42a5f5</color>
+    <color name="blue_500">#2196f3</color>
+    <color name="blue_600">#1e88e5</color>
+    <color name="blue_700">#1976d2</color>
+    <color name="blue_800">#1565c0</color>
+    <color name="blue_900">#0d47a1</color>
+    <color name="blue_a100">#82b1ff</color>
+    <color name="blue_a200">#448aff</color>
+    <color name="blue_a400">#2979ff</color>
+    <color name="blue_a700">#2962ff</color>
+
+    <!--red-->
+    <color name="red_50">#ffebee</color>
+    <color name="red_100">#ffcdd2</color>
+    <color name="red_200">#ef9a9a</color>
+    <color name="red_300">#e57373</color>
+    <color name="red_400">#ef5350</color>
+    <color name="red_500">#f44336</color>
+    <color name="red_600">#e53935</color>
+    <color name="red_700">#d32f2f</color>
+    <color name="red_800">#c62828</color>
+    <color name="red_900">#b71c1c</color>
+    <color name="red_a100">#ff8a80</color>
+    <color name="red_a200">#ff5252</color>
+    <color name="red_a400">#ff1744</color>
+    <color name="red_a700">#d50000</color>
+
+    <!--pink-->
+    <color name="pink_50">#fce4ec</color>
+    <color name="pink_100">#f8bbd0</color>
+    <color name="pink_200">#f48fb1</color>
+    <color name="pink_300">#f06292</color>
+    <color name="pink_400">#ec407a</color>
+    <color name="pink_500">#e91e63</color>
+    <color name="pink_600">#d81b60</color>
+    <color name="pink_700">#c2185b</color>
+    <color name="pink_800">#ad1457</color>
+    <color name="pink_900">#880e4f</color>
+    <color name="pink_a100">#ff80ab</color>
+    <color name="pink_a200">#f50057</color>
+    <color name="pink_a400">#f50057</color>
+
+
+    <!--CYAN-->
+    <color name="cyan_50">#e0f2f1</color>
+    <color name="cyan_100">#b2dfdb</color>
+    <color name="cyan_200">#80cbc4</color>
+    <color name="cyan_300">#4db6ac</color>
+    <color name="cyan_400">#26a69a</color>
+    <color name="cyan_500">#009688</color>
+    <color name="cyan_600">#00897b</color>
+    <color name="cyan_700">#00796b</color>
+    <color name="cyan_800">#00695c</color>
+    <color name="cyan_900">#004d40</color>
+    <color name="cyan_a100">#a7ffeb</color>
+    <color name="cyan_a200">#64ffda</color>
+    <color name="cyan_a400">#1de9b6</color>
+    <color name="cyan_a700">#00bfa5</color>
+
+
+    <color name="purple_50">#f3e5f5</color>
+    <color name="purple_100">#e1bee7</color>
+    <color name="purple_200">#ce93d8</color>
+    <color name="purple_300">#ba68c8</color>
+    <color name="purple_400">#ab47bc</color>
+    <color name="purple_500">#9c27b0</color>
+    <color name="purple_600">#8e24aa</color>
+    <color name="purple_700">#7b1fa2</color>
+    <color name="purple_800">#6a1b9a</color>
+    <color name="purple_900">#4a148c</color>
+    <color name="purple_a100">#ea80fc</color>
+    <color name="purple_a200">#e040fb</color>
+    <color name="purple_a400">#d500f9</color>
+    <color name="purple_a700">#aa00ff</color>
+
+
+    <color name="deep_purple_50">#ede7f6</color>
+    <color name="deep_purple_100">#d1c4e9</color>
+    <color name="deep_purple_200">#b39ddb</color>
+    <color name="deep_purple_300">#9575cd</color>
+    <color name="deep_purple_400">#7e57c2</color>
+    <color name="deep_purple_500">#673ab7</color>
+    <color name="deep_purple_600">#5e35b1</color>
+    <color name="deep_purple_700">#512da8</color>
+    <color name="deep_purple_800">#4527a0</color>
+    <color name="deep_purple_900">#311b92</color>
+    <color name="deep_purple_a100">#b388ff</color>
+    <color name="deep_purple_a200">#7c4dff</color>
+    <color name="deep_purple_a400">#651fff</color>
+    <color name="deep_purple_a700">#6200ea</color>
+
+
+</resources>

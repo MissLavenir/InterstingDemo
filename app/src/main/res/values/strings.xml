@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">小工具</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="moods">
+        <item>低落</item>
+        <item>平静</item>
+        <item>愉快</item>
+        <item>兴奋</item>
+        <item>烦躁</item>
+
+    </string-array>
+</resources>

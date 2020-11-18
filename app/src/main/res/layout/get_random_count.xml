@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".GetRandomCount">
+
+    <LinearLayout
+        android:id="@+id/randomScope"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="-----随机数-----"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="随机范围为："
+            android:textSize="16sp"
+            android:layout_marginTop="00dp"
+            android:gravity="center_vertical"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="horizontal">
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/minNumber"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="1"
+                android:textSize="42sp"
+                android:gravity="center"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="-----"
+                android:textSize="32sp"
+                android:gravity="center"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/maxNumber"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="100"
+                android:textSize="42sp"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/randomCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/randomScope"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/numberPanel"
+        android:text="0"
+        android:textSize="60sp"
+        android:textColor="@color/black"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/numberPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/randomCount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/inputText"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:background="@color/blue_100"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/recyclerViewTip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="列表超出部分可向右滑动"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:visibility="gone"
+                />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_marginHorizontal="20dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="次    数："
+                android:textSize="18sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/clickNum"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"
+                android:textSize="18sp"
+                android:gravity="start"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_marginHorizontal="20dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="总   计："
+                android:textSize="18sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/totalNum"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"
+                android:textSize="18sp"
+                android:gravity="start"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_marginHorizontal="20dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="平   均："
+                android:textSize="18sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/averageNum"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"
+                android:textSize="18sp"
+                android:gravity="start"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_marginHorizontal="20dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="本次百分比："
+                android:textSize="18sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/thisPercent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0%"
+                android:textSize="18sp"
+                android:gravity="start"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_marginHorizontal="20dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="总计百分比："
+                android:textSize="18sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/totalPercent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0%"
+                android:textSize="18sp"
+                android:gravity="start"/>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/reset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_round_rectangle_stroke_blue"
+            android:layout_marginTop="6dp"
+            android:text="重 置"
+            android:layout_marginHorizontal="80dp"
+            android:layout_gravity="center"
+            />
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/inputText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/buttonPanel">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="请输入最小整数："
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/inputMinNum"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="10dp"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="请输入最大整数："
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/inputMaxNum"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="10dp"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/sureBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_round_rectangle_stroke_blue"
+                android:layout_marginHorizontal="10dp"
+                android:text="确认更改"
+                android:textSize="16sp"
+                android:textColor="@color/red_400"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/hidePanel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_round_rectangle_stroke_blue"
+                android:layout_marginHorizontal="10dp"
+                android:text="隐藏面板"
+                android:textSize="16sp"
+                android:textColor="@color/red_400"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="10dp"
+        >
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/changeScope"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_round_rectangle_stroke_blue"
+            android:paddingHorizontal="40dp"
+            android:text="更换范围"
+            android:textColor="@color/deep_orange_200"
+            android:layout_marginHorizontal="10dp"
+            android:textSize="16sp"
+            android:gravity="center"/>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/startRandom"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_round_rectangle_stroke_blue"
+            android:paddingHorizontal="40dp"
+            android:text="开始随机"
+            android:textColor="@color/blue_500"
+            android:layout_marginHorizontal="10dp"
+            android:textSize="16sp"
+            android:gravity="center"/>
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

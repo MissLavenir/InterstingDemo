@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:minHeight="120dp"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/dragText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="10dp"
+        android:text="大师傅阿蒂芬萨芬萨芬阿迪斯发"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dragDeleteBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingVertical="4dp"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginHorizontal="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="删除"
+            android:textColor="@color/red_400"
+            android:textSize="18sp"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dragCancelBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingVertical="4dp"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginHorizontal="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="取消"
+            android:textColor="@color/blue_500"
+            android:textSize="18sp"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
