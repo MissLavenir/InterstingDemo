@@ -47,7 +47,12 @@
         android:paddingVertical="10dp"
         android:background="@drawable/bg_round_rectangle_stroke_blue"
         android:text="开始播报语音"
-        android:textColor="@color/blue_500"/>
+        android:textColor="@color/blue_500"
+        android:textSize="16sp"
+        android:focusable="true"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        />
 
 
 
