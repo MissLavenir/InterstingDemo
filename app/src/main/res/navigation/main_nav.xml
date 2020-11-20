@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/MenuFragment"
-        android:name="com.example.interstingdemo.MenuFragment"
+        android:name="com.example.interestingdemo.MenuFragment"
         android:label="主菜单"
         tools:layout="@layout/fragment_menu">
         <action
@@ -19,32 +19,28 @@
         <action
             android:id="@+id/action_MenuFragment_to_luckGenerator"
             app:destination="@id/luckGenerator" />
+        <action
+            android:id="@+id/action_MenuFragment_to_textToSpeak"
+            app:destination="@id/textToSpeak" />
     </fragment>
     <fragment
         android:id="@+id/randomCount"
-        android:name="com.example.interstingdemo.GetRandomCount"
+        android:name="com.example.interestingdemo.GetRandomCount"
         android:label="获得随机数"
-        tools:layout="@layout/get_random_count">
-        <action
-            android:id="@+id/action_getRandomCount_to_MenuFragment"
-            app:destination="@id/MenuFragment" />
-    </fragment>
+        tools:layout="@layout/get_random_count"/>
     <fragment
         android:id="@+id/dragRecyclerView"
-        android:name="com.example.interstingdemo.DragRecyclerView"
+        android:name="com.example.interestingdemo.DragRecyclerView"
         android:label="记事表"
-        tools:layout="@layout/fragment_drag_recyclerview">
-        <action
-            android:id="@+id/action_dragRecyclerView_to_MenuFragment"
-            app:destination="@id/MenuFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_drag_recyclerview"/>
     <fragment
         android:id="@+id/luckGenerator"
-        android:name="com.example.interstingdemo.LuckGenerator"
+        android:name="com.example.interestingdemo.LuckGenerator"
         android:label="获取幸运值"
-        tools:layout="@layout/fragment_luck_generator">
-        <action
-            android:id="@+id/action_luckGenerator_to_MenuFragment"
-            app:destination="@id/MenuFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_luck_generator"/>
+    <fragment
+        android:id="@+id/textToSpeak"
+        android:name="com.example.interestingdemo.TextToSpeak"
+        android:label="fragment_text_to_speak"
+        tools:layout="@layout/fragment_text_to_speak" />
 </navigation>

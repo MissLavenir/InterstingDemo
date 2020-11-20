@@ -1,4 +1,4 @@
-package com.example.interstingdemo
+package com.example.interestingdemo
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

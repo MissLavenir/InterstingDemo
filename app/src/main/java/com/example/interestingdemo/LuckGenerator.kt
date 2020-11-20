@@ -1,4 +1,4 @@
-package com.example.interstingdemo
+package com.example.interestingdemo
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.res.ResourcesCompat
-import com.example.interstingdemo.extensions.runOnUiThread
+import com.example.interestingdemo.extensions.runOnUiThread
 import kotlinx.android.synthetic.main.fragment_luck_generator.*
 import java.lang.Exception
 import java.math.RoundingMode
@@ -55,7 +55,6 @@ class LuckGenerator : Fragment() {
             relationStatus.visibility = View.GONE
             isSpecial = false
         }
-
 
     }
 

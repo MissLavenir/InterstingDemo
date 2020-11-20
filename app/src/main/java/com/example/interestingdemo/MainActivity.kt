@@ -1,4 +1,4 @@
-package com.example.interstingdemo
+package com.example.interestingdemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

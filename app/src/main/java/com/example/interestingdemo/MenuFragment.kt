@@ -1,4 +1,4 @@
-package com.example.interstingdemo
+package com.example.interestingdemo
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -31,6 +31,10 @@ class MenuFragment : Fragment() {
 
         getLuckCount.setOnClickListener {
             view.findNavController().navigate(R.id.action_MenuFragment_to_luckGenerator)
+        }
+
+        getTextToSpeak.setOnClickListener {
+            view.findNavController().navigate(R.id.action_MenuFragment_to_textToSpeak)
         }
 
     }

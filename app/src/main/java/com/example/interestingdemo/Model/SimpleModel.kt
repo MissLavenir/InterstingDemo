@@ -1,4 +1,4 @@
-package com.example.interstingdemo.Model
+package com.example.interestingdemo.Model
 
 class SimpleModel {
 

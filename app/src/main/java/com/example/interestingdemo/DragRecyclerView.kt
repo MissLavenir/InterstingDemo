@@ -1,8 +1,7 @@
-package com.example.interstingdemo
+package com.example.interestingdemo
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.interstingdemo.Model.SimpleModel
+import com.example.interestingdemo.Model.SimpleModel
 import com.h6ah4i.android.widget.advrecyclerview.animator.DraggableItemAnimator
 import com.h6ah4i.android.widget.advrecyclerview.draggable.*
 import kotlinx.android.synthetic.main.dialog_drag_detail.view.*
@@ -21,7 +20,7 @@ class DragRecyclerView : Fragment() {
     private val thisModel = ArrayList<SimpleModel>()
     private var modelId = 0
     private val adapter = DragAdapter(thisModel)
-    private lateinit var myWrappeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
+    private lateinit var myWrapperAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
     private val layoutManager = LinearLayoutManager(this.context,RecyclerView.VERTICAL,false)
     private val dragDropManager = RecyclerViewDragDropManager()
 
@@ -59,12 +58,12 @@ class DragRecyclerView : Fragment() {
                 message = inputThingsText.text.toString()
             }
             thisModel.add(model)
-            myWrappeAdapter.notifyDataSetChanged()
+            myWrapperAdapter.notifyDataSetChanged()
         }
 
-        myWrappeAdapter = dragDropManager.createWrappedAdapter(adapter)
+        myWrapperAdapter = dragDropManager.createWrappedAdapter(adapter)
 
-        dragRecyclerView.adapter = myWrappeAdapter
+        dragRecyclerView.adapter = myWrapperAdapter
         dragRecyclerView.layoutManager = layoutManager
         dragRecyclerView.setHasFixedSize(false)
         val animator = DraggableItemAnimator()
@@ -76,9 +75,9 @@ class DragRecyclerView : Fragment() {
 
     inner class DragAdapter(private val array : ArrayList<SimpleModel>) : RecyclerView.Adapter<DragAdapter.MyViewHolder>(),DraggableItemAdapter<DragAdapter.MyViewHolder>{
         inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView),DraggableItemViewHolder{
-            val dragIcon = itemView.findViewById<AppCompatImageView>(R.id.dragIcon)
-            val dragTextView = itemView.findViewById<AppCompatTextView>(R.id.dragTextView)
-            val mDragState = DraggableItemState()
+            val dragIcon: AppCompatImageView = itemView.findViewById(R.id.dragIcon)
+            val dragTextView: AppCompatTextView = itemView.findViewById(R.id.dragTextView)
+            private val mDragState = DraggableItemState()
 
             override fun getDragStateFlags(): Int = mDragState.flags
 
