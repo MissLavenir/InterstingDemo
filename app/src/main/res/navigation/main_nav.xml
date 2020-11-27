@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_MenuFragment_to_textToSpeak"
             app:destination="@id/textToSpeak" />
+        <action
+            android:id="@+id/action_MenuFragment_to_makeQrCode"
+            app:destination="@id/makeQrCode" />
     </fragment>
     <fragment
         android:id="@+id/randomCount"
@@ -41,6 +44,11 @@
     <fragment
         android:id="@+id/textToSpeak"
         android:name="com.example.interestingdemo.TextToSpeak"
-        android:label="fragment_text_to_speak"
+        android:label="文字转语音"
         tools:layout="@layout/fragment_text_to_speak" />
+    <fragment
+        android:id="@+id/makeQrCode"
+        android:name="com.example.interestingdemo.MakeQrCode"
+        android:label="文字转二维码"
+        tools:layout="@layout/fragment_make_qr_code" />
 </navigation>

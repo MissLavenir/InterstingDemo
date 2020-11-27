@@ -37,6 +37,10 @@ class MenuFragment : Fragment() {
             view.findNavController().navigate(R.id.action_MenuFragment_to_textToSpeak)
         }
 
+        getTextToQrCode.setOnClickListener {
+            view.findNavController().navigate(R.id.action_MenuFragment_to_makeQrCode)
+        }
+
     }
 
 }

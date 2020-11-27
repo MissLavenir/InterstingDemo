@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".MakeQrCode">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="转换为二维码"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/qrCode"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/qr_code_test"
+        android:layout_marginVertical="10dp"
+        />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textToQrCodeInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入要转换的内容"
+        app:hintTextColor="@color/blue_500"
+        app:endIconMode="clear_text"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textToQrCodeInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/startQrCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="转换"
+        android:textColor="@color/blue_500"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_round_rectangle_stroke_blue"/>
+
+</LinearLayout>
