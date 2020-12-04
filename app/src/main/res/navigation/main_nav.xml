@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_MenuFragment_to_makeQrCode"
             app:destination="@id/makeQrCode" />
+        <action
+            android:id="@+id/action_MenuFragment_to_cropPicture"
+            app:destination="@id/cropPicture2" />
     </fragment>
     <fragment
         android:id="@+id/randomCount"
@@ -51,4 +54,9 @@
         android:name="com.example.interestingdemo.MakeQrCode"
         android:label="文字转二维码"
         tools:layout="@layout/fragment_make_qr_code" />
+    <fragment
+        android:id="@+id/cropPicture2"
+        android:name="com.example.interestingdemo.CropPicture"
+        android:label="裁剪图片"
+        tools:layout="@layout/fragment_crop_picture" />
 </navigation>

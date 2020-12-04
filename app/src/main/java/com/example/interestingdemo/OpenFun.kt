@@ -3,10 +3,12 @@ package com.example.interestingdemo
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.net.Uri
 import android.text.TextUtils
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
 import com.google.zxing.qrcode.QRCodeWriter
+import com.yalantis.ucrop.UCrop
 import java.util.*
 
 open class OpenFun {
