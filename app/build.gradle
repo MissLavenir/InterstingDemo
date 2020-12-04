@@ -45,6 +45,11 @@ dependencies {
     implementation 'com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:1.0.0'
     implementation 'com.google.zxing:core:3.3.0'
     implementation 'com.github.yalantis:ucrop:2.2.5-native'
+    /**
+     * 为动态申请权限提供方便
+     * https://github.com/googlesamples/easypermissions
+     */
+    implementation 'pub.devrel:easypermissions:3.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
