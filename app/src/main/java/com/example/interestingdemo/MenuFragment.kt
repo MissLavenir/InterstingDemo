@@ -40,6 +40,7 @@ class MenuFragment : Fragment() {
         getTextToQrCode.setOnClickListener {
             view.findNavController().navigate(R.id.action_MenuFragment_to_makeQrCode)
         }
+
         cropPicture.setOnClickListener {
             view.findNavController().navigate(R.id.action_MenuFragment_to_cropPicture)
         }

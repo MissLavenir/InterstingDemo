@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_round_rectangle_stroke_blue"
-                android:text="文字转二维码"
+                android:text="二维码生成&amp;识别"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:layout_marginTop="10dp"

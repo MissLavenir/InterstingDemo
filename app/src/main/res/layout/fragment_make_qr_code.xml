@@ -8,13 +8,35 @@
     android:padding="10dp"
     tools:context=".MakeQrCode">
 
-    <androidx.appcompat.widget.AppCompatTextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="转换为二维码"
-        android:textSize="24sp"
-        android:textColor="@color/black"
-        />
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="转换为二维码"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:layout_marginEnd="20dp"
+            tools:ignore="RtlCompat" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/qrScan"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            app:srcCompat="@drawable/ic_qr_scan"
+            android:padding="6dp"
+            android:layout_marginHorizontal="10dp"
+            />
+
+    </LinearLayout>
+
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/qrCode"

@@ -34,16 +34,15 @@
             android:id="@+id/sureBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="确定"
-            android:textColor="@color/blue_300"
-            android:gravity="center"
-            android:paddingVertical="8dp"
             android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
-            />
+            android:gravity="center"
+            android:paddingVertical="8dp"
+            android:text="确定"
+            android:textColor="@color/blue_300" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/cancelBtn"

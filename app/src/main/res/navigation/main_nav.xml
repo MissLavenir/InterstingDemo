@@ -53,10 +53,19 @@
         android:id="@+id/makeQrCode"
         android:name="com.example.interestingdemo.MakeQrCode"
         android:label="文字转二维码"
-        tools:layout="@layout/fragment_make_qr_code" />
+        tools:layout="@layout/fragment_make_qr_code" >
+        <action
+            android:id="@+id/action_makeQrCode_to_QRScanFragment"
+            app:destination="@id/QRScanFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cropPicture2"
         android:name="com.example.interestingdemo.CropPicture"
         android:label="裁剪图片"
         tools:layout="@layout/fragment_crop_picture" />
+    <fragment
+        android:id="@+id/QRScanFragment"
+        android:name="com.example.interestingdemo.QRScanFragment"
+        android:label="扫描二维码"
+        tools:layout="@layout/fragment_qr_scan" />
 </navigation>
