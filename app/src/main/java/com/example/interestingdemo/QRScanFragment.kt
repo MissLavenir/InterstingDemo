@@ -91,14 +91,14 @@ class QRScanFragment : Fragment(),EasyPermissions.PermissionCallbacks,OnCaptureC
 
     override fun onResultCallback(result: String?): Boolean {
         if (result == null) return true
-        if (result.startsWith("https://")){
-            val intent = Intent().apply {
-                action = "android.intent.action.View"
-                data = Uri.parse(result)
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            }
-            startActivity(intent)
-        }else{
+//        if (result.trim().startsWith("https://") || result.trim().startsWith("www.")){
+//            val intent = Intent().apply {
+//                action = "android.intent.action.View"
+//                data = Uri.parse(result.trim())
+//                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//            }
+//            startActivity(intent)
+//        }else{
             val dialog = LayoutInflater.from(context).inflate(R.layout.dialog_sure_btn,null,false)
             val alert = AlertDialog.Builder(context).setView(dialog).create()
             dialog.sureTitle.text = "扫描内容"
@@ -108,7 +108,7 @@ class QRScanFragment : Fragment(),EasyPermissions.PermissionCallbacks,OnCaptureC
                 alert.dismiss()
             }
             alert.show()
-        }
+//        }
         return true
     }
 

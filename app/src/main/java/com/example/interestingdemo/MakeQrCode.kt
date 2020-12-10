@@ -1,6 +1,7 @@
 package com.example.interestingdemo
 
 import android.Manifest
+import android.app.AlertDialog
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.example.interestingdemo.extensions.toast
+import kotlinx.android.synthetic.main.dialog_sure_btn.view.*
 import kotlinx.android.synthetic.main.fragment_make_qr_code.*
 import pub.devrel.easypermissions.EasyPermissions
 
@@ -26,10 +28,27 @@ class MakeQrCode : Fragment(),EasyPermissions.PermissionCallbacks {
         textToQrCodeInputLayout.requestFocus()
         startQrCode.setOnClickListener {
             if (textToQrCodeInput.text.toString().isNotBlank()){
-                val logo = BitmapFactory.decodeResource(resources,R.drawable.ic_launcher)
-                val string = "\n${textToQrCodeInput.text.toString()}\n(二维码来源：${resources.getString(R.string.app_name)})\n作者:MissLavenir"
-                val bitmap = OpenFun().createQRImage(string,1000,1000, logoBitmap = logo)
-                qrCode.setImageBitmap(bitmap)
+                val dialog = LayoutInflater.from(context).inflate(R.layout.dialog_sure_btn,null,false)
+                val alert = AlertDialog.Builder(context).setView(dialog).create()
+                dialog.sureBtn.text = "二维码样式。"
+                dialog.sureMessage.text = "请选择以下生成二维码的两种格式之一"
+                dialog.sureBtn.text = "二维码中心带logo"
+                dialog.sureBtn.setOnClickListener {
+                    val logoBitmap = BitmapFactory.decodeResource(resources,R.drawable.ic_launcher)
+                    val string = "\n${textToQrCodeInput.text.toString()}\n(二维码来源：${resources.getString(R.string.app_name)})\n作者:MissLavenir"
+                    val bitmap = OpenFun().createQRImage(string,1000,1000, logoBitmap = logoBitmap)
+                    qrCode.setImageBitmap(bitmap)
+                    alert.dismiss()
+                }
+                dialog.cancelBtn.text = "二维码背景为logo"
+                dialog.cancelBtn.setOnClickListener {
+                    val backgroundBitmap = BitmapFactory.decodeResource(resources,R.drawable.ic_launcher)
+                    val string = "\n${textToQrCodeInput.text.toString()}\n(二维码来源：${resources.getString(R.string.app_name)})\n作者:MissLavenir"
+                    val bitmap = OpenFun().createQRImage(string,1000,1000, backgroundBitmap = backgroundBitmap)
+                    qrCode.setImageBitmap(bitmap)
+                    alert.dismiss()
+                }
+                alert.show()
             }else{
                 toast("输入内容不能为空！")
             }

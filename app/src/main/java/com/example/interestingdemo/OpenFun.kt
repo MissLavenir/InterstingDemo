@@ -22,7 +22,7 @@ open class OpenFun {
      * @logoBitmap logo图片
      * @logoPercent logo所占百分比[0-1]之间。
      */
-    fun createQRImage(string : String,width : Int, height : Int, error_level : String ?= "H", logoBitmap : Bitmap ?= null, logoPercent : Float ?= 0.16F): Bitmap? {
+    fun createQRImage(string : String,width : Int, height : Int, error_level : String ?= "H", logoBitmap : Bitmap ?= null, logoPercent : Float ?= 0.16F,backgroundBitmap: Bitmap ?= null): Bitmap? {
         if (string == "" || string.isEmpty()) return null
         val hints = Hashtable<EncodeHintType, String>()
         hints[EncodeHintType.CHARACTER_SET] = "utf-8"
@@ -34,9 +34,18 @@ open class OpenFun {
         }
 
         //渲染颜色
-        for ( i in 0 until width){
-            for (j in 0 until height){
-                pixels[i*width+j] = if (bitMatrix.get(j,i)) Color.BLACK else Color.WHITE
+        if (backgroundBitmap != null){
+            val background = Bitmap.createScaledBitmap(backgroundBitmap,width,height,false)
+            for ( i in 0 until width){
+                for (j in 0 until height){
+                    pixels[i*width+j] = if (bitMatrix.get(j,i)) Color.BLACK else background.getPixel(j,i)
+                }
+            }
+        }else{
+            for ( i in 0 until width){
+                for (j in 0 until height){
+                    pixels[i*width+j] = if (bitMatrix.get(j,i)) Color.BLACK else Color.WHITE
+                }
             }
         }
 
