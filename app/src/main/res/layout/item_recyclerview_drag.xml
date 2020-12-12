@@ -16,8 +16,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/dragIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,10 +35,21 @@
             app:layout_constraintStart_toEndOf="@id/dragIcon"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="首先，我们..."
+            android:textSize="16sp"
             android:padding="4dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/rankNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
