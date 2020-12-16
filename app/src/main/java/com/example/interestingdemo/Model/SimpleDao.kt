@@ -11,9 +11,9 @@ interface SimpleDao {
     @Query("SELECT * FROM SimpleData ORDER BY rank DESC")//DESC倒序
     suspend fun getAll() : List<SimpleData>
 
-    //根据名称获取data的列表
-    @Query("SELECT * FROM SimpleData WHERE name LIKE :name")
-    suspend fun getByName(name : String) : List<SimpleData>
+    //根据名称获取data的列表,模糊查询
+    @Query("SELECT * FROM SimpleData WHERE name LIKE '%' || :name || '%' ORDER BY rank DESC")
+    suspend fun getAllByName(name : String) : List<SimpleData>
 
     //根据id查找data
     @Query("SELECT * FROM SimpleData WHERE id = :id")

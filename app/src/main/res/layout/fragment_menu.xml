@@ -6,15 +6,38 @@
     android:orientation="vertical"
     tools:context=".MenuFragment">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="这是一些测试用的例子"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:background="@color/blue_50"
-        />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/test_example"
+            android:paddingHorizontal="20dp"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/secure"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="@string/secure_model"
+            android:textColor="@color/red_a200"
+            android:paddingHorizontal="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            tools:ignore="UnusedAttribute" />
+
+    </LinearLayout>
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -34,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_round_rectangle_stroke_blue"
-                android:text="获取随机数"
+                android:text="@string/get_random"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
@@ -46,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_round_rectangle_stroke_blue"
-                android:text="可排序记录表"
+                android:text="@string/rank_record"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
@@ -58,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_round_rectangle_stroke_blue"
-                android:text="获取幸运值"
+                android:text="@string/get_luck_count"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
@@ -70,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_round_rectangle_stroke_blue"
-                android:text="文字转语音"
+                android:text="@string/text_to_speak"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
@@ -83,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_round_rectangle_stroke_blue"
-                android:text="二维码生成&amp;识别"
+                android:text="@string/qr_code_create_identify"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
@@ -95,7 +118,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_round_rectangle_stroke_blue"
-                android:text="裁剪图片"
+                android:text="@string/crop_picture"
                 android:gravity="center"
                 android:textSize="16sp"
                 android:layout_marginTop="10dp"

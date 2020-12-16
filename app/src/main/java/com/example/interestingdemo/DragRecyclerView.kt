@@ -10,19 +10,15 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.interestingdemo.Model.MyDataBase
-import com.example.interestingdemo.Model.SimpleDao
+import com.example.interestingdemo.Model.SimpleDaoFun
 import com.example.interestingdemo.Model.SimpleData
 import com.h6ah4i.android.widget.advrecyclerview.animator.DraggableItemAnimator
 import com.h6ah4i.android.widget.advrecyclerview.draggable.*
 import kotlinx.android.synthetic.main.dialog_drag_detail.view.*
 import kotlinx.android.synthetic.main.fragment_drag_recyclerview.*
-import kotlinx.coroutines.*
 import kotlin.collections.ArrayList
 
 class DragRecyclerView : Fragment() {
-    private var dataBase : MyDataBase? = null
-    private var simpleDao : SimpleDao? =null
     private val thisModel = ArrayList<SimpleData>()
     private val adapter = DragAdapter(thisModel)
     private lateinit var myWrapperAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
@@ -34,8 +30,6 @@ class DragRecyclerView : Fragment() {
         super.onCreate(savedInstanceState)
         adapter.setHasStableIds(true)
 
-        dataBase = MyDataBase.getDataBase(requireContext())
-        simpleDao = dataBase?.simpleDao()
     }
 
     override fun onCreateView(
@@ -53,8 +47,9 @@ class DragRecyclerView : Fragment() {
             refresh()
         }
 
-        refresh()
         myWrapperAdapter = dragDropManager.createWrappedAdapter(adapter)
+
+        refresh()
 
         dragRecyclerView.adapter = myWrapperAdapter
         dragRecyclerView.layoutManager = layoutManager
@@ -74,15 +69,36 @@ class DragRecyclerView : Fragment() {
                 inputThingsLayout.isErrorEnabled = false
             }
             val data = SimpleData(name = inputThingsText.text.toString())
-            simpleInsert(data)
+            SimpleDaoFun(requireContext()).simpleInsert(data)
             refresh()
-            myWrapperAdapter.notifyDataSetChanged()
+        }
+
+        searchBtn.setOnClickListener {
+            if (inputThingsText.text.toString().trim().isBlank()){
+                inputThingsLayout.apply {
+                    requestFocus()
+                    return@setOnClickListener
+                }
+            }else{
+                inputThingsLayout.isErrorEnabled = false
+            }
+            refresh(inputThingsText.text.toString())
         }
     }
 
-    private fun refresh(){
+    private fun refresh(name : String = ""){
         thisModel.clear()
-        simpleGetAll()
+        if (name != ""){
+            SimpleDaoFun(requireContext()).simpleGetAllByName(name).forEach {
+                thisModel.add(it)
+            }
+        }else{
+            SimpleDaoFun(requireContext()).simpleGetAll().forEach {
+                thisModel.add(it)
+            }
+        }
+
+        myWrapperAdapter.notifyDataSetChanged()
     }
 
     inner class DragAdapter(private val array : ArrayList<SimpleData>) : RecyclerView.Adapter<DragAdapter.MyViewHolder>(),DraggableItemAdapter<DragAdapter.MyViewHolder>{
@@ -114,7 +130,7 @@ class DragRecyclerView : Fragment() {
                 val alert = AlertDialog.Builder(context).setView(dialogView).create()
                 dialogView.dragText.text = holder.dragTextView.text
                 dialogView.dragDeleteBtn.setOnClickListener {
-                    simpleDelete(array[position].id ?: 0)
+                    SimpleDaoFun(requireContext()).simpleDelete(array[position].id ?: 0)
                     refresh()
                     alert.dismiss()
                 }
@@ -137,7 +153,7 @@ class DragRecyclerView : Fragment() {
             val max = if (fromPosition > toPosition) fromPosition  else toPosition
             val simpleList = array.take(max).reversed()
             simpleList.forEach {
-                simpleUpdateRank(it.id ?: 0,bottomRank++)
+                SimpleDaoFun(requireContext()).simpleUpdateRank(it.id ?: 0,bottomRank++)
             }
 
         }
@@ -173,28 +189,5 @@ class DragRecyclerView : Fragment() {
         }
     }
 
-    private fun simpleGetAll() = runBlocking {
-        withContext(Dispatchers.IO){
-            simpleDao?.getAll()?.forEach {
-                thisModel.add(it)
-            }
-        }
-        launch{
-            adapter.notifyDataSetChanged()
-        }
-    }
 
-    private fun simpleInsert(data: SimpleData) = runBlocking {
-        simpleDao?.insert(data)
-    }
-
-    fun simpleDelete(id : Int) = runBlocking {
-        withContext(Dispatchers.IO){
-            simpleDao?.deleteById(id)
-        }
-    }
-
-    fun simpleUpdateRank(id: Int, rank : Int) = runBlocking{
-        simpleDao?.updateRank(id,rank)
-    }
 }

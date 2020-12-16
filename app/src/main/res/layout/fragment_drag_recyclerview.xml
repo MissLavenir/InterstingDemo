@@ -11,15 +11,28 @@
     >
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="4dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/grey_800"
+        android:gravity="center"
+        android:text="@string/a_notepad"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/refreshBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="刷新"
+        android:text="@string/refresh"
         android:textColor="@color/blue_500"
         android:paddingHorizontal="10dp"
-        android:paddingVertical="2dp"
+        android:paddingVertical="4dp"
         />
 
 
@@ -28,52 +41,70 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
         >
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="4dp"
-        android:textSize="16sp"
-        android:textColor="@color/grey_800"
-        android:gravity="center"
-        android:text="这是一个记事表"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputThingsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="请输入需要做的事情"
-        app:hintTextColor="@color/blue_500"
-        app:endIconMode="clear_text"
-        android:background="@color/black"
-        app:hintAnimationEnabled="true"
-        android:padding="1dp"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputThingsText"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputThingsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:background="@color/white"/>
+            android:hint="@string/input_please"
+            app:hintTextColor="@color/blue_500"
+            app:endIconMode="clear_text"
+            app:hintAnimationEnabled="true"
+            android:background="@color/black"
+            android:padding="1dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputThingsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:background="@color/white"/>
 
-    </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/sureBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="确定"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:background="@drawable/bg_round_rectangle_stroke_blue"
-        android:layout_marginTop="4dp"
-        android:clickable="true"
-        android:focusable="true"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/sureBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/ok_btn"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:background="@drawable/bg_round_rectangle_stroke_blue"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/searchBtn"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:gravity="center"
+                app:srcCompat="@drawable/ic_search"
+                android:tint="@color/blue_500"
+                android:layout_marginHorizontal="10dp"
+                android:padding="6dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
