@@ -17,19 +17,19 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="@string/test_example"
+            android:text="@string/select_function"
             android:paddingHorizontal="20dp"
             android:textSize="18sp"
             android:textColor="@color/black"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/secure"
+            android:id="@+id/setting"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:gravity="center"
-            android:text="@string/secure_model"
-            android:textColor="@color/red_a200"
+            android:text="@string/setting"
+            android:textColor="@color/blue_500"
             android:paddingHorizontal="10dp"
             android:clickable="true"
             android:focusable="true"

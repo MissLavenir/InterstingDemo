@@ -1,28 +1,27 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.function
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
-import android.net.Uri
 import android.text.TextUtils
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
 import com.google.zxing.qrcode.QRCodeWriter
-import com.yalantis.ucrop.UCrop
 import java.util.*
 
 open class OpenFun {
 
     /**
      * 创建二维码
-     * @string 字符串内容
-     * @width 宽度
-     * @height 高度
-     * @error_level 容错率L：7% M：15% Q：25% H：35%
-     * @logoBitmap logo图片
-     * @logoPercent logo所占百分比[0-1]之间。
+     * @param string 字符串内容
+     * @param width 宽度
+     * @param height 高度
+     * @param error_level 容错率L：7% M：15% Q：25% H：35%
+     * @param logoBitmap 中心logo图片
+     * @param logoPercent logo所占百分比[0-1]之间。
+     * @param backgroundBitmap 背景logo图片
      */
-    fun createQRImage(string : String,width : Int, height : Int, error_level : String ?= "H", logoBitmap : Bitmap ?= null, logoPercent : Float ?= 0.16F,backgroundBitmap: Bitmap ?= null): Bitmap? {
+    fun createQRImage(string : String,width : Int, height : Int, error_level : String ?= "H", logoBitmap : Bitmap ?= null, logoPercent : Float ?= 0.15F,backgroundBitmap: Bitmap ?= null): Bitmap? {
         if (string == "" || string.isEmpty()) return null
         val hints = Hashtable<EncodeHintType, String>()
         hints[EncodeHintType.CHARACTER_SET] = "utf-8"

@@ -41,17 +41,17 @@ class LuckGenerator : Fragment() {
         }
         specialTest.setOnClickListener {
             specialTest.setTextColor(ResourcesCompat.getColor(resources,R.color.blue_500,context?.theme))
-            specialTest.setTextSize(TypedValue.COMPLEX_UNIT_SP,20f)
+            specialTest.setTextSize(TypedValue.COMPLEX_UNIT_SP,16f)
             normalTest.setTextColor(ResourcesCompat.getColor(resources,R.color.grey_600,context?.theme))
-            normalTest.setTextSize(TypedValue.COMPLEX_UNIT_SP,16f)
+            normalTest.setTextSize(TypedValue.COMPLEX_UNIT_SP,12f)
             relationStatus.visibility = View.VISIBLE
             isSpecial = true
         }
         normalTest.setOnClickListener {
             specialTest.setTextColor(ResourcesCompat.getColor(resources,R.color.grey_600,context?.theme))
-            specialTest.setTextSize(TypedValue.COMPLEX_UNIT_SP,16f)
+            specialTest.setTextSize(TypedValue.COMPLEX_UNIT_SP,12f)
             normalTest.setTextColor(ResourcesCompat.getColor(resources,R.color.blue_500,context?.theme))
-            normalTest.setTextSize(TypedValue.COMPLEX_UNIT_SP,20f)
+            normalTest.setTextSize(TypedValue.COMPLEX_UNIT_SP,16f)
             relationStatus.visibility = View.GONE
             isSpecial = false
         }

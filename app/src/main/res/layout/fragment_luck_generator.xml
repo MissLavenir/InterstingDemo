@@ -12,37 +12,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         >
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/specialTest"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:paddingVertical="4dp"
             android:text="基于手环进行测试"
             android:gravity="center"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp"
+            android:textSize="16sp"
             android:textColor="@color/blue_500"
-            android:layout_marginHorizontal="36dp"
+            android:layout_marginHorizontal="10dp"
             android:focusable="true"
             android:clickable="true"
             android:foreground="?attr/selectableItemBackground"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/normalTest"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:paddingVertical="4dp"
             android:text="基于正常情况测试"
             android:gravity="center"
-            android:textSize="16sp"
-            android:layout_marginTop="6dp"
+            android:textSize="12sp"
             android:textColor="@color/grey_600"
-            android:layout_marginHorizontal="36dp"
+            android:layout_marginHorizontal="10dp"
             android:focusable="true"
             android:clickable="true"
             android:foreground="?attr/selectableItemBackground"/>

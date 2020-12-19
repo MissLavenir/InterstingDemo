@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_MenuFragment_to_cropPicture"
             app:destination="@id/cropPicture2" />
+        <action
+            android:id="@+id/action_MenuFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
     </fragment>
     <fragment
         android:id="@+id/randomCount"
@@ -68,4 +71,9 @@
         android:name="com.example.interestingdemo.QRScanFragment"
         android:label="扫描二维码"
         tools:layout="@layout/fragment_qr_scan" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.interestingdemo.SettingFragment"
+        android:label="设置"
+        tools:layout="@layout/fragment_setting" />
 </navigation>

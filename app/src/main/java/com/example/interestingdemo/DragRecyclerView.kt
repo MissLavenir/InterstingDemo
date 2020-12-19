@@ -10,8 +10,9 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.interestingdemo.Model.SimpleDaoFun
-import com.example.interestingdemo.Model.SimpleData
+import com.example.interestingdemo.function.SimpleDaoFun
+import com.example.interestingdemo.database.SimpleData
+import com.example.interestingdemo.extensions.hideSoftKeyBoard
 import com.h6ah4i.android.widget.advrecyclerview.animator.DraggableItemAnimator
 import com.h6ah4i.android.widget.advrecyclerview.draggable.*
 import kotlinx.android.synthetic.main.dialog_drag_detail.view.*
@@ -59,6 +60,7 @@ class DragRecyclerView : Fragment() {
         dragRecyclerView.itemAnimator = animator
         dragDropManager.attachRecyclerView(dragRecyclerView)
 
+        inputThingsLayout.requestFocus()
         sureBtn.setOnClickListener {
             if (inputThingsText.text.toString().trim().isBlank()){
                 inputThingsLayout.apply {
@@ -82,6 +84,7 @@ class DragRecyclerView : Fragment() {
             }else{
                 inputThingsLayout.isErrorEnabled = false
             }
+            activity?.hideSoftKeyBoard()
             refresh(inputThingsText.text.toString())
         }
     }

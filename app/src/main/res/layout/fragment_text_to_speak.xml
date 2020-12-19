@@ -10,14 +10,6 @@
     android:padding="10dp"
     tools:context=".TextToSpeak">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="文字转语音"
-        android:textSize="24sp"
-        android:textColor="@color/black"
-        />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="match_parent"

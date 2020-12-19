@@ -2,7 +2,7 @@
     <string name="app_name">小工具</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="test_example">这是一些测试用的例子</string>
+    <string name="select_function">请选择功能</string>
     <string name="secure_model">安全模式</string>
     <string name="get_random">获取随机数</string>
     <string name="rank_record">可排序记录表</string>
@@ -10,10 +10,10 @@
     <string name="text_to_speak">文字转语音</string>
     <string name="qr_code_create_identify"><![CDATA[二维码生成&识别]]></string>
     <string name="crop_picture">裁剪图片</string>
-    <string name="a_notepad">一个记事表</string>
     <string name="refresh">刷新</string>
     <string name="input_please">请输入......</string>
     <string name="ok_btn">确定</string>
+    <string name="setting">设置</string>
 
     <string-array name="moods">
         <item>低落</item>

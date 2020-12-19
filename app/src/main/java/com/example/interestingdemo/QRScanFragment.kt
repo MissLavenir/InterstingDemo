@@ -1,6 +1,7 @@
 package com.example.interestingdemo
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
@@ -66,7 +67,7 @@ class QRScanFragment : Fragment(),EasyPermissions.PermissionCallbacks,OnCaptureC
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
-        activity?.finish()
+        checkCameraPermission()
     }
 
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
@@ -89,16 +90,16 @@ class QRScanFragment : Fragment(),EasyPermissions.PermissionCallbacks,OnCaptureC
         captureHelper.onDestroy()
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onResultCallback(result: String?): Boolean {
         if (result == null) return true
-//        if (result.trim().startsWith("https://") || result.trim().startsWith("www.")){
-//            val intent = Intent().apply {
-//                action = "android.intent.action.View"
-//                data = Uri.parse(result.trim())
-//                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//            }
-//            startActivity(intent)
-//        }else{
+        if (result.trim().startsWith("https://") || result.trim().startsWith("www.")){
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                addCategory(Intent.CATEGORY_BROWSABLE)
+                data = Uri.parse(result.trim())
+            }
+            startActivity(intent)
+        }else{
             val dialog = LayoutInflater.from(context).inflate(R.layout.dialog_sure_btn,null,false)
             val alert = AlertDialog.Builder(context).setView(dialog).create()
             dialog.sureTitle.text = "扫描内容"
@@ -108,7 +109,8 @@ class QRScanFragment : Fragment(),EasyPermissions.PermissionCallbacks,OnCaptureC
                 alert.dismiss()
             }
             alert.show()
-//        }
+        }
+        activity?.finish()
         return true
     }
 
