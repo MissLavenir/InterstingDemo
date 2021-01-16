@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="2dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/groupDrag"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:srcCompat="@drawable/up_down_move"
+        android:padding="6dp"
+        android:tint="@color/blue_200"
+        tools:ignore="VectorDrawableCompat"
+        />
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/downArrow"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            app:srcCompat="@drawable/ic_right"
+            android:tint="@color/grey_400"
+            android:layout_marginTop="1dp"
+            tools:ignore="RtlCompat" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/groupText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="方案分组名称方案、分组名称"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/grey_800"
+            tools:ignore="RtlCompat" />
+
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/groupMenu"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/ic_more_vertical"
+        android:padding="6dp"
+        />
+
+</LinearLayout>

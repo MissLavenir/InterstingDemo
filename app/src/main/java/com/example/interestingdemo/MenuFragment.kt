@@ -50,6 +50,10 @@ class MenuFragment : Fragment() {
         setting.setOnClickListener {
             view.findNavController().navigate(R.id.action_MenuFragment_to_settingFragment)
         }
+
+        rewardPunishment.setOnClickListener {
+            view.findNavController().navigate(R.id.action_MenuFragment_to_rewardPunishment)
+        }
     }
 
 }

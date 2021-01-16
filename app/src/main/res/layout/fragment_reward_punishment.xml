@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".RewardPunishment">
+
+    <LinearLayout
+        android:id="@+id/selectPanel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/addSchemeGroup"
+        android:orientation="horizontal"
+        android:layout_marginEnd="10dp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="6dp"
+        tools:ignore="RtlCompat">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/scheme_group"
+            android:textSize="16sp"
+            android:layout_gravity="bottom"
+            />
+
+        <LinearLayout
+            android:id="@+id/selectSchemeGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/schemeGroupName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingHorizontal="10dp"
+                android:singleLine="true"
+                tools:text="方案一"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginHorizontal="20dp"
+                app:srcCompat="@drawable/ic_down"
+                android:tint="@color/grey_700"
+                android:layout_marginTop="1dp"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addSchemeGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="@id/selectPanel"
+        app:layout_constraintBottom_toBottomOf="@id/selectPanel"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="2dp"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_group"
+            android:textColor="@color/blue_400"
+            android:textSize="16sp"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:srcCompat="@drawable/ic_add_blue"
+            android:padding="4dp"
+            />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/schemeTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/selectPanel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="方案名称"
+        android:textStyle="italic"
+        android:textColor="@color/grey_800"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/schemeContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/schemeTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="我是方案描述2我是方案描述2我是方案描述2我是方案描述2我是方案描述2"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/clickPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/schemeContent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/bankerClick"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="庄家"
+            android:textSize="16sp"
+            android:textColor="@color/blue_400"
+            android:background="@drawable/bg_round_rectangle_stroke_blue"
+            android:gravity="center"
+            android:layout_marginHorizontal="10dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/playerClick"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="玩家"
+            android:textSize="16sp"
+            android:textColor="@color/blue_400"
+            android:background="@drawable/bg_round_rectangle_stroke_blue"
+            android:gravity="center"
+            android:layout_marginHorizontal="10dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/splitLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/splitLineDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clickPanel"
+        android:layout_marginTop="4dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/groupPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/splitLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="2dp"
+        android:gravity="center"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/recyclerTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="分组名称："
+            android:textColor="@color/blue_400"
+            android:textSize="16sp"
+            android:padding="2dp"
+            android:gravity="center_vertical"
+            />
+
+        <LinearLayout
+            android:id="@+id/addScheme"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginHorizontal="10dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                app:srcCompat="@drawable/ic_add_blue"
+                android:focusable="true"
+                android:clickable="true"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="添加组内方案"
+                android:textSize="12sp"
+                android:textColor="@color/blue_500"
+                />
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/changeTitle"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:padding="4dp"
+            app:srcCompat="@drawable/ic_change"
+            android:clickable="true"
+            android:focusable="true"
+            />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/schemeRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/groupList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/groupPanel"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/groupList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/group_list"
+        android:textSize="18sp"
+        android:textColor="@color/blue_400"
+        android:paddingVertical="6dp"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

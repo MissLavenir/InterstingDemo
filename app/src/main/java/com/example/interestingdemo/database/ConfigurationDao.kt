@@ -10,7 +10,7 @@ interface ConfigurationDao {
      * 插入一个配置
      */
     @Insert
-    suspend fun Insert(configurationData: ConfigurationData)
+    suspend fun insert(configurationData: ConfigurationData)
 
     /**
      * 根据id更新配置

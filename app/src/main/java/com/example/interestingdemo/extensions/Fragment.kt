@@ -16,3 +16,7 @@ fun Fragment.toast(string: String){
     Toast.makeText(this.context,string,Toast.LENGTH_LONG).show()
 }
 
+fun Fragment.finish(){
+    activity?.finish()
+}
+

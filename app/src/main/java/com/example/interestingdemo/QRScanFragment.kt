@@ -107,10 +107,10 @@ class QRScanFragment : Fragment(),EasyPermissions.PermissionCallbacks,OnCaptureC
             dialog.cancelBtn.visibility = View.GONE
             dialog.sureBtn.setOnClickListener {
                 alert.dismiss()
+                activity?.onBackPressed()
             }
             alert.show()
         }
-        activity?.finish()
         return true
     }
 

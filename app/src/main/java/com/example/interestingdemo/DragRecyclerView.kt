@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.interestingdemo.function.SimpleDaoFun
 import com.example.interestingdemo.database.SimpleData
 import com.example.interestingdemo.extensions.hideSoftKeyBoard
+import com.example.interestingdemo.extensions.hitTest
 import com.h6ah4i.android.widget.advrecyclerview.animator.DraggableItemAnimator
 import com.h6ah4i.android.widget.advrecyclerview.draggable.*
 import kotlinx.android.synthetic.main.dialog_drag_detail.view.*
@@ -92,11 +93,11 @@ class DragRecyclerView : Fragment() {
     private fun refresh(name : String = ""){
         thisModel.clear()
         if (name != ""){
-            SimpleDaoFun(requireContext()).simpleGetAllByName(name).forEach {
+            SimpleDaoFun(requireContext()).simpleGetAllByName(name).sortedBy { it.rank }.forEach {
                 thisModel.add(it)
             }
         }else{
-            SimpleDaoFun(requireContext()).simpleGetAll().forEach {
+            SimpleDaoFun(requireContext()).simpleGetAll().sortedBy { it.rank }.forEach {
                 thisModel.add(it)
             }
         }
@@ -150,19 +151,18 @@ class DragRecyclerView : Fragment() {
 
         override fun onMoveItem(fromPosition: Int, toPosition: Int) {
             val model = array[fromPosition]
-            var bottomRank = (array[0].rank ?: 0) + 1
             array.removeAt(fromPosition)
             array.add(toPosition,model)
-            val max = if (fromPosition > toPosition) fromPosition  else toPosition
-            val simpleList = array.take(max).reversed()
-            simpleList.forEach {
-                SimpleDaoFun(requireContext()).simpleUpdateRank(it.id ?: 0,bottomRank++)
+
+            var rank = 1
+            array.forEach {
+                SimpleDaoFun(requireContext()).simpleUpdateRank(it.id ?: 0,rank++)
             }
 
         }
 
         override fun onCheckCanStartDrag(holder: MyViewHolder, position: Int, x: Int, y: Int): Boolean {
-            return hitTest(holder.dragIcon,x, y)
+            return holder.dragIcon.hitTest(x, y)
         }
 
         override fun onCheckCanDrop(draggingPosition: Int, dropPosition: Int): Boolean {
@@ -181,15 +181,6 @@ class DragRecyclerView : Fragment() {
             notifyDataSetChanged()
         }
 
-        private fun hitTest(v: View, x: Int, y: Int): Boolean {
-            val tx = (v.translationX + 0.5f).toInt()
-            val ty = (v.translationY + 0.5f).toInt()
-            val left = v.left + tx
-            val right = v.right + tx
-            val top = v.top + ty
-            val bottom = v.bottom + ty
-            return x in left..right && y >= top && y <= bottom
-        }
     }
 
 

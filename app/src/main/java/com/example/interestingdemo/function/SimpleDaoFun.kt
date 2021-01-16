@@ -3,9 +3,7 @@ package com.example.interestingdemo.function
 import android.content.Context
 import com.example.interestingdemo.database.MyDataBase
 import com.example.interestingdemo.database.SimpleData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 /**
  * 用来存放SimpleDao方法的仓库
@@ -14,37 +12,25 @@ import kotlinx.coroutines.withContext
 class SimpleDaoFun(context: Context) {
 
     private val simpleDao = MyDataBase.getDataBase(context)?.simpleDao()
-
     /**
      * 获得所有data
      */
     fun simpleGetAll() : ArrayList<SimpleData> = runBlocking {
-        var list : ArrayList<SimpleData>
-        withContext(Dispatchers.IO){
-            list = simpleDao?.getAll() as ArrayList<SimpleData>
-
-        }
-        return@runBlocking list
+        return@runBlocking simpleDao?.getAll() as ArrayList<SimpleData>
     }
 
     /**
      * 根据名称模糊匹配data
      */
     fun simpleGetAllByName(name : String) : ArrayList<SimpleData> = runBlocking {
-        var list : ArrayList<SimpleData>
-        withContext(Dispatchers.IO){
-            list = simpleDao?.getAllByName(name) as ArrayList<SimpleData>
-        }
-        return@runBlocking list
+        return@runBlocking simpleDao?.getAllByName(name) as ArrayList<SimpleData>
     }
 
     /**
      * 插入data
      */
     fun simpleInsert(data: SimpleData) = runBlocking {
-        withContext(Dispatchers.IO){
-            simpleDao?.insert(data)
-        }
+        simpleDao?.insert(data)
     }
 
     /**

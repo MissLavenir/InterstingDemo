@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_MenuFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_MenuFragment_to_rewardPunishment"
+            app:destination="@id/rewardPunishment" />
     </fragment>
     <fragment
         android:id="@+id/randomCount"
@@ -76,4 +79,18 @@
         android:name="com.example.interestingdemo.SettingFragment"
         android:label="设置"
         tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/rewardPunishment"
+        android:name="com.example.interestingdemo.RewardPunishment"
+        android:label="方案生成器"
+        tools:layout="@layout/fragment_reward_punishment">
+        <action
+            android:id="@+id/action_rewardPunishment_to_schemeGroupList2"
+            app:destination="@id/schemeGroupList2" />
+    </fragment>
+    <fragment
+        android:id="@+id/schemeGroupList2"
+        android:name="com.example.interestingdemo.SchemeGroupList"
+        android:label="方案列表"
+        tools:layout="@layout/fragment_scheme_group_list" />
 </navigation>
