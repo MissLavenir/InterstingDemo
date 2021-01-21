@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.interestingdemo.database.scheme.Scheme
 import com.example.interestingdemo.database.scheme.SchemeGroup
 import com.example.interestingdemo.extensions.hitTest
+import com.example.interestingdemo.extensions.initSchemeColors
 import com.example.interestingdemo.extensions.toast
 import com.example.interestingdemo.function.SchemeFun
 import com.h6ah4i.android.widget.advrecyclerview.animator.DraggableItemAnimator
@@ -53,6 +54,13 @@ class SchemeGroupList : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        swipeRefreshLayout.initSchemeColors()
+        swipeRefreshLayout.setOnRefreshListener {
+            swipeRefreshLayout.isRefreshing = true
+            refreshSchemeGroup()
+        }
+
         val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
         mWrappedAdapter = expandableItemManager.createWrappedAdapter(adapter)
@@ -95,6 +103,7 @@ class SchemeGroupList : Fragment(){
                 }
             }
         }
+        swipeRefreshLayout.isRefreshing = false
         adapter.notifyDataSetChanged()
     }
 

@@ -20,9 +20,9 @@ import com.example.interestingdemo.extensions.toast
 import com.example.interestingdemo.function.SchemeFun
 import kotlinx.android.synthetic.main.dialog_add_scheme_group.view.*
 import kotlinx.android.synthetic.main.dialog_sure_btn.view.*
-import kotlinx.android.synthetic.main.fragment_reward_punishment.*
+import kotlinx.android.synthetic.main.fragment_scheme_create.*
 
-class RewardPunishment : Fragment() {
+class SchemeCreate : Fragment() {
     private val schemeList = ArrayList<Scheme>()
     private val adapter = MyAdapter(schemeList)
 
@@ -34,7 +34,7 @@ class RewardPunishment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reward_punishment, container, false)
+        return inflater.inflate(R.layout.fragment_scheme_create, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,7 +56,7 @@ class RewardPunishment : Fragment() {
         }
 
         groupList.setOnClickListener {
-            view.findNavController().navigate(R.id.action_rewardPunishment_to_schemeGroupList2)
+            view.findNavController().navigate(R.id.action_rewardPunishment_to_schemeGroupList)
         }
 
         changeTitle.setOnClickListener {

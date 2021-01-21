@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context=".SomeSpecialEffects">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/longTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="这是一段非常非常长的文字,它可以实现个别文字的点击效果，而非TextView的点击效果，比如可以用来设置《服务协议》和《隐私政策》。"
+        android:textSize="16sp"
+        />
+
+</LinearLayout>
