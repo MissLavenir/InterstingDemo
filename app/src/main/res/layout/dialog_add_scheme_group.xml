@@ -61,56 +61,55 @@
         android:textSize="16sp"
         />
 
-        <LinearLayout
-            android:id="@+id/schemeType"
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/schemeType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/inputDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/inputDescription"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="玩家类型:"
+            android:textColor="@color/grey_800"
+            android:textSize="16sp"
+            />
+
+        <RadioGroup
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:visibility="gone"
             >
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/bankerPlay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="玩家类型:"
-                android:textColor="@color/grey_800"
-                android:textSize="16sp"
+                android:layout_weight="1"
+                android:text="庄家"
+                android:layout_marginHorizontal="10dp"
                 />
 
-            <RadioGroup
-                android:layout_width="0dp"
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/playerPlay"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="horizontal"
-                >
+                android:text="玩家"
+                android:layout_marginHorizontal="10dp"
+                />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/bankerPlay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="庄家"
-                    android:layout_marginHorizontal="10dp"
-                    />
+        </RadioGroup>
 
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/playerPlay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="玩家"
-                    android:layout_marginHorizontal="10dp"
-                    />
-
-            </RadioGroup>
-
-        </LinearLayout>
-
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
