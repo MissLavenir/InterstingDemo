@@ -26,6 +26,8 @@
     <string name="player">玩家</string>
     <string name="scheme_create">方案生成器</string>
     <string name="special_effects">特殊效果</string>
+    <string name="city_select">地区选择器</string>
+    <string name="please_select">请选择...</string>
 
     <string-array name="moods">
         <item>低落</item>

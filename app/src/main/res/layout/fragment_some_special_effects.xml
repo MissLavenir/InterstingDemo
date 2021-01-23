@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
+    android:orientation="vertical"
     tools:context=".SomeSpecialEffects">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -14,5 +15,30 @@
         android:text="这是一段非常非常长的文字,它可以实现个别文字的点击效果，而非TextView的点击效果，比如可以用来设置《服务协议》和《隐私政策》。"
         android:textSize="16sp"
         />
+
+    <LinearLayout
+        android:id="@+id/drag_and_expand_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="可折叠可排序列表"
+            android:textSize="16sp"
+            android:textColor="@color/blue_400"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="样式如QQ分组那样可以折叠起来，并且可以进行跨分组排序，需要添加数据才可以看到效果。"
+            android:textSize="14sp"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

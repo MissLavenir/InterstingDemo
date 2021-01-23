@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_MenuFragment_to_someSpecialEffects"
             app:destination="@id/someSpecialEffects" />
+        <action
+            android:id="@+id/action_MenuFragment_to_citySelect"
+            app:destination="@id/citySelect" />
     </fragment>
     <fragment
         android:id="@+id/randomCount"
@@ -100,5 +103,14 @@
         android:id="@+id/someSpecialEffects"
         android:name="com.example.interestingdemo.SomeSpecialEffects"
         android:label="特殊效果"
-        tools:layout="@layout/fragment_some_special_effects" />
+        tools:layout="@layout/fragment_some_special_effects" >
+        <action
+            android:id="@+id/action_someSpecialEffects_to_schemeGroupList2"
+            app:destination="@id/schemeGroupList2" />
+    </fragment>
+    <fragment
+        android:id="@+id/citySelect"
+        android:name="com.example.interestingdemo.CitySelect"
+        android:label="地区选择"
+        tools:layout="@layout/fragment_city_select" />
 </navigation>

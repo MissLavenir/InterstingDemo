@@ -25,6 +25,7 @@ import com.h6ah4i.android.widget.advrecyclerview.expandable.*
 import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractDraggableItemViewHolder
 import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractExpandableItemAdapter
 import com.h6ah4i.android.widget.advrecyclerview.utils.WrapperAdapterUtils
+import kotlinx.android.synthetic.main.dialog_add_scheme_group.view.*
 import kotlinx.android.synthetic.main.dialog_scheme_manager_menu.view.*
 import kotlinx.android.synthetic.main.dialog_sure_btn.view.*
 import kotlinx.android.synthetic.main.fragment_scheme_group_list.*
@@ -59,6 +60,31 @@ class SchemeGroupList : Fragment(){
         swipeRefreshLayout.setOnRefreshListener {
             swipeRefreshLayout.isRefreshing = true
             refreshSchemeGroup()
+        }
+
+        addGroup.setOnClickListener {
+            val dialog = LayoutInflater.from(context).inflate(R.layout.dialog_add_scheme_group, null, false)
+            val alert = AlertDialog.Builder(context).setView(dialog).create()
+            dialog.ok_add_scheme_btn.setOnClickListener {
+                if (dialog.inputSchemeGroupName.text.isNullOrBlank()){
+                    dialog.inputLayout.apply {
+                        isErrorEnabled = true
+                        error = "分组名称不能为空"
+                        dialog.inputSchemeGroupName.requestFocus()
+                    }
+                }else{
+                    dialog.inputLayout.isErrorEnabled = false
+                    val schemeGroup = SchemeGroup(schemeGroupName = dialog.inputSchemeGroupName.text.toString(), description = dialog.inputDescription.text.toString(), common = 0)
+                    SchemeFun(requireContext()).insertGroup(schemeGroup)
+                    refreshSchemeGroup()
+                    alert.dismiss()
+                }
+            }
+            dialog.cancel_add_scheme_btn.setOnClickListener {
+                alert.dismiss()
+            }
+            alert.setCancelable(false)
+            alert.show()
         }
 
         val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
