@@ -49,6 +49,7 @@ class MakeQrCode : Fragment(),EasyPermissions.PermissionCallbacks {
                     dialog.cancelBtn.setOnClickListener {
                         val bitmap = OpenFun().createQRImage(text,640,640)
                         qrCode.setImageBitmap(bitmap)
+                        alert.dismiss()
                     }
                     //背景logo太难看了
 //                    dialog.cancelBtn.text = "二维码背景为logo"

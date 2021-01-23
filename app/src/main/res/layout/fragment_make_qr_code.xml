@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/grey_50"
     android:padding="10dp"
     tools:context=".MakeQrCode">
 
@@ -46,30 +47,39 @@
         android:layout_marginVertical="10dp"
         />
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textToQrCodeInputLayout"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入要转换的内容"
-        app:hintTextColor="@color/blue_500"
-        app:endIconMode="clear_text"
+        android:layout_marginVertical="4dp"
+        android:orientation="vertical"
         >
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textToQrCodeInput"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textToQrCodeInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:text="请输入要转换的内容"
+            android:textSize="12sp"
+            android:textColor="@color/blue_400"
             />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/textToQrCodeInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edittext"
+            android:padding="10dp"
+            android:textSize="16sp"
+            />
+
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/startQrCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="转换"
+        android:textSize="18sp"
         android:textColor="@color/blue_500"
         android:gravity="center"
         android:paddingVertical="10dp"
