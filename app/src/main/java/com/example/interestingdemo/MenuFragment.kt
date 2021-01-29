@@ -59,6 +59,10 @@ class MenuFragment : Fragment() {
             view.findNavController().navigate(R.id.action_MenuFragment_to_someSpecialEffects)
         }
 
+        calculateProblem.setOnClickListener {
+            view.findNavController().navigate(R.id.action_MenuFragment_to_calculateFragment)
+        }
+
         citySelect.setOnClickListener {
             view.findNavController().navigate(R.id.action_MenuFragment_to_citySelect)
         }

@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_MenuFragment_to_citySelect"
             app:destination="@id/citySelect" />
+        <action
+            android:id="@+id/action_MenuFragment_to_calculateFragment"
+            app:destination="@id/calculateFragment" />
     </fragment>
     <fragment
         android:id="@+id/randomCount"
@@ -113,4 +116,9 @@
         android:name="com.example.interestingdemo.CitySelect"
         android:label="地区选择"
         tools:layout="@layout/fragment_city_select" />
+    <fragment
+        android:id="@+id/calculateFragment"
+        android:name="com.example.interestingdemo.CalculateFragment"
+        android:label="计算题生成器"
+        tools:layout="@layout/fragment_calculate" />
 </navigation>
