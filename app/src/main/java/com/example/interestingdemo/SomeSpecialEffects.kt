@@ -1,6 +1,7 @@
 package com.example.interestingdemo
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.example.interestingdemo.extensions.makeTextClick
+import com.example.interestingdemo.extensions.setStatusBarColor
+import com.example.interestingdemo.extensions.shareTextContent
 import com.example.interestingdemo.extensions.toast
 import kotlinx.android.synthetic.main.dialog_sure_btn.view.*
 import kotlinx.android.synthetic.main.fragment_some_special_effects.*
@@ -52,6 +55,16 @@ class SomeSpecialEffects : Fragment() {
             Pair("别文字的", object : View.OnClickListener{
                 override fun onClick(p0: View?) {
                     toast("仅仅代表可以从任意地方设置点击。")
+                }
+            }),
+            Pair("分享", object : View.OnClickListener{
+                override fun onClick(p0: View?) {
+                    activity?.shareTextContent("分享这段文字内容")
+                }
+            }),
+            Pair("设置状态栏颜色", object : View.OnClickListener{
+                override fun onClick(p0: View?) {
+                    activity?.setStatusBarColor(Color.parseColor("#ef5350"))
                 }
             })
         )

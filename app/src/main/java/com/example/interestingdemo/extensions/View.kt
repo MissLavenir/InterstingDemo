@@ -29,6 +29,7 @@ fun View.hitTest(x: Int, y: Int): Boolean {
  * 通过setOnTouchListener实现，并且不会阻塞其逻辑运行，因为要确保波纹动画的进行
  * 因此使用时切记不要再对View设置普通的onClickListener和setOnLongClickListener以及setOnTouchListener
  */
+@SuppressLint("ClickableViewAccessibility")
 fun View.setRealTimeClickListener(onclickListener: View.OnClickListener){
     setOnTouchListener { _, event ->
         if (event.action == MotionEvent.ACTION_DOWN){

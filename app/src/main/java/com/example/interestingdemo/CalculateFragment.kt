@@ -12,7 +12,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.interestingdemo.extensions.dp2px
 import com.example.interestingdemo.extensions.systemMediumAnimTime
-import com.example.interestingdemo.extensions.systemShortAnimTime
 import com.example.interestingdemo.extensions.toast
 import kotlinx.android.synthetic.main.dialog_sure_btn.view.*
 import kotlinx.android.synthetic.main.fragment_calculate.*

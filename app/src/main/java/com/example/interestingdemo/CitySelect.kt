@@ -3,7 +3,6 @@ package com.example.interestingdemo
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
-import android.text.Layout
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View

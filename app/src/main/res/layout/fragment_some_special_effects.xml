@@ -12,7 +12,7 @@
         android:id="@+id/longTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="这是一段非常非常长的文字,它可以实现个别文字的点击效果，而非TextView的点击效果，比如可以用来设置《服务协议》和《隐私政策》。"
+        android:text="这是一段非常非常长的文字,它可以实现个别文字的点击效果，而非TextView的点击效果，比如可以用来设置《服务协议》和《隐私政策》,甚至可以让文字当作分享来使用，设置状态栏颜色等等。"
         android:textSize="16sp"
         />
 
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         >
 
         <androidx.appcompat.widget.AppCompatTextView

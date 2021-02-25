@@ -38,7 +38,7 @@ fun Activity.secureDisplay(enable: Boolean = true){
  * 设置状态栏的颜色
  * 如果是Android LOLLIPOP以下，则没有效果
  *
- * @param color 色彩int值，非资源id
+ * @param color 色彩int值，非资源id，可用Color.parseColor("#ef5350")得到Int值
  */
 fun Activity.setStatusBarColor(@ColorInt color : Int){
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
