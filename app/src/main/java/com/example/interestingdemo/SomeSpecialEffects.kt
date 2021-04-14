@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import com.example.interestingdemo.Util.DialogUtil
 import com.example.interestingdemo.extensions.makeTextClick
 import com.example.interestingdemo.extensions.setStatusBarColor
 import com.example.interestingdemo.extensions.shareTextContent
@@ -71,6 +72,12 @@ class SomeSpecialEffects : Fragment() {
 
         drag_and_expand_recyclerView.setOnClickListener {
             view.findNavController().navigate(R.id.action_someSpecialEffects_to_schemeGroupList2)
+        }
+
+        timeGet.setOnClickListener {
+            DialogUtil.showDateYMDHMPicker(requireContext(),timeGet.text.toString()){
+                timeGet.text = it
+            }
         }
     }
 

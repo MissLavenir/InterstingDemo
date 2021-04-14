@@ -4,8 +4,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
+        android:name=".InterestApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -26,6 +28,22 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        
+        <provider
+            android:authorities="com.example.interestingdemo.fileProvider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+            <meta-data
+                android:name="android.max_aspect"
+                android:value="2.1"/> <!-- 适配全面屏 18.5 : 9 = 2.05 -->
+
+        </provider>
+
     </application>
 
 </manifest>

@@ -67,12 +67,13 @@ class QRScanFragment : Fragment(),EasyPermissions.PermissionCallbacks,OnCaptureC
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
-        checkCameraPermission()
+        toast("您未授权使用摄像头的权限，无法扫描！")
+        activity?.finish()
+
     }
 
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
-        toast("您未授权使用摄像头的权限，无法扫描！")
-        activity?.finish()
+        checkCameraPermission()
     }
 
     override fun onResume() {

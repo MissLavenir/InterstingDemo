@@ -9,7 +9,7 @@
     <string name="get_luck_count">幸运值生成器</string>
     <string name="text_to_speak">语音生成器</string>
     <string name="qr_code_create_identify"><![CDATA[二维码生成&识别]]></string>
-    <string name="crop_picture">裁剪图片</string>
+    <string name="mediaOperate">媒体操作</string>
     <string name="refresh">刷新</string>
     <string name="input_please">请输入…</string>
     <string name="ok_btn">确定</string>
@@ -29,6 +29,8 @@
     <string name="city_select">地区选择器</string>
     <string name="please_select">请选择…</string>
     <string name="calculate_problem">计算题生成器</string>
+    <string name="choose_picture">选取图片</string>
+    <string name="choose_video">选取视频</string>
 
     <string-array name="moods">
         <item>低落</item>

@@ -14,13 +14,14 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true //代码混淆
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -49,6 +50,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
     implementation 'com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:1.0.0'
 
+    //分割Dex
+    implementation 'androidx.multidex:multidex:2.0.1'
+
 
     /**
      * 使用 Room 将数据保存到本地数据库
@@ -71,6 +75,11 @@ dependencies {
      */
     implementation 'pub.devrel:easypermissions:3.0.0'
 
+    //这是一款仿iOS的PickerView控件，有时间选择器和选项选择器
+    implementation 'com.contrarywind:Android-PickerView:4.1.9'
+
+    //ExoPlayer是适用于Android的应用程序级媒体播放器,官方文档：https://exoplayer.dev/hello-world.html
+    implementation 'com.google.android.exoplayer:exoplayer:2.13.2'
 
     //noinspection GradleDynamicVersion
     testImplementation 'junit:junit:4.+'

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="10dp"
     android:orientation="vertical"
     tools:context=".CropPicture">
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="选取图片"
+        android:text="@string/choose_picture"
         android:paddingVertical="10dp"
         android:background="@drawable/bg_round_rectangle_stroke_blue"
         android:layout_marginHorizontal="20dp"
@@ -22,13 +22,168 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/getPicture"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/deletePicture"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:srcCompat="@drawable/ic_dialog_close"
+        android:tint="@color/red_400"
+        android:padding="4dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
         />
 
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/selectVideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/choose_video"
+        android:paddingVertical="10dp"
+        android:background="@drawable/bg_round_rectangle_stroke_blue"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        >
+
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/getVideo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end"
+            android:layout_marginBottom="24dp"
+            android:background="@color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+            <LinearLayout
+                android:id="@+id/speedLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/speed3_0"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="×3.0"
+                    android:padding="4dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey_600"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/speed2_5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="×2.5"
+                    android:padding="4dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey_600"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/speed2_0"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="×2.0"
+                    android:padding="4dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey_600"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/speed1_5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="×1.5"
+                    android:padding="4dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey_600"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/speed1_25"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="×1.25"
+                    android:padding="4dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey_600"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/speed1_0"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="×1.0"
+                    android:padding="4dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey_600"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/speed0_75"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="×0.75"
+                    android:padding="4dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey_600"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/speed0_5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="×0.5"
+                    android:padding="4dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey_600"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/speed0_2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="×0.2"
+                    android:padding="4dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/grey_600"
+                    />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/speedCurrent"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="×1.0"
+                android:textSize="16sp"
+                android:textColor="@color/grey_300"
+                android:padding="4dp"
+                android:visibility="visible"
+                />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </LinearLayout>
