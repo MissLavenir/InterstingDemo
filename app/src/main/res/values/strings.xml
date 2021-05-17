@@ -10,7 +10,7 @@
     <string name="text_to_speak">语音生成器</string>
     <string name="qr_code_create_identify"><![CDATA[二维码生成&识别]]></string>
     <string name="mediaOperate">媒体操作</string>
-    <string name="refresh">刷新</string>
+    <string name="text_refresh">刷新</string>
     <string name="input_please">请输入…</string>
     <string name="ok_btn">确定</string>
     <string name="setting">设置</string>
@@ -31,6 +31,7 @@
     <string name="calculate_problem">计算题生成器</string>
     <string name="choose_picture">选取图片</string>
     <string name="choose_video">选取视频</string>
+    <string name="text_switch">切换</string>
 
     <string-array name="moods">
         <item>低落</item>

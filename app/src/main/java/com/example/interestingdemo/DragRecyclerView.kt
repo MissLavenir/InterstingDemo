@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.interestingdemo.function.SimpleDaoFun
 import com.example.interestingdemo.database.SimpleData
@@ -24,7 +24,8 @@ class DragRecyclerView : Fragment() {
     private val thisModel = ArrayList<SimpleData>()
     private val adapter = DragAdapter(thisModel)
     private lateinit var myWrapperAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
-    private val layoutManager = LinearLayoutManager(this.context,RecyclerView.VERTICAL,false)
+    private var layoutManagerSingle = GridLayoutManager(context,1)
+    private var layoutManagerDouble = GridLayoutManager(context,2)
     private val dragDropManager = RecyclerViewDragDropManager()
 
 
@@ -54,7 +55,7 @@ class DragRecyclerView : Fragment() {
         refresh()
 
         dragRecyclerView.adapter = myWrapperAdapter
-        dragRecyclerView.layoutManager = layoutManager
+        dragRecyclerView.layoutManager = layoutManagerSingle
         dragRecyclerView.setHasFixedSize(false)
         val animator = DraggableItemAnimator()
         animator.supportsChangeAnimations = false
@@ -87,6 +88,14 @@ class DragRecyclerView : Fragment() {
             }
             activity?.hideSoftKeyBoard()
             refresh(inputThingsText.text.toString())
+        }
+
+        switchBtn.setOnClickListener {
+            if (dragRecyclerView.layoutManager == layoutManagerSingle){
+                dragRecyclerView.layoutManager = layoutManagerDouble
+            } else {
+                dragRecyclerView.layoutManager = layoutManagerSingle
+            }
         }
     }
 

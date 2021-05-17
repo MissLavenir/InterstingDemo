@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="pop_up_window_anim">
+        <item name="android:windowEnterAnimation">@anim/popup_window_show</item>
+        <item name="android:windowExitAnimation">@anim/popup_window_hide</item>
+    </style>
+
+    <style name="pop_up_window_anim_right">
+        <item name="android:windowEnterAnimation">@anim/popup_window_show_from_right</item>
+        <item name="android:windowExitAnimation">@anim/popup_window_hide_to_right</item>
+    </style>
+</resources>
