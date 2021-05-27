@@ -216,6 +216,10 @@
     <color name="button_yellow_danger_focus">@color/deep_orange_400</color>
     <color name="button_yellow_danger_press">@color/deep_orange_700</color>
 
+    <!--alpha-->
+    <color name="alpha_two_third">#66000000</color>
+    <color name="alpha_one_third">#aa000000</color>
+
 
     <!--amber-->
     <!--与yellow配合使用-->

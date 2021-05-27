@@ -32,6 +32,7 @@
     <string name="choose_picture">选取图片</string>
     <string name="choose_video">选取视频</string>
     <string name="text_switch">切换</string>
+    <string name="text_right_select">右侧选择框</string>
 
     <string-array name="moods">
         <item>低落</item>
