@@ -2,6 +2,7 @@ package com.example.interestingdemo
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +18,9 @@ import com.example.interestingdemo.extensions.toast
 import com.example.interestingdemo.popwindow.RightQuickFunctionWindow
 import kotlinx.android.synthetic.main.dialog_sure_btn.view.*
 import kotlinx.android.synthetic.main.fragment_some_special_effects.*
+import java.net.NetworkInterface
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class SomeSpecialEffects : Fragment() {
@@ -107,8 +111,32 @@ class SomeSpecialEffects : Fragment() {
                 shadow.visibility = View.GONE
             }
         }
+
+        getMac.setOnClickListener {
+            getMac.text = getMacAddress()
+        }
     }
 
+    private fun getMacAddress(): String {
+        try {
+            val all: List<NetworkInterface> = Collections.list(NetworkInterface.getNetworkInterfaces())
+            for (nif in all) {
+                if (!nif.name.equals("wlan0", ignoreCase = true)) continue
+                val macBytes = nif.hardwareAddress ?: return ""
+                val res1 = StringBuilder()
+                for (b in macBytes) {
+                    res1.append(String.format("%02X:", b))
+                }
+                if (res1.isNotEmpty()) {
+                    res1.deleteCharAt(res1.length - 1)
+                }
+                return res1.toString()
+            }
+        } catch (ex: Exception) {
+            Log.d("macAddressDebug","getMacAddress() throw a Exception")
+        }
+        return "02:00:00:00:00:00"
+    }
 
 
 }
