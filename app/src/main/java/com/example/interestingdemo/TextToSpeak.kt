@@ -3,14 +3,17 @@ package com.example.interestingdemo
 import android.media.AudioManager
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.speech.tts.TextToSpeech
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.example.interestingdemo.extensions.coverToTTSFriendlyString
 import com.example.interestingdemo.extensions.toast
 import kotlinx.android.synthetic.main.fragment_text_to_speak.*
+import java.io.File
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -36,29 +39,79 @@ class TextToSpeak : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         textInputLayout.requestFocus()
         startSpeakBtn.setOnClickListener {
-            speakText(textInput.text.toString())
+            val text = textInput.text.toString()
+            if (text.isNotEmpty()){
+                if (textToSpeechDone){
+                    handleSpeakQueue(text)
+                } else {
+                    initSpeakText {
+                        handleSpeakQueue(textInput.text.toString())
+                    }
+                }
+            } else {
+                toast("转换文字不能为空")
+            }
+        }
+
+        getFileBtn.setOnClickListener {
+            val text = textInput.text.toString()
+            if (text.isNotEmpty()){
+                if (textToSpeechDone){
+                    textToFile(text)
+                } else {
+                    initSpeakText {
+                        textToFile(text)
+                    }
+                }
+            } else {
+                toast("转换文字不能为空")
+            }
         }
     }
 
-    private fun speakText(text : String){
-        speakQueue.add(text.coverToTTSFriendlyString())
+    private fun textToFile(text: String){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            var filePath = ""
+            if (Environment.MEDIA_MOUNTED == Environment.getExternalStorageState() || !Environment.isExternalStorageRemovable()){
+                val cacheFile = ContextCompat.getExternalCacheDirs(requireContext())
+                if (cacheFile.isNotEmpty() && cacheFile[0] != null){
+                    filePath += cacheFile[0].absolutePath + File.separator + "tts_sound"
+                }
+            } else {
+                filePath += context?.cacheDir?.absolutePath + File.separator + "tts_sound"
+            }
+            val file = File(filePath)
+            if (!file.exists()){
+                file.mkdirs()
+            }
+            textToSpeech?.synthesizeToFile(text, null, File("${filePath}/sound${System.currentTimeMillis()}.mp3"), "record")?.let {
+                toast("已成功保存在${filePath}文件夹下")
+            }
+
+        } else {
+            toast("手机不支持此功能")
+        }
+    }
+
+    private fun initSpeakText(block: () -> Unit){
         if (textToSpeechInitLock) return
         if (textToSpeech == null || textToSpeechDone){
             textToSpeechInitLock = true
-            textToSpeech = TextToSpeech(context,TextToSpeech.OnInitListener {
-                if (it == TextToSpeech.SUCCESS){
-                    textToSpeech?.let {
+            textToSpeech = TextToSpeech(context) {
+                if (it == TextToSpeech.SUCCESS) {
+                    textToSpeech?.let { tts ->
                         textToSpeechInitLock = false
                         textToSpeechDone = true
-                        handleSpeakQueue()
+                        tts.setPitch(1.25f) //音调 数值越小越粗,1.0为默认音调，小米为小爱同学
+                        tts.setSpeechRate(1.0f) //语速
+                        block.invoke()
                     }
                 }
-            })
-        }else if (textToSpeechDone){
-            handleSpeakQueue()
+            }
         }
     }
-    private fun handleSpeakQueue(){
+    private fun handleSpeakQueue(text: String){
+        speakQueue.add(text.coverToTTSFriendlyString())
         speakQueue.forEach {
             callTextToSpeechToTalk(it)
         }

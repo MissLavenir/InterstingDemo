@@ -25,26 +25,57 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/grey_50"
-            android:gravity="top"
-            android:minHeight="360dp"/>
+            android:gravity="top|start"
+            android:minHeight="240dp"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/startSpeakBtn"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="50dp"
-        android:layout_marginTop="10dp"
-        android:paddingVertical="10dp"
-        android:background="@drawable/bg_round_rectangle_stroke_blue"
-        android:text="开始播报语音"
-        android:textColor="@color/blue_500"
-        android:textSize="16sp"
-        android:focusable="true"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
-        />
+        android:orientation="horizontal"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/getFileBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:background="@drawable/bg_round_rectangle_stroke_blue"
+            android:text="转文件"
+            android:textColor="@color/blue_500"
+            android:textSize="16sp"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/startSpeakBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:paddingVertical="10dp"
+            android:background="@drawable/bg_round_rectangle_stroke_blue"
+            android:text="开始播报语音"
+            android:textColor="@color/blue_500"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            />
+
+
+    </LinearLayout>
+
+
 
 
 

@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.ResultReceiver
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 
@@ -34,6 +35,9 @@ fun Activity.secureDisplay(enable: Boolean = true){
     }
 }
 
+fun Activity.toast(string: String) {
+    Toast.makeText(this, string, Toast.LENGTH_LONG).show()
+}
 /**
  * 设置状态栏的颜色
  * 如果是Android LOLLIPOP以下，则没有效果

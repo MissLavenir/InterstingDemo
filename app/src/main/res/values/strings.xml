@@ -33,6 +33,8 @@
     <string name="choose_video">选取视频</string>
     <string name="text_switch">切换</string>
     <string name="text_right_select">右侧选择框</string>
+    <string name="text_get_move_speed">获取滑动速度</string>
+    <string name="text_get_location">获取定位</string>
 
     <string-array name="moods">
         <item>低落</item>

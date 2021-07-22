@@ -1,6 +1,7 @@
 package com.example.interestingdemo
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -65,6 +66,14 @@ class MenuFragment : Fragment() {
 
         citySelect.setOnClickListener {
             view.findNavController().navigate(R.id.action_MenuFragment_to_citySelect)
+        }
+
+        getSpeed.setOnClickListener {
+            startActivity(Intent(requireContext(),TouchSpeedActivity::class.java))
+        }
+
+        locationGet.setOnClickListener{
+            startActivity(Intent(requireContext(),GetLocationActivity::class.java))
         }
 
     }

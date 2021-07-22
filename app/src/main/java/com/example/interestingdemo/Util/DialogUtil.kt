@@ -1,5 +1,6 @@
 package com.example.interestingdemo.Util
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.view.Gravity
@@ -10,6 +11,15 @@ import com.example.interestingdemo.R
 import java.util.*
 
 object DialogUtil {
+
+    fun showCommonDialog(context: Context, title: String, message: String) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(title)
+        builder.setMessage(message)
+        builder.setPositiveButton("确定", null)
+        builder.show()
+    }
+
     /* 年月日时分 */
     fun showDateYMDHMPicker(
         context: Context,

@@ -115,7 +115,7 @@
             android:textSize="18sp"
             android:textColor="@color/blue_500"
             android:layout_marginTop="10dp"
-            android:text="获取mac地址测试"
+            android:text="获取手机地址"
             />
 
     </LinearLayout>

@@ -40,13 +40,13 @@ class CameraUtil {
             if (Environment.MEDIA_MOUNTED == Environment.getExternalStorageState() || !Environment.isExternalStorageRemovable()){
                 val cacheFile = ContextCompat.getExternalCacheDirs(context)
                 if (cacheFile.isNotEmpty() && cacheFile[0] != null){
-                    photoPath += cacheFile[0].absolutePath + File.separator + "id" + File.separator
+                    photoPath += cacheFile[0].absolutePath + File.separator + "media"
                 }
             } else {
-                photoPath += context.cacheDir.absolutePath + File.separator + "id" + File.separator
+                photoPath += context.cacheDir.absolutePath + File.separator + "media"
             }
             val file = File(photoPath)
-            if (file.exists()){
+            if (!file.exists()){
                 val mk = file.mkdirs()
                 Log.d(logTag, "photoPath not exist ,so mkdirs = $mk")
             }
@@ -102,7 +102,7 @@ class CameraUtil {
          * 拍照
          */
         fun takePhoto(activity: Activity) : String {
-            tempPhotoPath = getFileParentPath(activity) + File.separator + "id.png"
+            tempPhotoPath = getFileParentPath(activity) + File.separator + "v${System.currentTimeMillis()}.png"
             return takePhoto(activity, PHOTO_TAKE, tempPhotoPath)
         }
 
@@ -124,7 +124,7 @@ class CameraUtil {
 
         fun takePhoto(@NonNull fragment: Fragment, requestCode: Int) : String{
             fragment.context?.let { context ->
-                tempPhotoPath = getFileParentPath(context) + File.separator + "id.png"
+                tempPhotoPath = getFileParentPath(context) + File.separator + "v${System.currentTimeMillis()}.png"
             }
 
             return takePhoto(fragment, requestCode, tempPhotoPath)
@@ -136,8 +136,6 @@ class CameraUtil {
                 if (file.exists()){
                     val del = file.delete()
                     Log.d(logTag, "delete file camera.png + $del")
-                } else {
-                    file.mkdirs()
                 }
                 val intentGraph = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 intentGraph.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
@@ -153,7 +151,7 @@ class CameraUtil {
 
         /*请注意，这里拿的是缓存文件，缓存文件会被重复使用！有可能被覆盖的风险*/
         fun getTempFileUri(context: Context) : Uri{
-            tempPhotoPath = getFileParentPath(context) + File.separator + "id.png"
+            tempPhotoPath = getFileParentPath(context) + File.separator + "v${System.currentTimeMillis()}.png"
             return getFileUri(context, tempPhotoPath)
         }
 
@@ -205,7 +203,7 @@ class CameraUtil {
          * 拍视频
          */
         fun takeVideo(activity: Activity) : String{
-            tempVideoPath = getFileParentPath(activity) + File.separator + "id.mp4"
+            tempVideoPath = getFileParentPath(activity) + File.separator + "v${System.currentTimeMillis()}.mp4"
             return takeVideo(activity, VIDEO_TAKE, tempVideoPath)
         }
 
@@ -226,7 +224,7 @@ class CameraUtil {
 
         fun takeVideo(fragment: Fragment, requestCode: Int) : String{
             fragment.context?.let { context ->
-                tempVideoPath = getFileParentPath(context) + File.separator + "id.mp4"
+                tempVideoPath = getFileParentPath(context) + File.separator + "v${System.currentTimeMillis()}.mp4"
             }
             return takeVideo(fragment, requestCode, tempVideoPath)
         }
@@ -237,8 +235,6 @@ class CameraUtil {
                 if (file.exists()){
                     val del = file.delete()
                     Log.d(logTag, "delete file camera + $del")
-                }else {
-                    file.mkdirs()
                 }
                 val intent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
