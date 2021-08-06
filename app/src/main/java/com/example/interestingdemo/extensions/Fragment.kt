@@ -1,5 +1,6 @@
 package com.example.interestingdemo.extensions
 
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
@@ -20,3 +21,10 @@ fun Fragment.finish(){
     activity?.finish()
 }
 
+fun Fragment.dLog(tag:String, string: String){
+    Log.d("debug_$tag",string)
+}
+
+fun Fragment.eLog(tag:String, string: String){
+    Log.e("debug_$tag",string)
+}

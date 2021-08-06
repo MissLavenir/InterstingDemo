@@ -7,7 +7,7 @@
     <string name="get_random">随机数生成器</string>
     <string name="rank_record">可排序记录表</string>
     <string name="get_luck_count">幸运值生成器</string>
-    <string name="text_to_speak">语音生成器</string>
+    <string name="text_to_speak"><![CDATA[语音生成&识别]]></string>
     <string name="qr_code_create_identify"><![CDATA[二维码生成&识别]]></string>
     <string name="mediaOperate">媒体操作</string>
     <string name="text_refresh">刷新</string>
@@ -35,6 +35,8 @@
     <string name="text_right_select">右侧选择框</string>
     <string name="text_get_move_speed">获取滑动速度</string>
     <string name="text_get_location">获取定位</string>
+    <string name="text_input_text">请输入文字的内容</string>
+    <string name="text_click_to_start_speech">点击猫猫开始识别语音</string>
 
     <string-array name="moods">
         <item>低落</item>
