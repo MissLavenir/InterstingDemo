@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">小工具</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="select_function">请选择功能</string>
     <string name="secure_model">安全模式</string>
@@ -12,6 +11,7 @@
     <string name="mediaOperate">媒体操作</string>
     <string name="text_refresh">刷新</string>
     <string name="input_please">请输入…</string>
+    <string name="search">搜索</string>
     <string name="ok_btn">确定</string>
     <string name="setting">设置</string>
     <string name="add">添加</string>
@@ -36,7 +36,9 @@
     <string name="text_get_move_speed">获取滑动速度</string>
     <string name="text_get_location">获取定位</string>
     <string name="text_input_text">请输入文字的内容</string>
+    <string name="simple_recycler_view_adapter_unprocessed_data">未处理的数据类型[%1$s] %2$s</string>
     <string name="text_click_to_start_speech">点击猫猫开始识别语音</string>
+    <string name="text_no_speech_tip">提示:点击猫猫后，猫猫不会摇头，则本机无法使用语音识别功能</string>
 
     <string-array name="moods">
         <item>低落</item>

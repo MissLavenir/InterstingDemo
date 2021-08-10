@@ -70,7 +70,7 @@ class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
             duration = 1000
             interpolator = LinearInterpolator()
         }
-        initSpeech()
+        initFun()
 
         textInputLayout.requestFocus()
         startSpeakBtn.setOnClickListener {
@@ -79,9 +79,8 @@ class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
                 if (textToSpeechDone){
                     handleSpeakQueue(text)
                 } else {
-                    initSpeakText {
-                        handleSpeakQueue(textInput.text.toString())
-                    }
+                    toast("语音初始化失败,正在重新初始化")
+                    initFun()
                 }
             } else {
                 toast("转换文字不能为空")
@@ -94,14 +93,18 @@ class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
                 if (textToSpeechDone){
                     textToFile(text)
                 } else {
-                    initSpeakText {
-                        textToFile(text)
-                    }
+                    toast("语音初始化失败，正在重新初始化")
+                    initFun()
                 }
             } else {
                 toast("转换文字不能为空")
             }
         }
+    }
+
+    private fun initFun(){
+        initSpeakText()
+        initSpeech()
     }
 
     private fun textToFile(text: String){
@@ -128,7 +131,7 @@ class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
         }
     }
 
-    private fun initSpeakText(block: () -> Unit){
+    private fun initSpeakText(){
         if (textToSpeechInitLock) return
         if (textToSpeech == null || textToSpeechDone){
             textToSpeechInitLock = true
@@ -154,7 +157,7 @@ class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
                                 }
 
                             })
-                            block.invoke()
+                            toast("语音初始化完成")
                         }
                     }
                     else -> {
@@ -194,7 +197,7 @@ class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
 
     }
 
-    @SuppressLint("ClickableViewAccessibility", "QueryPermissionsNeeded")
+    @SuppressLint( "QueryPermissionsNeeded")
     private fun initSpeech(){
         //初始化语音识别
         if (SpeechRecognizer.isRecognitionAvailable(requireContext())){
@@ -222,6 +225,8 @@ class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
 
                     override fun onBeginningOfSpeech() {
                         dLog("speechRecognizer","语音识别开始")
+                        setAIAction(true)
+                        getSpeechText.hint = "正在识别..."
                         isSpeech = true
                     }
 
@@ -290,10 +295,12 @@ class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
                         dLog("speechRecognizer","语音识别事件：${p0}__${p1.toString()}")
                     }
                 })
+            } ?: kotlin.run {
+                toast("无法使用系统语音识别功能")
             }
 
         } else {
-            dLog("debug_speechRecognizer", "没有语音识别可用")
+            toast( "没有语音识别可用")
         }
 
         ttsAI.setOnClickListener {
@@ -305,8 +312,6 @@ class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
                     putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,10)//最大返回结果数量
                     putExtra(RecognizerIntent.EXTRA_LANGUAGE,Locale.SIMPLIFIED_CHINESE)
                 }
-                setAIAction(true)
-                getSpeechText.hint = "正在识别..."
                 speechRecognizer?.startListening(intent)
             } else {
                 dLog("debug_speechRecognizer","没有语音权限")

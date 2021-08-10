@@ -91,4 +91,13 @@
         android:hint="@string/text_click_to_start_speech"
         />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_no_speech_tip"
+        android:textSize="12sp"
+        android:textColor="@color/grey_600"
+        android:layout_margin="8dp"
+        />
+
 </LinearLayout>

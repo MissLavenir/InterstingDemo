@@ -14,6 +14,7 @@ import com.example.interestingdemo.function.SimpleDaoFun
 import com.example.interestingdemo.database.SimpleData
 import com.example.interestingdemo.extensions.hideSoftKeyBoard
 import com.example.interestingdemo.extensions.hitTest
+import com.example.interestingdemo.extensions.toast
 import com.h6ah4i.android.widget.advrecyclerview.animator.DraggableItemAnimator
 import com.h6ah4i.android.widget.advrecyclerview.draggable.*
 import kotlinx.android.synthetic.main.dialog_drag_detail.view.*
@@ -62,15 +63,10 @@ class DragRecyclerView : Fragment() {
         dragRecyclerView.itemAnimator = animator
         dragDropManager.attachRecyclerView(dragRecyclerView)
 
-        inputThingsLayout.requestFocus()
-        sureBtn.setOnClickListener {
+        addBtn.setOnClickListener {
             if (inputThingsText.text.toString().trim().isBlank()){
-                inputThingsLayout.apply {
-                    requestFocus()
-                    return@setOnClickListener
-                }
-            }else{
-                inputThingsLayout.isErrorEnabled = false
+                toast("输入不能为空")
+                return@setOnClickListener
             }
             val data = SimpleData(name = inputThingsText.text.toString())
             SimpleDaoFun(requireContext()).simpleInsert(data)
@@ -79,12 +75,8 @@ class DragRecyclerView : Fragment() {
 
         searchBtn.setOnClickListener {
             if (inputThingsText.text.toString().trim().isBlank()){
-                inputThingsLayout.apply {
-                    requestFocus()
-                    return@setOnClickListener
-                }
-            }else{
-                inputThingsLayout.isErrorEnabled = false
+                toast("输入不能为空")
+                return@setOnClickListener
             }
             activity?.hideSoftKeyBoard()
             refresh(inputThingsText.text.toString())

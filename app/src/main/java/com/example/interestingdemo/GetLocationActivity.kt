@@ -1,29 +1,38 @@
 package com.example.interestingdemo
 
 import android.Manifest
-import android.content.pm.PackageManager
+import android.annotation.SuppressLint
 import android.location.*
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import com.example.interestingdemo.Util.DialogUtil
 import com.example.interestingdemo.extensions.toast
 import kotlinx.android.synthetic.main.activity_get_location.*
+import pub.devrel.easypermissions.EasyPermissions
 import java.lang.Exception
 import java.util.*
 
-class GetLocationActivity : AppCompatActivity() {
+class GetLocationActivity : AppCompatActivity(),EasyPermissions.PermissionCallbacks {
     private lateinit var locationManager: LocationManager
     private var provider: String = ""
     private var isGetLocation = true
+    private var hasPermission = false
+
+    companion object{
+        const val REQUEST_LOCATION_PERMISSION = 231
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_get_location)
 
         getLocation.setOnClickListener {
-            initLocal()
+            if (hasPermission){
+                getLocation()
+            } else {
+                checkPermission()
+            }
         }
         stopLocation.setOnClickListener {
             removeUpdate()
@@ -31,7 +40,17 @@ class GetLocationActivity : AppCompatActivity() {
         }
     }
 
-    private fun initLocal() {
+    private fun checkPermission() {
+        val perms = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION)
+        if (EasyPermissions.hasPermissions(this, *perms)){
+            initLocal()
+        } else {
+            EasyPermissions.requestPermissions(this,"需要拥有定位权限才可以使用此功能", REQUEST_LOCATION_PERMISSION,*perms)
+        }
+
+    }
+
+    private fun initLocal(){
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
         val criteria = Criteria()
         criteria.accuracy = Criteria.ACCURACY_FINE
@@ -43,28 +62,20 @@ class GetLocationActivity : AppCompatActivity() {
         if (provider != ""){
             getLocation()
         } else {
-            toast("未打开定位或无权限")
+            toast("无法获取系统定位器")
         }
-
     }
 
-
+    //到此处时已经请求过权限了
+    @SuppressLint("MissingPermission")
     private fun getLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-            && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
-        ) {
-            toast("没有定位权限！")
-            return
+        val location =  locationManager.getLastKnownLocation(provider)
+        if (location != null){
+            getAddress(location)
         } else {
-            val location =  locationManager.getLastKnownLocation(provider)
-            if (location != null){
-                getAddress(location)
-            } else {
-                if (provider != "") {
-                    locationManager.requestLocationUpdates(provider, 100L, 0f, listener)
-                }
+            if (provider != "") {
+                locationManager.requestLocationUpdates(provider, 100L, 0f, listener)
             }
-
         }
 
     }
@@ -91,6 +102,7 @@ class GetLocationActivity : AppCompatActivity() {
             if (isGetLocation){
                 getAddress(location)
                 removeUpdate()
+                isGetLocation = false
             }
 
         }
@@ -107,5 +119,18 @@ class GetLocationActivity : AppCompatActivity() {
         override fun onProviderDisabled(provider: String) {
             Log.e("debug_GPS","关闭GPS")
         }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        EasyPermissions.onRequestPermissionsResult(requestCode,permissions,grantResults,this)
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
+        initLocal()
+    }
+
+    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
+        DialogUtil.showCommonDialog(this,"提示","未拥有定位权限")
     }
 }
