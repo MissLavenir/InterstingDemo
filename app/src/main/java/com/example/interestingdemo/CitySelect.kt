@@ -82,7 +82,7 @@ class CitySelect : Fragment() {
     fun navigationTab(model : PlaceModel, status : Int){
         when(status){
             0 -> {
-                val textTab = LayoutInflater.from(context).inflate(R.layout.item_single_textview, null, false)
+                val textTab = LayoutInflater.from(context).inflate(R.layout.item_single_textview, selectTab, false)
                 textTab.textViewName.text = model.name
                 textTab.textViewName.setTextColor(ResourcesCompat.getColor(resources, R.color.blue_400, context?.theme))
                 textTab.textViewName.setOnClickListener {
