@@ -19,7 +19,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="随机范围为："
+            android:text="@string/text_random_scope"
             android:textSize="16sp"
             android:layout_marginTop="00dp"
             android:gravity="center_vertical"
@@ -37,7 +37,6 @@
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="1"
                 android:textSize="42sp"
                 android:gravity="center"
                 />
@@ -46,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="-----"
+                android:text="@string/text_center_line"
                 android:textSize="32sp"
                 android:gravity="center"
                 />
@@ -56,7 +55,6 @@
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="100"
                 android:textSize="42sp"
                 android:gravity="center"
                 />
@@ -74,7 +72,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/numberPanel"
-        android:text="0"
+        android:text="@string/text_zero"
         android:textSize="60sp"
         android:textColor="@color/black"
         android:gravity="center"/>
@@ -95,26 +93,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:background="@color/blue_100"
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
-                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/grey_400"
+                />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/recyclerViewTip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="列表超出部分可向右滑动"
-                android:layout_marginTop="1dp"
+                android:text="@string/text_over_list_can_move"
+                android:layout_marginTop="4dp"
                 android:background="@color/white"
-                android:visibility="gone"
+                android:visibility="invisible"
+                android:layout_marginStart="8dp"
                 />
 
         </LinearLayout>
@@ -133,7 +136,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:text="次    数："
+                android:text="@string/text_counts"
                 android:textSize="18sp"
                 android:gravity="center"/>
 
@@ -142,7 +145,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="0"
+                android:text="@string/text_zero"
                 android:textSize="18sp"
                 android:gravity="start"/>
 
@@ -160,7 +163,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:text="总   计："
+                android:text="@string/text_total"
                 android:textSize="18sp"
                 android:gravity="center"/>
 
@@ -169,7 +172,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="0"
+                android:text="@string/text_zero"
                 android:textSize="18sp"
                 android:gravity="start"/>
 
@@ -187,7 +190,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:text="平   均："
+                android:text="@string/text_average"
                 android:textSize="18sp"
                 android:gravity="center"/>
 
@@ -196,7 +199,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="0"
+                android:text="@string/text_zero"
                 android:textSize="18sp"
                 android:gravity="start"/>
 
@@ -214,7 +217,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:text="本次百分比："
+                android:text="@string/text_current_percent"
                 android:textSize="18sp"
                 android:gravity="center"/>
 
@@ -223,7 +226,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="0%"
+                android:text="@string/text_0_percent"
                 android:textSize="18sp"
                 android:gravity="start"/>
 
@@ -241,7 +244,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:text="总计百分比："
+                android:text="@string/text_total_percent"
                 android:textSize="18sp"
                 android:gravity="center"/>
 
@@ -250,20 +253,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="0%"
+                android:text="@string/text_0_percent"
                 android:textSize="18sp"
                 android:gravity="start"/>
 
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/reset"
-            android:layout_width="match_parent"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_round_rectangle_stroke_blue"
+            android:background="@drawable/bg_round_rectangle_stroke_grey"
             android:layout_marginTop="6dp"
-            android:text="重 置"
-            android:layout_marginHorizontal="80dp"
+            android:text="@string/text_re_set1"
+            android:gravity="center"
             android:layout_gravity="center"
             />
 
@@ -287,13 +290,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="请输入最小整数："
+                android:text="@string/text_input_min_count"
                 android:textSize="16sp"
                 android:gravity="center_vertical"
                 />
@@ -304,7 +307,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginHorizontal="10dp"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:gravity="center"
+                />
 
         </LinearLayout>
 
@@ -317,7 +322,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="请输入最大整数："
+                android:text="@string/text_input_max_count"
                 android:textSize="16sp"
                 android:gravity="center_vertical"
                 />
@@ -328,39 +333,42 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginHorizontal="10dp"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:gravity="center"
+                />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
             android:orientation="horizontal">
 
-            <androidx.appcompat.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/sureBtn"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 android:layout_weight="1"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_round_rectangle_stroke_blue"
+                android:background="@drawable/bg_round_rectangle_stroke_grey"
                 android:layout_marginHorizontal="10dp"
-                android:text="确认更改"
+                android:text="@string/text_sure_to_change"
+                android:gravity="center"
                 android:textSize="16sp"
-                android:textColor="@color/red_400"/>
+                android:textColor="@color/blue_300"/>
 
-            <androidx.appcompat.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/hidePanel"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 android:layout_weight="1"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_round_rectangle_stroke_blue"
+                android:background="@drawable/bg_round_rectangle_stroke_grey"
                 android:layout_marginHorizontal="10dp"
-                android:text="隐藏面板"
+                android:text="@string/text_hide_panel"
+                android:gravity="center"
                 android:textSize="16sp"
-                android:textColor="@color/red_400"/>
+                android:textColor="@color/grey_600"/>
 
         </LinearLayout>
 
@@ -380,29 +388,27 @@
         >
 
 
-        <androidx.appcompat.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/changeScope"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="36dp"
             android:layout_weight="1"
-            android:background="@drawable/bg_round_rectangle_stroke_blue"
-            android:paddingHorizontal="40dp"
-            android:text="更换范围"
-            android:textColor="@color/deep_orange_200"
+            android:background="@drawable/bg_round_rectangle_stroke_grey"
+            android:text="@string/text_change_scope"
+            android:textColor="@color/grey_600"
             android:layout_marginHorizontal="10dp"
             android:textSize="16sp"
             android:gravity="center"/>
 
 
-        <androidx.appcompat.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/startRandom"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="36dp"
             android:layout_weight="1"
-            android:background="@drawable/bg_round_rectangle_stroke_blue"
-            android:paddingHorizontal="40dp"
-            android:text="开始随机"
-            android:textColor="@color/blue_500"
+            android:background="@drawable/bg_round_rectangle_stroke_grey"
+            android:text="@string/text_start_random"
+            android:textColor="@color/blue_400"
             android:layout_marginHorizontal="10dp"
             android:textSize="16sp"
             android:gravity="center"/>

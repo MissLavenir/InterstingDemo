@@ -21,7 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="方案分组操作"
+            android:text="@string/text_scheme_group_do"
             android:textSize="16sp"
             android:textColor="@color/black"
             android:paddingVertical="10dp"
@@ -33,7 +33,7 @@
             android:layout_height="36dp"
             app:srcCompat="@drawable/ic_dialog_close"
             android:tint="@color/red_a100"
-            android:padding="4dp"
+            android:padding="8dp"
             android:layout_marginEnd="24dp"
             tools:ignore="RtlCompat" />
 
@@ -55,7 +55,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="修改方案分组"
+            android:text="@string/text_change_scheme_group"
             android:textSize="16sp"
             android:paddingHorizontal="20dp" />
 
@@ -84,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="请输入分组名称:"
+            android:text="@string/text_input_group_name"
             android:textColor="@color/grey_500"
             />
 
@@ -93,7 +93,7 @@
             android:id="@+id/changeGroupName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_stroke_grey_400"
+            android:background="@drawable/bg_stroke_blue_200"
             android:textColorHint="@color/grey_500"
             android:textSize="14sp"
             android:padding="8dp"
@@ -103,7 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="请输入分组描述:"
+            android:text="@string/text_input_description"
             android:textColor="@color/grey_500"
             />
 
@@ -111,7 +111,7 @@
             android:id="@+id/changeGroupDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_stroke_grey_400"
+            android:background="@drawable/bg_stroke_blue_200"
             android:textColorHint="@color/grey_500"
             android:textSize="14sp"
             android:padding="8dp"
@@ -173,7 +173,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="增加组内方案"
+            android:text="@string/text_add_group_scheme"
             android:textSize="16sp"
             android:paddingHorizontal="20dp" />
 
@@ -202,7 +202,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="请输入方案名称:"
+            android:text="@string/text_input_scheme_name"
             android:textColor="@color/grey_500"
             />
 
@@ -211,7 +211,7 @@
             android:id="@+id/addSchemeName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_stroke_grey_400"
+            android:background="@drawable/bg_stroke_blue_200"
             android:textColorHint="@color/grey_500"
             android:textSize="14sp"
             android:padding="8dp"
@@ -221,7 +221,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="请输入方案内容:"
+            android:text="@string/text_input_scheme_content"
             android:textColor="@color/grey_500"
             />
 
@@ -230,7 +230,7 @@
             android:id="@+id/addSchemeContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_stroke_grey_400"
+            android:background="@drawable/bg_stroke_blue_200"
             android:textColorHint="@color/grey_500"
             android:textSize="14sp"
             android:padding="8dp"
@@ -251,7 +251,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="玩家类型:"
+                android:text="@string/text_player_type"
                 android:textColor="@color/grey_500"
                 android:textSize="16sp"
                 />
@@ -268,7 +268,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/banker"
+                    android:text="@string/text_main_player"
                     android:textColor="@color/grey_700"
                     android:checked="true"
                     android:layout_marginHorizontal="10dp"
@@ -280,7 +280,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textColor="@color/grey_700"
-                    android:text="@string/player"
+                    android:text="@string/text_player"
                     android:layout_marginHorizontal="10dp"
                     />
 
@@ -344,7 +344,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="删除方案分组"
+            android:text="@string/text_delete_scheme_group"
             android:textSize="16sp"
             android:paddingHorizontal="20dp" />
 
@@ -361,49 +361,41 @@
         android:id="@+id/deleteBody"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_marginHorizontal="20dp"
         android:background="@drawable/bg_bottom_round_rectangle_stroke_blue"
         android:gravity="center"
         android:visibility="gone"
+        android:paddingVertical="10dp"
         tools:visibility="visible">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/deleteBtn"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:text="@string/delete"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="10dp"
             android:gravity="center"
-            android:layout_marginVertical="10dp">
+            android:textColor="@color/blue_500"
+            android:paddingVertical="6dp" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/deleteBtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/delete"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="10dp"
-                android:gravity="center"
-                android:textColor="@color/blue_500"
-                android:paddingVertical="6dp" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/packUp3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:layout_marginHorizontal="10dp"
-                android:text="@string/pickup"
-                android:textColor="@color/deep_orange_a100"
-                android:paddingVertical="6dp" />
-
-        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/packUp3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:layout_marginHorizontal="10dp"
+            android:text="@string/pickup"
+            android:textColor="@color/deep_orange_a100"
+            android:paddingVertical="6dp" />
 
     </LinearLayout>
 

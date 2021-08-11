@@ -14,35 +14,35 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/firstNumber"
-            android:layout_width="72dp"
+            android:layout_width="68dp"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            tools:text="1111"
+            android:textSize="18sp"
+            tools:text="111111"
             android:gravity="center"
             android:textColor="@color/grey_800"
             />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/operator"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/secondNumber"
-            android:layout_width="72dp"
+            android:layout_width="68dp"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="18sp"
             tools:text="1111"
             android:gravity="center"
             android:textColor="@color/grey_800"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="28dp"
+            android:layout_width="24dp"
             android:layout_height="wrap_content"
             android:textSize="32sp"
-            android:text="="
+            android:text="@string/text_equal"
             android:gravity="center"
             android:textColor="@color/grey_800"
             />
@@ -51,24 +51,32 @@
             android:id="@+id/answerInput"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginHorizontal="6dp"
             android:layout_weight="1"
             android:background="@drawable/bg_edit_text"
             android:inputType="number"
             android:gravity="center_vertical"
-            android:textSize="20sp"
+            android:textSize="18sp"
             />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/approval"
+        <LinearLayout
+            android:id="@+id/approvalLayout"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            android:padding="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_marginHorizontal="6dp"
-            android:background="@drawable/ic_approval"
-            />
+            android:gravity="center"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/approval"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:layout_marginHorizontal="6dp"
+                android:background="@drawable/ic_approval"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -129,7 +129,7 @@ class SchemeCreate : Fragment() {
         addScheme.setOnClickListener {
             val dialog = LayoutInflater.from(context).inflate(R.layout.dialog_add_scheme_group, null, false)
             val alert = AlertDialog.Builder(context).setView(dialog).create()
-            dialog.title.text = "在“${schemeGroupName.text}”中添加方案"
+            dialog.title.text = String.format("在“${schemeGroupName.text}”中添加方案")
             dialog.inputSchemeGroupName.requestFocus()
             dialog.inputLayout.hint = "请输入方案名称"
             dialog.inputDescription.hint = "请输入方案内容："

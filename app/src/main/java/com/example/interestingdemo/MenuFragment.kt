@@ -32,10 +32,6 @@ class MenuFragment : Fragment() {
             view.findNavController().navigate(R.id.action_MenuFragment_to_dragRecyclerView)
         }
 
-        getLuckCount.setOnClickListener {
-            view.findNavController().navigate(R.id.action_MenuFragment_to_luckGenerator)
-        }
-
         getTextToSpeak.setOnClickListener {
             view.findNavController().navigate(R.id.action_MenuFragment_to_textToSpeak)
         }

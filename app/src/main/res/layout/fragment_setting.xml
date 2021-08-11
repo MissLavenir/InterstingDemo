@@ -38,7 +38,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="4dp"
             android:text="开启安全模式后无法录屏、无法截图,概览窗口也将看不到内容。（但此模式对root的手机可能无效）"
-            />
+            tools:ignore="HardcodedText" />
 
         <View
             android:layout_width="match_parent"

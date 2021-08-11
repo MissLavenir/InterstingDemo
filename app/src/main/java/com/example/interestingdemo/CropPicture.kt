@@ -130,7 +130,7 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
 
 
     private fun changeSpeed(speed: Float){
-        speedCurrent.text = "×$speed"
+        speedCurrent.text = String.format("×$speed")
         speedCurrent.visibility = View.VISIBLE
         speedLayout.visibility = View.GONE
         val playbackParam = PlaybackParameters(speed)
@@ -198,6 +198,7 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
                     }
 
                     REQUEST_CHOOSE_VIDEO -> {
+                        videoLayout.visibility = View.VISIBLE
                         if (data != null){
                             val uri = data.data
                             if (uri != null){
@@ -207,6 +208,7 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
                     }
 
                     REQUEST_TAKE_VIDEO -> {
+                        videoLayout.visibility = View.VISIBLE
                         if (tempVideo.isNotBlank()){
                             playVideo(tempVideo.toUri())
                         }

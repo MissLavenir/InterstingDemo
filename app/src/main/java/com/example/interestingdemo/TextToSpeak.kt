@@ -107,6 +107,7 @@ class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
         initSpeech()
     }
 
+    @SuppressLint("ObsoleteSdkInt")//虽然更改了最小版本大于23，但这边版本判断还是不改了
     private fun textToFile(text: String){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             var filePath = ""
@@ -175,6 +176,7 @@ class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
         speakQueue.clear()
     }
 
+    @SuppressLint("ObsoleteSdkInt")//虽然更改了最小版本大于23，但这边版本判断还是不改了
     private fun callTextToSpeechToTalk(text : String){
         textToSpeech?.let { speech ->
             if (speech.isLanguageAvailable(Locale.SIMPLIFIED_CHINESE) >= TextToSpeech.LANG_AVAILABLE){

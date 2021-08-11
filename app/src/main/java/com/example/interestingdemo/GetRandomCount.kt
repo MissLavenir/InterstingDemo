@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.interestingdemo.extensions.round2Scale
 import kotlinx.android.synthetic.main.get_random_count.*
 
 class GetRandomCount : Fragment() {
@@ -19,8 +20,8 @@ class GetRandomCount : Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.get_random_count, container, false)
@@ -29,10 +30,8 @@ class GetRandomCount : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        resetNum()
 
-        startRandom.setOnClickListener {
-
-        }
         changeScope.setOnClickListener {
             numberPanel.visibility = View.GONE
             inputText.visibility = View.VISIBLE
@@ -44,10 +43,10 @@ class GetRandomCount : Fragment() {
 
         sureBtn.setOnClickListener {
             resetNum()
-            if (minNumber.text.toString() != ""){
+            if (inputMinNum.text.toString().isNotEmpty()){
                 minNumber.text = inputMinNum.text
             }
-            if (maxNumber.text.toString() != ""){
+            if (inputMaxNum.text.toString().isNotEmpty()){
                 maxNumber.text = inputMaxNum.text
             }
         }
@@ -60,9 +59,9 @@ class GetRandomCount : Fragment() {
 
             randomCount.text = "${(getTextInt(minNumber) until getTextInt(maxNumber)).random()}"
             totalNum.text = "${getTextInt(totalNum) + getTextInt(randomCount)}"
-            averageNum.text = "${getTextInt(totalNum).toFloat()/getTextInt(clickNum).toFloat()}"
-            thisPercent.text = "${getTextInt(randomCount).toFloat()/getTextInt(maxNumber) * 100}%"
-            totalPercent.text = "${getTextInt(totalNum).toFloat()/(getTextInt(maxNumber)*getTextInt(clickNum)) * 100}%"
+            averageNum.text = (getTextInt(totalNum).toDouble()/getTextInt(clickNum).toDouble()).round2Scale()
+            thisPercent.text = "${(getTextInt(randomCount).toDouble()/getTextInt(maxNumber) * 100).round2Scale()}%"
+            totalPercent.text = "${(getTextInt(totalNum).toDouble()/(getTextInt(maxNumber)*getTextInt(clickNum)) * 100).round2Scale()}%"
 
             randomArrayList.add(getTextInt(randomCount))
             if (randomArrayList.size >= 5) recyclerViewTip.visibility = View.VISIBLE
@@ -86,7 +85,7 @@ class GetRandomCount : Fragment() {
         thisPercent.text = "0%"
         totalPercent.text = "0%"
         randomArrayList.clear()
-        recyclerViewTip.visibility = View.GONE
+        recyclerViewTip.visibility = View.INVISIBLE
         adapter.notifyDataSetChanged()
     }
 

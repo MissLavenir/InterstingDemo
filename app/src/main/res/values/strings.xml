@@ -1,11 +1,9 @@
 <resources>
     <string name="app_name">小工具</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="select_function">请选择功能</string>
     <string name="secure_model">安全模式</string>
     <string name="get_random">随机数生成器</string>
     <string name="rank_record">可排序记录表</string>
-    <string name="get_luck_count">幸运值生成器</string>
     <string name="text_to_speak"><![CDATA[语音生成&识别]]></string>
     <string name="qr_code_create_identify"><![CDATA[二维码生成&识别]]></string>
     <string name="mediaOperate">媒体操作</string>
@@ -22,8 +20,6 @@
     <string name="change">修改</string>
     <string name="pickup">收起</string>
     <string name="delete">删除</string>
-    <string name="banker">庄家</string>
-    <string name="player">玩家</string>
     <string name="scheme_create">方案生成器</string>
     <string name="special_effects">特殊效果</string>
     <string name="city_select">地区选择器</string>
@@ -38,14 +34,72 @@
     <string name="text_input_text">请输入文字的内容</string>
     <string name="simple_recycler_view_adapter_unprocessed_data">未处理的数据类型[%1$s] %2$s</string>
     <string name="text_click_to_start_speech">点击猫猫开始识别语音</string>
-    <string name="text_no_speech_tip">提示:点击猫猫后，猫猫不会摇头，则本机无法使用语音识别功能</string>
-
-    <string-array name="moods">
-        <item>低落</item>
-        <item>平静</item>
-        <item>愉快</item>
-        <item>兴奋</item>
-        <item>烦躁</item>
-
-    </string-array>
+    <string name="text_no_speech_tip">提示:点击猫猫后，如果猫猫不会摇头，则本机无法使用语音识别功能</string>
+    <string name="text_get_speech_to_file">转文件</string>
+    <string name="text_start_to_speak">开始播报语音</string>
+    <string name="text_zero">0</string>
+    <string name="text_count">分数:</string>
+    <string name="text_submit">提交</string>
+    <string name="text_re_set">重置</string>
+    <string name="text_create_question">生成题目</string>
+    <string name="text_select_max">请选择计算的最大位数:</string>
+    <string name="text_bit">个位</string>
+    <string name="text_ten_bit">十位</string>
+    <string name="text_hundred_bit">百位</string>
+    <string name="text_select_difficulty">请选择计算难度:</string>
+    <string name="text_plus">加</string>
+    <string name="text_minus">减</string>
+    <string name="text_multiply">乘</string>
+    <string name="text_divide">除</string>
+    <string name="text_change">更改</string>
+    <string name="text_equal">=</string>
+    <string name="text_start_random">开始随机</string>
+    <string name="text_change_scope">更换范围</string>
+    <string name="text_hide_panel">隐藏面板</string>
+    <string name="text_sure_to_change">确认更改</string>
+    <string name="text_input_max_count">请输入最大整数：</string>
+    <string name="text_input_min_count">请输入最小整数：</string>
+    <string name="text_re_set1">重 置</string>
+    <string name="text_0_percent">0%</string>
+    <string name="text_total_percent">总计百分比：</string>
+    <string name="text_current_percent">当前百分比：</string>
+    <string name="text_average">平 均：</string>
+    <string name="text_total">总 计：</string>
+    <string name="text_counts">次 数：</string>
+    <string name="text_over_list_can_move">列表超出部分可向右滑动</string>
+    <string name="text_center_line">-----</string>
+    <string name="text_random_scope">随机范围为：</string>
+    <string name="text_start_location">开始定位</string>
+    <string name="text_stop_location">停止定位</string>
+    <string name="text_add_scheme_group">添加方案分组</string>
+    <string name="text_input_group_name">请输入分组名称</string>
+    <string name="text_input_description">请输入相关描述:</string>
+    <string name="text_player_type">玩家类型:</string>
+    <string name="text_main_player">庄家</string>
+    <string name="text_player">玩家</string>
+    <string name="text_delete">删除</string>
+    <string name="text_scheme_group_do">方案分组操作</string>
+    <string name="text_change_scheme_group">修改方案分组</string>
+    <string name="text_input_scheme_name">请输入方案名称:</string>
+    <string name="text_input_scheme_content">请输入方案内容:</string>
+    <string name="text_delete_scheme_group">删除方案分组</string>
+    <string name="text_speed_3_0">×3.0</string>
+    <string name="text_speed_2_5">×2.5</string>
+    <string name="text_speed_2_0">×2.0</string>
+    <string name="text_speed_1_5">×1.5</string>
+    <string name="text_speed_1_25">×1.25</string>
+    <string name="text_speed_1_0">×1.0</string>
+    <string name="text_speed_0_75">×0.75</string>
+    <string name="text_speed_0_5">×0.5</string>
+    <string name="text_speed_0_2">×0.2</string>
+    <string name="text_to_qr_code">转换为二维码</string>
+    <string name="text_input_switch_to_content">请输入要转换的内容</string>
+    <string name="text_switch1">转换</string>
+    <string name="text_add_group_scheme">添加组内方案</string>
+    <string name="text_can_drag_and_expand_list">可折叠可排序列表</string>
+    <string name="text_time_select">时间选择器</string>
+    <string name="text_click_to_select">点击选择</string>
+    <string name="text_get_phone_address">获取手机地址</string>
+    <string name="text_title">标题</string>
+    <string name="text_content">内容</string>
 </resources>

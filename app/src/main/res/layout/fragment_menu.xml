@@ -77,19 +77,6 @@
                 />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/getLuckCount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_round_rectangle_stroke_blue"
-                android:text="@string/get_luck_count"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginHorizontal="30dp"
-                android:visibility="gone"
-                />
-
-            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/getTextToSpeak"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

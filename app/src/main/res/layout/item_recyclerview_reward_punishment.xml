@@ -17,13 +17,13 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/type"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             tools:text="名"
-            android:textSize="18sp"
             android:textColor="@color/red_500"
             android:gravity="center"
             android:background="@drawable/bg_round_stroke_red"
+            android:layout_marginStart="10dp"
             />
 
         <LinearLayout
@@ -38,7 +38,7 @@
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="我是标题我是标题"
+                tools:text="我是标题我是标题"
                 android:layout_marginHorizontal="10dp"
                 android:textColor="@color/grey_800"
                 />
@@ -47,7 +47,7 @@
                 android:id="@+id/content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="我是内容我是内容我是内容我是内容我是内容"
+                tools:text="我是内容我是内容我是内容我是内容我是内容"
                 android:textColor="@color/grey_600"
                 android:textSize="12sp"
                 android:layout_marginHorizontal="10dp"
@@ -63,7 +63,7 @@
             android:layout_height="42dp"
             app:srcCompat="@drawable/ic_change"
             android:tint="@color/grey_700"
-            android:padding="8dp"
+            android:padding="10dp"
             />
 
     </LinearLayout>

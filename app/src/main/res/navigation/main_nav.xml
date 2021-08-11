@@ -17,9 +17,6 @@
             android:id="@+id/action_MenuFragment_to_dragRecyclerView"
             app:destination="@id/dragRecyclerView" />
         <action
-            android:id="@+id/action_MenuFragment_to_luckGenerator"
-            app:destination="@id/luckGenerator" />
-        <action
             android:id="@+id/action_MenuFragment_to_textToSpeak"
             app:destination="@id/textToSpeak" />
         <action
@@ -54,11 +51,6 @@
         android:name="com.example.interestingdemo.DragRecyclerView"
         android:label="记事表"
         tools:layout="@layout/fragment_drag_recyclerview"/>
-    <fragment
-        android:id="@+id/luckGenerator"
-        android:name="com.example.interestingdemo.LuckGenerator"
-        android:label="获取幸运值"
-        tools:layout="@layout/fragment_luck_generator"/>
     <fragment
         android:id="@+id/textToSpeak"
         android:name="com.example.interestingdemo.TextToSpeak"

@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="这是一段非常非常长的文字,它可以实现个别文字的点击效果，而非TextView的点击效果，比如可以用来设置《服务协议》和《隐私政策》,甚至可以让文字当作分享来使用，设置状态栏颜色等等。"
             android:textSize="16sp"
-            />
+            tools:ignore="HardcodedText" />
 
         <View
             android:layout_width="match_parent"
@@ -44,7 +44,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="可折叠可排序列表"
+                android:text="@string/text_can_drag_and_expand_list"
                 android:textSize="16sp"
                 android:textColor="@color/blue_400"
                 />
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:text="样式如QQ分组那样可以折叠起来，并且可以进行跨分组排序，需要添加数据才可以看到效果。"
                 android:textSize="14sp"
-                />
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
@@ -75,7 +75,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="时间选择器"
+                android:text="@string/text_time_select"
                 />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -83,7 +83,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="点击选择"
+                android:hint="@string/text_click_to_select"
                 android:gravity="center_vertical"
                 android:background="@drawable/bg_edit_text"
                 android:layout_marginStart="6dp"
@@ -115,7 +115,7 @@
             android:textSize="18sp"
             android:textColor="@color/blue_500"
             android:layout_marginTop="10dp"
-            android:text="获取手机地址"
+            android:text="@string/text_get_phone_address"
             />
 
     </LinearLayout>

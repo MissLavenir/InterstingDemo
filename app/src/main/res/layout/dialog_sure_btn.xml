@@ -12,7 +12,7 @@
         android:id="@+id/sureTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="标题"
+        android:text="@string/text_title"
         android:textColor="@color/grey_800"
         android:textSize="16sp"
         />
@@ -21,7 +21,7 @@
         android:id="@+id/sureMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="内容"
+        android:text="@string/text_content"
         android:textColor="@color/grey_800"
         android:textSize="16sp"
         android:layout_marginVertical="10dp"/>
@@ -43,7 +43,7 @@
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
             android:paddingVertical="8dp"
-            android:text="确定"
+            android:text="@string/ok_btn"
             android:textColor="@color/blue_300" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -51,7 +51,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="取消"
+            android:text="@string/cancel_btn"
             android:gravity="center"
             android:paddingVertical="8dp"
             android:layout_marginHorizontal="10dp"

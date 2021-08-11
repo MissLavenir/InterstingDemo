@@ -11,7 +11,7 @@
         android:id="@+id/addGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="增加方案分组"
+        android:text="@string/text_add_scheme_group"
         android:textColor="@color/blue_500"
         android:textSize="16sp"
         android:padding="6dp"

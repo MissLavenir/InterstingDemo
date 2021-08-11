@@ -7,10 +7,10 @@
     tools:context=".GetLocationActivity">
 
     <TextView
-        android:id="@+id/getLocation"
+        android:id="@+id/startLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="获取定位"
+        android:text="@string/text_start_location"
         android:textColor="@color/blue_500"
         android:textSize="16sp"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,11 +23,11 @@
         android:id="@+id/stopLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="停止定位"
+        android:text="@string/text_stop_location"
         android:textColor="@color/blue_500"
         android:textSize="16sp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/getLocation"
+        app:layout_constraintStart_toEndOf="@id/startLocation"
         android:layout_margin="20dp"
         android:padding="10dp"
         />

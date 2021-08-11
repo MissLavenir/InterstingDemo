@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="10dp"
-        android:text="大师傅阿蒂芬萨芬萨芬阿迪斯发"/>
+        android:text=""/>
 
 
     <LinearLayout
@@ -39,7 +39,7 @@
             android:focusable="true"
             android:layout_marginHorizontal="10dp"
             android:foreground="?attr/selectableItemBackground"
-            android:text="删除"
+            android:text="@string/text_delete"
             android:textColor="@color/red_400"
             android:textSize="18sp"
             />
@@ -55,7 +55,7 @@
             android:focusable="true"
             android:layout_marginHorizontal="10dp"
             android:foreground="?attr/selectableItemBackground"
-            android:text="取消"
+            android:text="@string/cancel_btn"
             android:textColor="@color/blue_500"
             android:textSize="18sp"
             />

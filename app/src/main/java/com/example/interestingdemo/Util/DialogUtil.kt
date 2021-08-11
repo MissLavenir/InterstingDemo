@@ -67,6 +67,6 @@ object DialogUtil {
         window?.attributes = wlp
         //fragment动画默认为从中心伸展出来
         //下面的代码可以改成从下方弹出
-//        window?.setWindowAnimations(R.style.pop_up_window_anim)
+        window?.setWindowAnimations(R.style.pop_up_window_anim)
     }
 }

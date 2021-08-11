@@ -39,7 +39,7 @@ class TouchSpeedActivity : AppCompatActivity() {
                     ySpeed = getYVelocity(pointerId).let {
                         if (it >= 0.0) it else abs(it)
                     }
-                    getSpeed.text = String.format("X轴速度为%s\n Y轴速度为%s",xSpeed,ySpeed)
+                    getSpeed.text = String.format("X轴速度为$xSpeed\n Y轴速度为$ySpeed")
                 }
             }
             MotionEvent.ACTION_UP,MotionEvent.ACTION_CANCEL -> {

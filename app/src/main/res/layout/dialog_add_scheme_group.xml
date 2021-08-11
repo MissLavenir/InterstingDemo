@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="添加方案分组"
+        android:text="@string/text_add_scheme_group"
         android:textColor="@color/grey_800"
         android:textSize="18sp"
         />
@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:endIconMode="clear_text"
-        android:hint="请输入分组名称"
+        android:hint="@string/text_input_group_name"
         app:hintTextColor="@color/grey_600"
         app:hintAnimationEnabled="true"
         >
@@ -56,7 +56,7 @@
         android:background="@color/white"
         android:padding="6dp"
         android:gravity="top"
-        android:hint="请输入相关描述:"
+        android:hint="@string/text_input_description"
         android:textColorHint="@color/grey_600"
         android:textSize="16sp"
         />
@@ -77,7 +77,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="玩家类型:"
+            android:text="@string/text_player_type"
             android:textColor="@color/grey_800"
             android:textSize="16sp"
             />
@@ -94,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="庄家"
+                android:text="@string/text_main_player"
                 android:layout_marginHorizontal="10dp"
                 />
 
@@ -103,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="玩家"
+                android:text="@string/text_player"
                 android:layout_marginHorizontal="10dp"
                 />
 

@@ -22,8 +22,8 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="分数:"
-            android:textSize="20sp"
+            android:text="@string/text_count"
+            android:textSize="16sp"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -31,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="0"
+            android:text="@string/text_zero"
             android:textSize="20sp"
             android:textColor="@color/grey_800"
             android:layout_marginHorizontal="10dp" />
@@ -40,10 +40,10 @@
             android:id="@+id/submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="提交"
+            android:text="@string/text_submit"
             android:textSize="16sp"
             android:textColor="@color/grey_800"
-            android:background="@drawable/bg_round_rectangle_stroke_blue"
+            android:background="@drawable/bg_round_rectangle_stroke_grey"
             />
 
     </LinearLayout>
@@ -93,14 +93,13 @@
             android:layout_marginHorizontal="10dp"
             android:clickable="true"
             android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            >
+            android:foreground="?attr/selectableItemBackground">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="4dp"
-                android:text="设置"
+                android:text="@string/setting"
                 android:textSize="16sp"
                 android:textColor="@color/grey_900"
                 />
@@ -118,31 +117,29 @@
             android:id="@+id/reCreate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="重置"
-            android:textSize="18sp"
+            android:text="@string/text_re_set"
+            android:textSize="16sp"
             android:gravity="center"
             android:padding="6dp"
-            android:textColor="@color/blue_400"
+            android:textColor="@color/black"
             android:clickable="true"
             android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            />
+            android:foreground="?attr/selectableItemBackground" />
 
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="生成题目"
-            android:textSize="18sp"
+            android:text="@string/text_create_question"
+            android:textSize="16sp"
             android:gravity="center"
             android:padding="6dp"
             android:textColor="@color/blue_400"
             android:clickable="true"
             android:layout_marginStart="10dp"
             android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            tools:ignore="RtlCompat" />
+            android:foreground="?attr/selectableItemBackground" />
 
     </LinearLayout>
 
@@ -184,7 +181,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="请选择计算的最大位数:"
+                android:text="@string/text_select_max"
                 android:textColor="@color/grey_800"
                 android:textSize="14sp"
                 />
@@ -201,7 +198,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="个位"
+                    android:text="@string/text_bit"
                     android:textColor="@color/black"
                     />
 
@@ -210,7 +207,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="十位"
+                    android:text="@string/text_ten_bit"
                     android:checked="true"
                     android:textColor="@color/black"
                     />
@@ -220,7 +217,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="百位"
+                    android:text="@string/text_hundred_bit"
                     android:textColor="@color/black"
                     />
 
@@ -229,7 +226,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="请选择计算难度:"
+                android:text="@string/text_select_difficulty"
                 android:textColor="@color/grey_800"
                 />
 
@@ -244,7 +241,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="加"
+                    android:text="@string/text_plus"
                     android:checked="true"
                     android:textColor="@color/black"
                     />
@@ -254,7 +251,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="减"
+                    android:text="@string/text_minus"
                     android:checked="true"
                     android:textColor="@color/black"
                     />
@@ -264,7 +261,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="乘"
+                    android:text="@string/text_multiply"
                     android:checked="true"
                     android:textColor="@color/black"
                     />
@@ -274,7 +271,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="除"
+                    android:text="@string/text_divide"
                     android:checked="true"
                     android:textColor="@color/black"
                     />
@@ -285,7 +282,7 @@
                 android:id="@+id/changeBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="更改"
+                android:text="@string/text_change"
                 android:textColor="@color/blue_500"
                 android:textSize="16sp"
                 android:gravity="center"

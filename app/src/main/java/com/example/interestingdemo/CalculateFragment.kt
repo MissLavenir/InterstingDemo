@@ -143,7 +143,7 @@ class CalculateFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,object : OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
                 if ((countNumber.value ?:0) < 60){
-                    toast("未达到及格分，无法退出")
+                    toast("未达到及格分，无法退出,预留左上角返回可以退出")
                 } else {
                     val dialog = LayoutInflater.from(context).inflate(R.layout.dialog_sure_btn, null, false)
                     val alert = AlertDialog.Builder(context).setView(dialog).create()
@@ -197,7 +197,7 @@ class CalculateFragment : Fragment() {
 
     private fun createProblem(){
         if (kindArray.isNotEmpty()){
-            val problem = LayoutInflater.from(context).inflate(R.layout.item_calculate_problem,null,false)
+            val problem = LayoutInflater.from(context).inflate(R.layout.item_calculate_problem,calculateContainer,false)
             var checkAnswer = 0
             when(kindArray.random()){
                 0 -> {
@@ -233,12 +233,13 @@ class CalculateFragment : Fragment() {
                     checkAnswer = firstRan
                 }
             }
-            problem.approval.setOnClickListener {
+            problem.approvalLayout.setOnClickListener {
                 if (problem.answerInput.text.toString() == checkAnswer.toString()){
                     problem.approval.setBackgroundResource(R.drawable.ic_math_right)
                     countNumber.value = countNumber.value?.plus(1)
-                    problem.approval.isClickable = false
-                    problem.approval.isFocusable = false
+                    problem.approvalLayout.isClickable = false
+                    problem.approvalLayout.isFocusable = false
+                    problem.answerInput.isEnabled = false
                 } else {
                     problem.approval.setBackgroundResource(R.drawable.ic_math_false_black)
                 }

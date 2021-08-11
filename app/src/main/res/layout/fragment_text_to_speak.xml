@@ -35,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_margin="10dp"
         >
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -42,17 +43,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
             android:padding="10dp"
-            android:background="@drawable/bg_round_rectangle_stroke_blue"
-            android:text="转文件"
-            android:textColor="@color/blue_500"
+            android:background="@drawable/bg_round_rectangle_stroke_grey"
+            android:text="@string/text_get_speech_to_file"
+            android:textColor="@color/grey_600"
             android:textSize="16sp"
             android:focusable="true"
             android:clickable="true"
-            android:foreground="?attr/selectableItemBackground"
-            />
+            android:foreground="?attr/selectableItemBackground" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/startSpeakBtn"
@@ -60,17 +58,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
             android:paddingVertical="10dp"
-            android:background="@drawable/bg_round_rectangle_stroke_blue"
-            android:text="开始播报语音"
-            android:textColor="@color/blue_500"
+            android:background="@drawable/bg_round_rectangle_stroke_grey"
+            android:text="@string/text_start_to_speak"
+            android:textColor="@color/blue_400"
             android:gravity="center"
             android:textSize="16sp"
             android:focusable="true"
             android:clickable="true"
-            android:foreground="?attr/selectableItemBackground"
-            />
+            android:foreground="?attr/selectableItemBackground" />
 
 
     </LinearLayout>
@@ -80,14 +76,15 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         app:srcCompat="@drawable/ic_cat"
-        android:layout_margin="16dp"
+        android:layout_margin="10dp"
+        android:tint="@color/deep_orange_400"
         />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/getSpeechText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_round_rectangle_stroke_blue"
+        android:background="@drawable/bg_round_rectangle_stroke_grey"
         android:hint="@string/text_click_to_start_speech"
         />
 
