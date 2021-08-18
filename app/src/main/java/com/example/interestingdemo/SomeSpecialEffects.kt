@@ -3,6 +3,7 @@ package com.example.interestingdemo
 import android.app.AlertDialog
 import android.os.Build
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.provider.Settings
 import android.util.Log
 import android.view.Gravity
@@ -14,10 +15,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.interestingdemo.Util.DialogUtil
-import com.example.interestingdemo.extensions.makeTextClick
-import com.example.interestingdemo.extensions.setStatusBarColor
-import com.example.interestingdemo.extensions.shareTextContent
-import com.example.interestingdemo.extensions.toast
+import com.example.interestingdemo.extensions.*
 import com.example.interestingdemo.popwindow.RightQuickFunctionWindow
 import kotlinx.android.synthetic.main.dialog_sure_btn.view.*
 import kotlinx.android.synthetic.main.fragment_some_special_effects.*
@@ -33,6 +31,15 @@ class SomeSpecialEffects : Fragment() {
 
     private var needText = ""
 
+    //一天倒计时
+    private var hourCountDown = 0L
+    private var minuteCountDown = 0L
+    private var secondCountDown = 0L
+    private var timer: CountDownTimer? = null
+
+    //返回刷新
+    private var resumeRefresh = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_some_special_effects, container, false)
@@ -40,6 +47,13 @@ class SomeSpecialEffects : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        refreshTime()
+        timer?.start()
+
+        secondCountdownTV.setOnClickListener { timer?.cancel() }
+        hourCountdownTV.setOnClickListener { timer?.start() }
+
         longTextView.makeTextClick(
                 Pair("《服务协议》", object : View.OnClickListener {
                     override fun onClick(p0: View?) {
@@ -176,5 +190,87 @@ class SomeSpecialEffects : Fragment() {
         needText += "uuid_2:$uuidFake \n"
     }
 
+    private fun refreshTime(){
+        //先制空，在赋值
+        timer = null
+        timer = object : CountDownTimer(25*60*60L,998L) {//系统运算会自动加上运算时间
+        override fun onTick(p0: Long) {
+            computeTime()
+            hourCountdownTV.text = getTV(hourCountDown)
+            minuteCountdownTV.text = getTV(minuteCountDown)
+            secondCountdownTV.text = getTV(secondCountDown)
+            if (hourCountDown == 0L && minuteCountDown == 0L && secondCountDown == 0L){
+                cancel()
+                dayOver()
+            }
+            dLog("timeCountDown",p0.toString())
+        }
+
+            override fun onFinish() {
+                //总时间结束，暂时用不到这个
+            }
+        }
+
+        val nowTime = System.currentTimeMillis()/1000 //现在的时间
+        val daySecond = 60*60*24 //一天的时间单位
+        val dayTime = nowTime - (nowTime + 8 * 3600)%daySecond + daySecond //第二天凌晨的时间
+        val endTime = dayTime - nowTime
+
+        hourCountDown = endTime/(60*60)
+        minuteCountDown = (endTime - (hourCountDown * 60 * 60)) / 60
+        secondCountDown = endTime - (hourCountDown * 60 * 60) - (minuteCountDown * 60)
+    }
+
+    private fun getTV(l: Long): String{
+        return if (l >= 10){
+            "$l"
+        } else {
+            "0$l" //小于10则在前面补零
+        }
+    }
+
+    private fun computeTime(){
+        secondCountDown--
+        if (secondCountDown < 0){
+            minuteCountDown--
+            secondCountDown = 59
+            if (minuteCountDown < 0){
+                hourCountDown--
+                minuteCountDown = 59
+                if (hourCountDown < 0){
+                    //倒计时结束
+                    hourCountDown = 0
+                    minuteCountDown = 0
+                    secondCountDown = 0
+                }
+            }
+        }
+    }
+
+    private fun dayOver(){
+        refreshTime()
+        timer?.start()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (resumeRefresh){
+            timer?.cancel()
+            refreshTime()
+            timer?.start()
+            resumeRefresh = false
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        timer?.cancel()
+        resumeRefresh = true
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        timer?.cancel()
+    }
 
 }

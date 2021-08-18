@@ -118,6 +118,75 @@
             android:text="@string/text_get_phone_address"
             />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="30dp"
+            >
+
+            <TextView
+                android:id="@+id/hourCountdownTV"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_red_corner_4dp"
+                android:padding="2dp"
+                tools:text="02"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:text="@string/text_english_colon"
+                android:textSize="18sp"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/minuteCountdownTV"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_red_corner_4dp"
+                android:padding="2dp"
+                tools:text="52"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:text="@string/text_english_colon"
+                android:textSize="18sp"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/secondCountdownTV"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_red_corner_4dp"
+                android:padding="2dp"
+                tools:text="03"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                />
+
+
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <View

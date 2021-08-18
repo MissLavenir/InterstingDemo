@@ -102,4 +102,5 @@
     <string name="text_get_phone_address">获取手机地址</string>
     <string name="text_title">标题</string>
     <string name="text_content">内容</string>
+    <string name="text_english_colon">:</string>
 </resources>

@@ -249,25 +249,35 @@ class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
                     override fun onError(p0: Int) {
                         setAIAction(false)
                         getSpeechText.hint = "点击机器人开始识别语音"
-                        eLog("error", "语音识别出现错误了，错误码:$p0")
+                        isSpeech = false
                         when(p0){
                             SpeechRecognizer.ERROR_NO_MATCH -> {
                                 toast("未监听到声音")
+                                eLog("error", "未监听到声音，错误码:$p0")
                             }
                             SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS -> {
                                 toast("没有语音识别权限，错误码$p0")
+                                eLog("error", "没有语音识别权限，错误码:$p0")
                             }
                             SpeechRecognizer.ERROR_NETWORK,SpeechRecognizer.ERROR_NETWORK_TIMEOUT -> {
                                 toast("网络错误，错误码$p0")
+                                eLog("error", "网络错误，错误码:$p0")
                             }
                             SpeechRecognizer.ERROR_CLIENT -> {
                                 dLog("error","客户端错误，错误码$p0")
+                                eLog("error", "客户端错误，错误码:$p0")
                             }
                             SpeechRecognizer.ERROR_SERVER -> {
                                 toast("服务错误，错误码$p0")
+                                eLog("error", "服务错误，错误码:$p0")
                             }
                             SpeechRecognizer.ERROR_AUDIO -> {
                                 toast("语音识别错误，错误码$p0")
+                                eLog("error", "语音识别出现错误了，错误码:$p0")
+                            }
+                            else -> {
+                                toast("语音识别错误，错误码$p0")
+                                eLog("error", "语音识别出现错误了，错误码:$p0")
                             }
                         }
                     }
