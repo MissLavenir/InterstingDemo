@@ -1,6 +1,7 @@
 package com.example.interestingdemo
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -86,6 +87,11 @@ class SomeSpecialEffects : Fragment() {
                         toast("仅仅代表可以从任意地方设置点击。")
                     }
                 }),
+                Pair("拨打电话", object : View.OnClickListener {
+                    override fun onClick(p0: View?) {
+                        DialogUtil.showCallPhoneDialog(requireContext(),"18796852407")
+                    }
+                }),
                 Pair("分享", object : View.OnClickListener {
                     override fun onClick(p0: View?) {
                         activity?.shareTextContent("分享这段文字内容")
@@ -100,7 +106,12 @@ class SomeSpecialEffects : Fragment() {
                             activity?.setStatusBarColor(ResourcesCompat.getColor(resources, R.color.blue_800, context?.theme))
                         }
                     }
-                })
+                }),
+            Pair("查看自定义View", object : View.OnClickListener {
+                override fun onClick(p0: View?) {
+                    activity?.startActivity(Intent(requireContext(),CustomViewActivity::class.java))
+                }
+            })
         )
 
         drag_and_expand_recyclerView.setOnClickListener {

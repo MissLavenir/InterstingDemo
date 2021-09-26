@@ -1,11 +1,14 @@
 package com.example.interestingdemo.Util
 
 import android.app.Activity
+import android.content.ContentResolver
+import android.content.ContentUris
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
+import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.util.Log
 import androidx.annotation.NonNull
@@ -13,7 +16,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import java.io.File
-import java.lang.Exception
 
 class CameraUtil {
 
@@ -57,7 +59,7 @@ class CameraUtil {
         /**
          * 选择图片（不带code值）
          */
-        fun choosePhoto(activity : Activity){
+        fun choosePhoto(activity: Activity){
             choosePhoto(activity, PHOTO_CHOOSE)
         }
         /**
@@ -65,14 +67,14 @@ class CameraUtil {
          */
         fun choosePhoto(activity: Activity, requestCode: Int){
             try {
-                val intent = Intent().setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*")
+                val intent = Intent().setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
                     intent.action = Intent.ACTION_PICK
                 } else {
                     intent.action = Intent.ACTION_GET_CONTENT
                 }
                 val wrapperIntent = Intent.createChooser(intent, "选择图片")
-                activity.startActivityForResult(wrapperIntent,requestCode)
+                activity.startActivityForResult(wrapperIntent, requestCode)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -93,7 +95,7 @@ class CameraUtil {
                 }
                 val wrapperIntent = Intent.createChooser(intent, "选择图片")
                 fragment.startActivityForResult(wrapperIntent, requestCode)
-            } catch (e : Exception){
+            } catch (e: Exception){
                 e.printStackTrace()
             }
         }
@@ -107,7 +109,7 @@ class CameraUtil {
         }
 
         /* 拍照，指定照片保存路径 picPath，会直接保存照片流到picPath，不再返回data */
-        fun takePhoto(activity: Activity, requestCode: Int, picPath : String) : String{
+        fun takePhoto(activity: Activity, requestCode: Int, picPath: String) : String{
             val file = File(picPath)
             if (file.exists()){
                 val del = file.delete()
@@ -162,7 +164,7 @@ class CameraUtil {
         fun getFileUri(context: Context, file: File) : Uri{
             val uri : Uri
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
-                uri = FileProvider.getUriForFile(context,"com.example.interestingdemo.fileProvider", file )
+                uri = FileProvider.getUriForFile(context, "com.example.interestingdemo.fileProvider", file)
             } else {
                 uri = Uri.fromFile(file)
             }
@@ -182,7 +184,7 @@ class CameraUtil {
                 setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "video/*")
                 action = Intent.ACTION_GET_CONTENT
             }
-            val wrapperIntent = Intent.createChooser(intent,"选择视频")
+            val wrapperIntent = Intent.createChooser(intent, "选择视频")
             activity.startActivityForResult(wrapperIntent, requestCode)
         }
 
@@ -248,5 +250,88 @@ class CameraUtil {
             return videoPath
         }
 
+        fun getFilePathFromUri(context: Context, uri: Uri, isFromGallery: Boolean): String? {
+            var imagePath: String? = null
+            if (ContentResolver.SCHEME_FILE == uri.scheme) {
+                imagePath = uri.path
+            }
+            if (DocumentsContract.isDocumentUri(context, uri)) {
+                val docId = DocumentsContract.getDocumentId(uri)
+                if (isExternalStorageDocument(uri)) {
+                    val split = docId.split(":".toRegex()).toTypedArray()
+                    val type = split[0]
+                    if ("primary".equals(type, ignoreCase = true)) {
+                        imagePath = Environment.getExternalStorageDirectory().toString() + "/" + split[1]
+                    }
+                } else if (isMediaDocument(uri)) {
+                    val split = docId.split(":".toRegex()).toTypedArray()
+                    val type = split[0]
+                    val contentUri: Uri? = when (type) {
+                        "image" -> {
+                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                        }
+                        "video" -> {
+                            MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+                        }
+                        "audio" -> {
+                            MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+                        }
+                        else -> {
+                            null
+                        }
+                    }
+                    val selection = "_id=?"
+                    val selectionArgs = arrayOf(split[1])
+                    contentUri?.let {
+                        imagePath = getImagePath(context, it, selection, selectionArgs)
+                    }
+                } else if (isDownloadsDocument(uri)) {
+                    val contentUri = ContentUris.withAppendedId(
+                            Uri.parse("content://downloads/public_downloads"),
+                            java.lang.Long.valueOf(docId))
+                    imagePath = getImagePath(context, contentUri, null)
+                }
+            } else if ("content".equals(uri.scheme, ignoreCase = true)) {
+                imagePath = if (isFromGallery) getImagePath(context, uri, null) else null //这里照相得到的uri拿不到值
+            }
+            return imagePath
+        }
+
+        private fun getImagePath(context: Context, uri: Uri, selection: String?): String? {
+            return getImagePath(context, uri, selection, null)
+        }
+
+        private fun getImagePath(context: Context, uri: Uri, selection: String?, args: Array<String>?): String? {
+            var path: String? = null
+            val column = "_data"
+            val projection = arrayOf(
+                    column
+            )
+            val cursor = context.contentResolver.query(uri, projection, selection, args, null)
+            if (cursor != null) {
+                try {
+                    if (cursor.moveToFirst()) {
+                        path = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA))
+                    }
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                } finally {
+                    cursor.close()
+                }
+            }
+            return path
+        }
+
+        private fun isExternalStorageDocument(uri: Uri): Boolean {
+            return "com.android.externalstorage.documents" == uri.authority
+        }
+
+        private fun isDownloadsDocument(uri: Uri): Boolean {
+            return "com.android.providers.downloads.documents" == uri.authority
+        }
+
+        private fun isMediaDocument(uri: Uri): Boolean {
+            return "com.android.providers.media.documents" == uri.authority
+        }
     }
 }

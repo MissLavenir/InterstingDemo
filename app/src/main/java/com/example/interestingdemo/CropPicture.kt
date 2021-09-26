@@ -13,9 +13,12 @@ import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import com.example.interestingdemo.Util.CameraUtil
 import com.example.interestingdemo.extensions.isAlive
 import com.example.interestingdemo.extensions.toast
+import com.example.interestingdemo.viewModel.CustomViewViewModel
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.PlaybackParameters
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -31,6 +34,8 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
     private var tempPhoto = ""
     private var tempVideo = ""
     private lateinit var videoPlayer : SimpleExoPlayer
+
+    private val mViewModel : CustomViewViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -119,6 +124,10 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
         videoPlayer = SimpleExoPlayer.Builder(requireContext()).build()
         getVideo.player = videoPlayer
 
+        mViewModel.imgString.observe(viewLifecycleOwner){
+            toast(it)
+        }
+
     }
 
     private fun playVideo(uri: Uri) {
@@ -160,6 +169,8 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
                             }
                             dialog.cancelBtn.setOnClickListener {
                                 getPicture.setImageURI(uri)
+//                                val pathString = CameraUtil.getFilePathFromUri(requireContext(),uri,true)
+//                                mViewModel.upLoadFile(pathString ?: "")
                                 getPicture.visibility = View.VISIBLE
                                 deletePicture.visibility = View.VISIBLE
                                 alert.dismiss()
@@ -179,6 +190,7 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
                         }
                         dialog.cancelBtn.setOnClickListener {
                             getPicture.setImageURI(tempPhoto.toUri())
+//                            mViewModel.upLoadFile(tempPhoto)
                             getPicture.visibility = View.VISIBLE
                             deletePicture.visibility = View.VISIBLE
                             alert.dismiss()
@@ -191,6 +203,8 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
                         if (data != null){
                             UCrop.getOutput(data)?.let { uri ->
                                 getPicture.setImageURI(uri)
+//                                val pathString = CameraUtil.getFilePathFromUri(requireContext(),uri,true)
+//                                mViewModel.upLoadFile(pathString ?: "")
                                 getPicture.visibility = View.VISIBLE
                                 deletePicture.visibility = View.VISIBLE
                             }

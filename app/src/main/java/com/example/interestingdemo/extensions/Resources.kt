@@ -15,6 +15,14 @@ fun Resources.px2dp(px : Int) : Float{
     return px / displayMetrics.density
 }
 
+fun Resources.px2sp(px: Float) : Float{
+    return px / displayMetrics.scaledDensity
+}
+
+fun Resources.sp2px(sp: Float): Float{
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,sp,displayMetrics)
+}
+
 /**
  * 系统动画时间：短
  */

@@ -72,7 +72,7 @@ class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
         }
         initFun()
 
-        textInputLayout.requestFocus()
+        textInput.requestFocus()
         startSpeakBtn.setOnClickListener {
             val text = textInput.text.toString()
             if (text.isNotEmpty()){

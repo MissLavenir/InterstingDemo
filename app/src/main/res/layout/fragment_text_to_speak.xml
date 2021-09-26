@@ -10,25 +10,15 @@
     android:padding="10dp"
     tools:context=".TextToSpeak">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/textInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/text_input_text"
-        app:endIconMode="clear_text"
-        app:hintAnimationEnabled="true"
-        app:hintEnabled="true"
-        app:hintTextColor="@color/blue_500">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/grey_50"
-            android:gravity="top|start"
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        android:background="@drawable/bg_round_rectangle_stroke_grey"
+        android:hint="@string/text_input_switch_to_content"
+        android:textSize="14sp"
+        android:paddingVertical="8dp"
+        />
 
 
     <LinearLayout

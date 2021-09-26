@@ -93,7 +93,7 @@
     <string name="text_speed_0_5">×0.5</string>
     <string name="text_speed_0_2">×0.2</string>
     <string name="text_to_qr_code">转换为二维码</string>
-    <string name="text_input_switch_to_content">请输入要转换的内容</string>
+    <string name="text_input_switch_to_content">在此输入要转换的内容</string>
     <string name="text_switch1">转换</string>
     <string name="text_add_group_scheme">添加组内方案</string>
     <string name="text_can_drag_and_expand_list">可折叠可排序列表</string>

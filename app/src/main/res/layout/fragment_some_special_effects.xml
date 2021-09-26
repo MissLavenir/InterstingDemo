@@ -7,187 +7,192 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SomeSpecialEffects">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:padding="15dp"
         >
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/longTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="这是一段非常非常长的文字,它可以实现个别文字的点击效果，而非TextView的点击效果，比如可以用来设置《服务协议》和《隐私政策》,甚至可以让文字当作分享来使用，设置状态栏颜色等等。"
-            android:textSize="16sp"
-            tools:ignore="HardcodedText" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/grey_200"
-            android:layout_marginVertical="2dp"
-            />
-
         <LinearLayout
-            android:id="@+id/drag_and_expand_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="20dp"
+            android:padding="15dp"
             >
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/longTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_can_drag_and_expand_list"
+                android:text="这是一段非常非常长的文字,它可以实现个别文字的点击效果，而非TextView的点击效果，比如可以用来设置《服务协议》和《隐私政策》,甚至可以拨打电话、让文字当作分享来使用，设置状态栏颜色，查看自定义View等等。"
                 android:textSize="16sp"
-                android:textColor="@color/blue_400"
-                />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="样式如QQ分组那样可以折叠起来，并且可以进行跨分组排序，需要添加数据才可以看到效果。"
-                android:textSize="14sp"
                 tools:ignore="HardcodedText" />
 
-        </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey_200"
+                android:layout_marginVertical="2dp"
+                />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/grey_200"
-            android:layout_marginVertical="2dp"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/drag_and_expand_recyclerView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_time_select"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                >
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_can_drag_and_expand_list"
+                    android:textSize="16sp"
+                    android:textColor="@color/blue_400"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="样式如QQ分组那样可以折叠起来，并且可以进行跨分组排序，需要添加数据才可以看到效果。"
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey_200"
+                android:layout_marginVertical="2dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_time_select"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/timeGet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/text_click_to_select"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_edit_text"
+                    android:layout_marginStart="6dp"
+                    tools:ignore="RtlCompat" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey_200"
+                android:layout_marginVertical="2dp"
                 />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/timeGet"
-                android:layout_width="0dp"
+                android:id="@+id/rightSelect"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="@string/text_click_to_select"
-                android:gravity="center_vertical"
-                android:background="@drawable/bg_edit_text"
-                android:layout_marginStart="6dp"
-                tools:ignore="RtlCompat" />
+                android:layout_marginTop="6dp"
+                android:text="@string/text_right_select"
+                android:paddingVertical="6dp"
+                android:textColor="@color/blue_500"
+                />
+
+            <TextView
+                android:id="@+id/getMac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/blue_500"
+                android:layout_marginTop="10dp"
+                android:text="@string/text_get_phone_address"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="30dp"
+                >
+
+                <TextView
+                    android:id="@+id/hourCountdownTV"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_red_corner_4dp"
+                    android:padding="2dp"
+                    tools:text="02"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:text="@string/text_english_colon"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/minuteCountdownTV"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_red_corner_4dp"
+                    android:padding="2dp"
+                    tools:text="52"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:text="@string/text_english_colon"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/secondCountdownTV"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_red_corner_4dp"
+                    android:padding="2dp"
+                    tools:text="03"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/grey_200"
-            android:layout_marginVertical="2dp"
-            />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/rightSelect"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/text_right_select"
-            android:paddingVertical="6dp"
-            android:textColor="@color/blue_500"
-            />
-
-        <TextView
-            android:id="@+id/getMac"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@color/blue_500"
-            android:layout_marginTop="10dp"
-            android:text="@string/text_get_phone_address"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:paddingHorizontal="30dp"
-            >
-
-            <TextView
-                android:id="@+id/hourCountdownTV"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_red_corner_4dp"
-                android:padding="2dp"
-                tools:text="02"
-                android:textSize="18sp"
-                android:gravity="center"
-                android:textColor="@color/white"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="6dp"
-                android:text="@string/text_english_colon"
-                android:textSize="18sp"
-                android:gravity="center"
-                />
-
-            <TextView
-                android:id="@+id/minuteCountdownTV"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_red_corner_4dp"
-                android:padding="2dp"
-                tools:text="52"
-                android:textSize="18sp"
-                android:gravity="center"
-                android:textColor="@color/white"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="6dp"
-                android:text="@string/text_english_colon"
-                android:textSize="18sp"
-                android:gravity="center"
-                />
-
-            <TextView
-                android:id="@+id/secondCountdownTV"
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:background="@drawable/shape_red_corner_4dp"
-                android:padding="2dp"
-                tools:text="03"
-                android:textSize="18sp"
-                android:gravity="center"
-                android:textColor="@color/white"
-                />
-
-
-
-        </LinearLayout>
-
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <View
         android:id="@+id/shadow"
