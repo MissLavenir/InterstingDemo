@@ -99,19 +99,19 @@ class TestTextViews @JvmOverloads constructor(context: Context, attrs: Attribute
 //        mCamera.rotateX(rotateY)
 //        mCamera.rotateZ(rotateY)
         //移动Camera的坐标轴
-        canvas.translate(200f+(mBitmap.width)/2,100f+(mBitmap.height)/2)
+        canvas.translate(100f+(mBitmap.width)/2,100f+(mBitmap.height)/2)
         mCamera.applyToCanvas(canvas)
         //移回Camera的坐标轴
-        canvas.translate(-200f-(mBitmap.width)/2,-100f-(mBitmap.height)/2)
+        canvas.translate(-100f-(mBitmap.width)/2,-100f-(mBitmap.height)/2)
         mCamera.restore()
 
-        canvas.clipRect(200f+mBitmap.width/2,0f,200f+mBitmap.width,100f+mBitmap.height*1.43f)//因为放大的缘故应该乘以2的平方根
-        canvas.drawBitmap(mBitmap, 200f, 100f, mPaint)
+        canvas.clipRect(100f+mBitmap.width/2,0f,100f+mBitmap.width,100f+mBitmap.height*1.43f)//因为放大的缘故应该乘以2的平方根
+        canvas.drawBitmap(mBitmap, 100f, 100f, mPaint)
         canvas.restore()
 
         canvas.save()
-        canvas.clipRect(0f,0f,200f+mBitmap.width/2,100f+mBitmap.height)
-        canvas.drawBitmap(mBitmap, 200f, 100f, mPaint)
+        canvas.clipRect(0f,0f,100f+mBitmap.width/2,100f+mBitmap.height)
+        canvas.drawBitmap(mBitmap, 100f, 100f, mPaint)
         canvas.restore()
 
         canvas.save()
@@ -130,6 +130,17 @@ class TestTextViews @JvmOverloads constructor(context: Context, attrs: Attribute
         canvas.clipRect(50f+width*textProgress,600f,50+width,720f)
         canvas.drawText(text,50f,700f,textPaint2)
         canvas.restore()
+
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        var measureWidth = 200 + mBitmap.width
+        var measureHeight = 800
+
+        measureWidth = resolveSize(measureWidth,widthMeasureSpec)
+        measureHeight = resolveSize(measureHeight,heightMeasureSpec)
+
+        setMeasuredDimension(measureWidth,measureHeight)
 
     }
 
