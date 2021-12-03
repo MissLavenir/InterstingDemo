@@ -23,7 +23,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import androidx.core.content.ContextCompat
-import com.example.interestingdemo.Util.DialogUtil
+import com.example.interestingdemo.util.DialogUtil
 import com.example.interestingdemo.extensions.coverToTTSFriendlyString
 import com.example.interestingdemo.extensions.dLog
 import com.example.interestingdemo.extensions.eLog

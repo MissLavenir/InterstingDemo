@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import com.example.interestingdemo.extensions.toast
 import com.king.zxing.CaptureHelper
 import com.king.zxing.OnCaptureCallback
+import com.king.zxing.camera.FrontLightMode
 import kotlinx.android.synthetic.main.dialog_sure_btn.view.*
 import kotlinx.android.synthetic.main.fragment_qr_scan.*
 import pub.devrel.easypermissions.EasyPermissions
@@ -43,13 +44,18 @@ class QRScanFragment : Fragment(),EasyPermissions.PermissionCallbacks,OnCaptureC
     private fun initCapture(){
         captureHelper.apply {
             supportVerticalCode(true)//支持扫条形码
-            supportAutoZoom(true)//自动缩放
-            continuousScan(false)//连续扫描
+            supportAutoZoom(false)//自动缩放
+            continuousScan(true)//连续扫描
+            autoRestartPreviewAndDecode(false)
+            tooDarkLux(1000f)
+            brightEnoughLux(999f)
             playBeep(true)//播放音效
             vibrate(true)//震动特效
+            frontLightMode(FrontLightMode.OFF)
             setOnCaptureCallback(this@QRScanFragment)
             onCreate()
         }
+        torch.visibility = View.VISIBLE
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -79,6 +85,7 @@ class QRScanFragment : Fragment(),EasyPermissions.PermissionCallbacks,OnCaptureC
     override fun onResume() {
         super.onResume()
         captureHelper.onResume()
+        captureHelper.restartPreviewAndDecode()
     }
 
     override fun onPause() {
@@ -95,20 +102,41 @@ class QRScanFragment : Fragment(),EasyPermissions.PermissionCallbacks,OnCaptureC
     override fun onResultCallback(result: String?): Boolean {
         if (result == null) return true
         if (result.trim().startsWith("https://") || result.trim().startsWith("www.")){
-            val intent = Intent(Intent.ACTION_VIEW).apply {
-                addCategory(Intent.CATEGORY_BROWSABLE)
-                data = Uri.parse(result.trim())
+            val dialog = LayoutInflater.from(context).inflate(R.layout.dialog_sure_btn,null,false)
+            val alert = AlertDialog.Builder(context).setView(dialog).create()
+            dialog.sureTitle.text = "扫描内容"
+            dialog.sureBtn.text = "进入"
+            dialog.sureMessage.text = "内容如下网址：\n${result}\n任何内容与本程序都无关，本程序仅仅只是提供一个扫描途径。"
+            alert.setCancelable(false)
+            dialog.sureBtn.setOnClickListener {
+                val uri: String = if (result.startsWith("www.")){
+                    "https://$result"
+                } else {
+                    result
+                }
+                val intent = Intent(Intent.ACTION_VIEW,Uri.parse(uri))
+                if (intent.resolveActivity(requireContext().packageManager) != null){
+                    startActivity(intent)
+                } else {
+                    startActivity(Intent.createChooser(intent,"请选择打开方式"))
+                }
+                alert.dismiss()
             }
-            startActivity(intent)
+            dialog.cancelBtn.setOnClickListener {
+                alert.dismiss()
+                captureHelper.restartPreviewAndDecode()
+            }
+            alert.show()
         }else{
             val dialog = LayoutInflater.from(context).inflate(R.layout.dialog_sure_btn,null,false)
             val alert = AlertDialog.Builder(context).setView(dialog).create()
             dialog.sureTitle.text = "扫描内容"
             dialog.sureMessage.text = "内容如下：\n${result}\n任何内容与本程序都无关，本程序仅仅只是提供一个扫描途径。"
             dialog.cancelBtn.visibility = View.GONE
+            alert.setCancelable(false)
             dialog.sureBtn.setOnClickListener {
                 alert.dismiss()
-                activity?.onBackPressed()
+                captureHelper.restartPreviewAndDecode()
             }
             alert.show()
         }

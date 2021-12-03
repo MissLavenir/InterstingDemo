@@ -10,14 +10,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
-import com.example.interestingdemo.Util.CameraUtil
+import com.example.interestingdemo.extensions.dp2px
+import com.example.interestingdemo.util.CameraUtil
 import com.example.interestingdemo.extensions.isAlive
 import com.example.interestingdemo.extensions.toast
+import com.example.interestingdemo.util.GlideUtil
 import com.example.interestingdemo.viewModel.CustomViewViewModel
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.PlaybackParameters
@@ -128,6 +131,27 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
             toast(it)
         }
 
+        val url = "http://app.zsswang.com:92//HeadImg/2021/202112/20211203/20211203174464.jpg"
+        val imageView = ImageView(requireContext())
+        GlideUtil.loadImageRadius(requireContext(), url,imageView,resources.dp2px(36f))
+        container.addView(imageView)
+
+        val imageView1 = ImageView(requireContext())
+        GlideUtil.loadImageCircle(requireContext(), url,imageView1)
+        container.addView(imageView1)
+
+        val imageView2 = ImageView(requireContext())
+        GlideUtil.loadImageBlur(requireContext(), url,imageView2,10,1)
+        container.addView(imageView2)
+
+        val imageView3 = ImageView(requireContext())
+        GlideUtil.loadImageSketchFilter(requireContext(), url,imageView3)
+        container.addView(imageView3)
+
+        val imageView4 = ImageView(requireContext())
+        GlideUtil.loadImageToonFilter(requireContext(), url,imageView4)
+        container.addView(imageView4)
+
     }
 
     private fun playVideo(uri: Uri) {
@@ -169,6 +193,7 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
                             }
                             dialog.cancelBtn.setOnClickListener {
                                 getPicture.setImageURI(uri)
+                                //上传相册图片
 //                                val pathString = CameraUtil.getFilePathFromUri(requireContext(),uri,true)
 //                                mViewModel.upLoadFile(pathString ?: "")
                                 getPicture.visibility = View.VISIBLE
@@ -190,6 +215,7 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
                         }
                         dialog.cancelBtn.setOnClickListener {
                             getPicture.setImageURI(tempPhoto.toUri())
+                            //上传拍照图片
 //                            mViewModel.upLoadFile(tempPhoto)
                             getPicture.visibility = View.VISIBLE
                             deletePicture.visibility = View.VISIBLE
@@ -203,6 +229,7 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
                         if (data != null){
                             UCrop.getOutput(data)?.let { uri ->
                                 getPicture.setImageURI(uri)
+                                //上传裁剪的图片
 //                                val pathString = CameraUtil.getFilePathFromUri(requireContext(),uri,true)
 //                                mViewModel.upLoadFile(pathString ?: "")
                                 getPicture.visibility = View.VISIBLE

@@ -6,8 +6,8 @@ import kotlin.math.roundToInt
 
 
 //dp转像素
-fun Resources.dp2Px(dp : Float) : Int{
-    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dp,displayMetrics).roundToInt()
+fun Resources.dp2px(dp: Float): Int {
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, displayMetrics).roundToInt()
 }
 
 //像素转dp
@@ -40,10 +40,3 @@ val Resources.systemMediumAnimTime: Long
  */
 val Resources.systemLongAnimTime: Long
     get() = getInteger(android.R.integer.config_longAnimTime).toLong()
-
-/**
- * dp转像素
- */
-fun Resources.dp2px(dp: Float): Int {
-    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, displayMetrics).roundToInt()
-}

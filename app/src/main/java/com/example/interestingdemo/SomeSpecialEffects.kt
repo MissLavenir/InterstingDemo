@@ -15,7 +15,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.interestingdemo.Util.DialogUtil
+import com.example.interestingdemo.util.DialogUtil
 import com.example.interestingdemo.extensions.*
 import com.example.interestingdemo.popwindow.RightQuickFunctionWindow
 import kotlinx.android.synthetic.main.dialog_sure_btn.view.*

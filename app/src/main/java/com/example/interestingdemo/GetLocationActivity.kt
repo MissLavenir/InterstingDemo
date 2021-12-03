@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import com.example.interestingdemo.Util.DialogUtil
+import com.example.interestingdemo.util.DialogUtil
 import com.example.interestingdemo.extensions.toast
 import kotlinx.android.synthetic.main.activity_get_location.*
 import pub.devrel.easypermissions.EasyPermissions

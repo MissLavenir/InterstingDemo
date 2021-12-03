@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.interestingdemo.R
-import com.example.interestingdemo.extensions.dp2Px
+import com.example.interestingdemo.extensions.dp2px
 import com.example.interestingdemo.popwindow.adapter.RightQuickSelectAdapter
 
 class RightQuickFunctionWindow(private val context: Context,
@@ -30,7 +30,7 @@ class RightQuickFunctionWindow(private val context: Context,
 
     init {
         contentView = LayoutInflater.from(context).inflate(R.layout.right_quick_select_list,null)
-        width = context.resources.dp2Px(300f)
+        width = context.resources.dp2px(300f)
         height = ViewGroup.LayoutParams.MATCH_PARENT
         isFocusable = true
         isOutsideTouchable = true

@@ -87,7 +87,11 @@ dependencies {
     apply plugin: 'kotlin-android-extensions'
 
     //glide图片加载库
-    implementation 'jp.wasabeef:glide-transformations:4.3.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    //glide图形转换工具
+    implementation 'jp.wasabeef:glide-transformations:3.0.0'
+    //GPU filters
+    implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
 
     //接入retrofit2和拦截器
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'

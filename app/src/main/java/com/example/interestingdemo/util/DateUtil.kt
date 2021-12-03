@@ -1,4 +1,4 @@
-package com.example.interestingdemo.Util
+package com.example.interestingdemo.util
 
 import java.text.ParseException
 import java.text.SimpleDateFormat

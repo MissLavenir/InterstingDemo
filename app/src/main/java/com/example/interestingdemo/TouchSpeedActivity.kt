@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.VelocityTracker
-import com.example.interestingdemo.Util.DialogUtil
+import com.example.interestingdemo.util.DialogUtil
 import kotlinx.android.synthetic.main.activity_touch_speed.*
 import kotlin.math.abs
 

@@ -1,4 +1,4 @@
-package com.example.interestingdemo.Util
+package com.example.interestingdemo.util
 
 import android.Manifest
 import android.app.AlertDialog
