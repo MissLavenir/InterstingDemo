@@ -1,5 +1,6 @@
 package com.example.interestingdemo
 
+import android.media.RingtoneManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -28,6 +29,10 @@ class SettingFragment : Fragment() {
             if (isChecked){
                 ConfigurationFun(requireContext()).addOrUpdate(SECURE_MODEL_SETTING,1)
                 activity?.secureDisplay(true)
+                //发出声音
+                val notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+                val ringtone = RingtoneManager.getRingtone(requireContext(), notificationSound)
+                ringtone.play()
             }else{
                 ConfigurationFun(requireContext()).addOrUpdate(SECURE_MODEL_SETTING,0)
                 activity?.secureDisplay(false)

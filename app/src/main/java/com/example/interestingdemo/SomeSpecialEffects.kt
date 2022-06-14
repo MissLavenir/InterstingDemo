@@ -1,7 +1,11 @@
 package com.example.interestingdemo
 
-import android.app.AlertDialog
+import android.Manifest
+import android.app.*
+import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -11,7 +15,9 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -20,11 +26,12 @@ import com.example.interestingdemo.extensions.*
 import com.example.interestingdemo.popwindow.RightQuickFunctionWindow
 import kotlinx.android.synthetic.main.dialog_sure_btn.view.*
 import kotlinx.android.synthetic.main.fragment_some_special_effects.*
+import pub.devrel.easypermissions.EasyPermissions
 import java.net.NetworkInterface
 import java.util.*
 
 
-class SomeSpecialEffects : Fragment() {
+class SomeSpecialEffects : Fragment(), EasyPermissions.PermissionCallbacks {
 
     private var isChangeColor = false
 
@@ -41,9 +48,21 @@ class SomeSpecialEffects : Fragment() {
     //返回刷新
     private var resumeRefresh = false
 
+    private var notificationId = 1
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_some_special_effects, container, false)
+    }
+
+    private fun createNotificationChannel(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val channel = NotificationChannel("channel_1","普通通知", NotificationManager.IMPORTANCE_HIGH).apply {
+                description = "NotificationChannel-Description"
+            }
+            val noManager = requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            noManager.createNotificationChannel(channel)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,59 +73,98 @@ class SomeSpecialEffects : Fragment() {
 
         secondCountdownTV.setOnClickListener { timer?.cancel() }
         hourCountdownTV.setOnClickListener { timer?.start() }
+        createNotificationChannel()
+
+        notification.setOnClickListener {
+            val intent = Intent(requireActivity(),GetLocationActivity::class.java)
+            val pendingIntent = TaskStackBuilder.create(requireContext()).run {
+                addNextIntentWithParentStack(intent)
+                getPendingIntent(0,PendingIntent.FLAG_IMMUTABLE)
+            }
+
+            val mBp = BitmapFactory.decodeResource(resources,R.drawable.ic_cat)
+            val nullBp: Bitmap? = null
+
+            val nb = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                Notification.Builder(requireContext(),"channel_1")
+                    .setSmallIcon(R.drawable.ic_add_blue)
+                    .setContentTitle("标题标题标题")
+                    .setContentText("内容内容。。。。。。。。。。。。。。。。。。")
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true)
+                    .setGroup("group1")
+                    .setStyle(Notification.BigPictureStyle().bigPicture(mBp).bigLargeIcon(nullBp))
+                    .setVisibility(Notification.VISIBILITY_PRIVATE)
+            } else {
+                Notification.Builder(requireContext())
+                    .setSmallIcon(R.drawable.ic_add_blue)
+                    .setContentTitle("标题标题标题")
+                    .setContentText("内容内容。。。。。。。。。。。。。。。。。。")
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true)
+                    .setGroup("group1")
+                    .setStyle(Notification.BigPictureStyle().bigPicture(mBp).bigLargeIcon(nullBp))
+                    .setVisibility(Notification.VISIBILITY_PRIVATE)
+            }
+
+
+            with(NotificationManagerCompat.from(requireContext())){
+                notify(notificationId++,nb.build())
+            }
+        }
 
         longTextView.makeTextClick(
-                Pair("《服务协议》", object : View.OnClickListener {
-                    override fun onClick(p0: View?) {
-                        val dialog = LayoutInflater.from(context).inflate(R.layout.dialog_sure_btn, null, false)
-                        val alert = AlertDialog.Builder(context).setView(dialog).create()
-                        dialog.sureTitle.text = "文字点击效果"
-                        dialog.sureMessage.text = "服务协议被点击了，进入服务协议。"
-                        dialog.cancelBtn.visibility = View.GONE
-                        dialog.sureBtn.setOnClickListener {
-                            alert.dismiss()
-                        }
-                        alert.show()
+            Pair("《服务协议》", object : View.OnClickListener {
+                override fun onClick(p0: View?) {
+                    val dialog = LayoutInflater.from(context).inflate(R.layout.dialog_sure_btn, null, false)
+                    val alert = AlertDialog.Builder(context).setView(dialog).create()
+                    dialog.sureTitle.text = "文字点击效果"
+                    dialog.sureMessage.text = "服务协议被点击了，进入服务协议。"
+                    dialog.cancelBtn.visibility = View.GONE
+                    dialog.sureBtn.setOnClickListener {
+                        alert.dismiss()
                     }
-                }),
-                Pair("《隐私政策》", object : View.OnClickListener {
-                    override fun onClick(p0: View?) {
-                        val dialog = LayoutInflater.from(context).inflate(R.layout.dialog_sure_btn, null, false)
-                        val alert = AlertDialog.Builder(context).setView(dialog).create()
-                        dialog.sureTitle.text = "文字点击效果"
-                        dialog.sureMessage.text = "隐私政策被点击了，进入隐私政策。"
-                        dialog.cancelBtn.visibility = View.GONE
-                        dialog.sureBtn.setOnClickListener {
-                            alert.dismiss()
-                        }
-                        alert.show()
+                    alert.show()
+                }
+            }),
+            Pair("《隐私政策》", object : View.OnClickListener {
+                override fun onClick(p0: View?) {
+                    val dialog = LayoutInflater.from(context).inflate(R.layout.dialog_sure_btn, null, false)
+                    val alert = AlertDialog.Builder(context).setView(dialog).create()
+                    dialog.sureTitle.text = "文字点击效果"
+                    dialog.sureMessage.text = "隐私政策被点击了，进入隐私政策。"
+                    dialog.cancelBtn.visibility = View.GONE
+                    dialog.sureBtn.setOnClickListener {
+                        alert.dismiss()
                     }
-                }),
-                Pair("别文字的", object : View.OnClickListener {
-                    override fun onClick(p0: View?) {
-                        toast("仅仅代表可以从任意地方设置点击。")
+                    alert.show()
+                }
+            }),
+            Pair("别文字的", object : View.OnClickListener {
+                override fun onClick(p0: View?) {
+                    toast("仅仅代表可以从任意地方设置点击。")
+                }
+            }),
+            Pair("拨打电话", object : View.OnClickListener {
+                override fun onClick(p0: View?) {
+                    DialogUtil.showCallPhoneDialog(requireContext(),"18796852407")
+                }
+            }),
+            Pair("分享", object : View.OnClickListener {
+                override fun onClick(p0: View?) {
+                    activity?.shareTextContent("分享这段文字内容")
+                }
+            }),
+            Pair("设置状态栏颜色", object : View.OnClickListener {
+                override fun onClick(p0: View?) {
+                    isChangeColor = !isChangeColor
+                    if (isChangeColor) {
+                        activity?.setStatusBarColor(ResourcesCompat.getColor(resources, R.color.blue_300, context?.theme))
+                    } else {
+                        activity?.setStatusBarColor(ResourcesCompat.getColor(resources, R.color.blue_800, context?.theme))
                     }
-                }),
-                Pair("拨打电话", object : View.OnClickListener {
-                    override fun onClick(p0: View?) {
-                        DialogUtil.showCallPhoneDialog(requireContext(),"18796852407")
-                    }
-                }),
-                Pair("分享", object : View.OnClickListener {
-                    override fun onClick(p0: View?) {
-                        activity?.shareTextContent("分享这段文字内容")
-                    }
-                }),
-                Pair("设置状态栏颜色", object : View.OnClickListener {
-                    override fun onClick(p0: View?) {
-                        isChangeColor = !isChangeColor
-                        if (isChangeColor) {
-                            activity?.setStatusBarColor(ResourcesCompat.getColor(resources, R.color.blue_300, context?.theme))
-                        } else {
-                            activity?.setStatusBarColor(ResourcesCompat.getColor(resources, R.color.blue_800, context?.theme))
-                        }
-                    }
-                }),
+                }
+            }),
             Pair("查看自定义View", object : View.OnClickListener {
                 override fun onClick(p0: View?) {
                     activity?.startActivity(Intent(requireContext(),CustomViewActivity::class.java))
@@ -204,7 +262,7 @@ class SomeSpecialEffects : Fragment() {
     private fun refreshTime(){
         //先制空，在赋值
         timer = null
-        timer = object : CountDownTimer(25*60*60L,998L) {//系统运算会自动加上运算时间
+        timer = object : CountDownTimer(25*60*60*1000L,998L) {//系统运算会自动加上运算时间
         override fun onTick(p0: Long) {
             computeTime()
             hourCountdownTV.text = getTV(hourCountDown)
@@ -282,6 +340,39 @@ class SomeSpecialEffects : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         timer?.cancel()
+    }
+
+    private fun killProcess(){
+        if (!isAlive()) return
+        val perms = arrayOf(Manifest.permission.KILL_BACKGROUND_PROCESSES)
+        if (EasyPermissions.hasPermissions(requireContext(),*perms)){
+            val am = requireActivity().getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+            try {
+                am.restartPackage("com.example.interestingdemo")
+            } catch (e: Exception){
+                e.printStackTrace()
+            }
+        }else{
+            EasyPermissions.requestPermissions(this,"需要限才能杀进程", 111,*perms)
+        }
+
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        EasyPermissions.onRequestPermissionsResult(requestCode,permissions,grantResults,this)
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
+        killProcess()
+    }
+
+    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
+        toast("您未授权")
     }
 
 }

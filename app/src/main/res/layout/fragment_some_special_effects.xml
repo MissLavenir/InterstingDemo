@@ -28,7 +28,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="这是一段非常非常长的文字,它可以实现个别文字的点击效果，而非TextView的点击效果，比如可以用来设置《服务协议》和《隐私政策》,甚至可以拨打电话、让文字当作分享来使用，设置状态栏颜色，查看自定义View等等。"
-                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="弹出一个通知"
+                android:layout_marginTop="6dp"
                 tools:ignore="HardcodedText" />
 
             <View

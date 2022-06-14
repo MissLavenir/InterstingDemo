@@ -129,28 +129,49 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
 
         mViewModel.imgString.observe(viewLifecycleOwner){
             toast(it)
+            container.removeAllViews()
+            val url = it
+            val imageView = ImageView(requireContext())
+            GlideUtil.loadImageRadius(requireContext(), url,imageView,resources.dp2px(36f))
+            container.addView(imageView)
+
+            val imageView1 = ImageView(requireContext())
+            GlideUtil.loadImageCircle(requireContext(), url,imageView1)
+            container.addView(imageView1)
+
+            val imageView2 = ImageView(requireContext())
+            GlideUtil.loadImageBlur(requireContext(), url,imageView2,20,2)
+            container.addView(imageView2)
+
+            val imageView3 = ImageView(requireContext())
+            GlideUtil.loadImageSketchFilter(requireContext(), url,imageView3)
+            container.addView(imageView3)
+
+            val imageView4 = ImageView(requireContext())
+            GlideUtil.loadImageToonFilter(requireContext(), url,imageView4)
+            container.addView(imageView4)
         }
 
-        val url = "http://app.zsswang.com:92//HeadImg/2021/202112/20211203/20211203174464.jpg"
-        val imageView = ImageView(requireContext())
-        GlideUtil.loadImageRadius(requireContext(), url,imageView,resources.dp2px(36f))
-        container.addView(imageView)
-
-        val imageView1 = ImageView(requireContext())
-        GlideUtil.loadImageCircle(requireContext(), url,imageView1)
-        container.addView(imageView1)
-
-        val imageView2 = ImageView(requireContext())
-        GlideUtil.loadImageBlur(requireContext(), url,imageView2,10,1)
-        container.addView(imageView2)
-
-        val imageView3 = ImageView(requireContext())
-        GlideUtil.loadImageSketchFilter(requireContext(), url,imageView3)
-        container.addView(imageView3)
-
-        val imageView4 = ImageView(requireContext())
-        GlideUtil.loadImageToonFilter(requireContext(), url,imageView4)
-        container.addView(imageView4)
+//        val url = "http://app.zsswang.com:92//HeadImg/2021/202112/20211214/20211214152764.jpg"
+//        val imageView = ImageView(requireContext())
+//        GlideUtil.loadImageRadius(requireContext(), url,imageView,resources.dp2px(36f))
+//        container.addView(imageView)
+//
+//        val imageView1 = ImageView(requireContext())
+//        GlideUtil.loadImageCircle(requireContext(), url,imageView1)
+//        container.addView(imageView1)
+//
+//        val imageView2 = ImageView(requireContext())
+//        GlideUtil.loadImageBlur(requireContext(), url,imageView2,10,1)
+//        container.addView(imageView2)
+//
+//        val imageView3 = ImageView(requireContext())
+//        GlideUtil.loadImageSketchFilter(requireContext(), url,imageView3)
+//        container.addView(imageView3)
+//
+//        val imageView4 = ImageView(requireContext())
+//        GlideUtil.loadImageToonFilter(requireContext(), url,imageView4)
+//        container.addView(imageView4)
 
     }
 
@@ -194,10 +215,10 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
                             dialog.cancelBtn.setOnClickListener {
                                 getPicture.setImageURI(uri)
                                 //上传相册图片
-//                                val pathString = CameraUtil.getFilePathFromUri(requireContext(),uri,true)
-//                                mViewModel.upLoadFile(pathString ?: "")
-                                getPicture.visibility = View.VISIBLE
-                                deletePicture.visibility = View.VISIBLE
+                                val pathString = CameraUtil.getFilePathFromUri(requireContext(),uri,true)
+                                mViewModel.upLoadFile(pathString ?: "")
+//                                getPicture.visibility = View.VISIBLE
+//                                deletePicture.visibility = View.VISIBLE
                                 alert.dismiss()
                             }
                             alert.show()
