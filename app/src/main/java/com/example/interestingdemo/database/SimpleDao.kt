@@ -9,15 +9,15 @@ interface SimpleDao {
      */
     //获取所有data并根据rank倒序排列,rank相同时根据id升序排列
     @Query("SELECT * FROM SimpleData ORDER BY rank DESC")//DESC倒序
-    suspend fun getAll() : List<SimpleData>
+    fun getAll() : List<SimpleData>
 
     //根据名称获取data的列表,模糊查询
     @Query("SELECT * FROM SimpleData WHERE name LIKE '%' || :name || '%' ORDER BY rank DESC")
-    suspend fun getAllByName(name : String) : List<SimpleData>
+    fun getAllByName(name : String) : List<SimpleData>
 
     //根据id查找data
     @Query("SELECT * FROM SimpleData WHERE id = :id")
-    suspend fun getById(id: Int) : SimpleData
+    fun getById(id: Int) : SimpleData
 
 
     /**todo
@@ -25,7 +25,7 @@ interface SimpleDao {
      */
     //插入一个data
     @Insert()
-    suspend fun insert(simple : SimpleData)
+    fun insert(simple : SimpleData)
 
 
     /**todo
@@ -33,11 +33,11 @@ interface SimpleDao {
      */
     //根据name删除data列表
     @Query("DELETE FROM SimpleData WHERE name = :name")
-    suspend fun deleteByName(name: String)
+    fun deleteByName(name: String)
 
     //根据id删除data
     @Query("DELETE FROM SimpleData WHERE id = :id")
-    suspend fun deleteById(id: Int)
+    fun deleteById(id: Int)
 
 
     /**todo
@@ -45,11 +45,11 @@ interface SimpleDao {
      */
     //根据oldName更新newName
     @Query("UPDATE SimpleData SET name = :newName WHERE name = :oldName ")
-    suspend fun updateName(oldName : String, newName : String)
+    fun updateName(oldName : String, newName : String)
 
     //根据id更新rank
     @Query("UPDATE SimpleData SET rank = :rank WHERE id = :id")
-    suspend fun updateRank(id: Int, rank : Int)
+    fun updateRank(id: Int, rank : Int)
 
 
 }

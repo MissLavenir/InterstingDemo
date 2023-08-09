@@ -6,8 +6,10 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.TextView
+import androidx.annotation.ColorInt
 
 infix fun TextView.show(content : String?){
     if (content.isNullOrEmpty()){
@@ -17,7 +19,7 @@ infix fun TextView.show(content : String?){
     }
 }
 
-fun TextView.makeTextClick(vararg links : Pair<String, View.OnClickListener>){
+fun TextView.makeTextClick(@ColorInt color: Int,vararg links : Pair<String, View.OnClickListener>){
     val spannableString = SpannableString(this.text)
     for (link in links){
         val clickableSpan = object : ClickableSpan(){
@@ -29,6 +31,9 @@ fun TextView.makeTextClick(vararg links : Pair<String, View.OnClickListener>){
         }
         val startIndexOfLink = this.text.toString().indexOf(link.first)
         spannableString.setSpan(clickableSpan,startIndexOfLink,startIndexOfLink + link.first.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        val foregroundSpan = ForegroundColorSpan(color)
+        spannableString.setSpan(foregroundSpan,startIndexOfLink,startIndexOfLink + link.first.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
     }
     this.movementMethod = LinkMovementMethod.getInstance()
     this.setText(spannableString,TextView.BufferType.SPANNABLE)

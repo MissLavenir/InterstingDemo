@@ -2,6 +2,8 @@
     <string name="app_name">小工具</string>
     <string name="select_function">请选择功能</string>
     <string name="secure_model">安全模式</string>
+    <string name="secure_model_tip">开启安全模式后无法录屏、无法截图,概览窗口也将看不到内容。（但此模式对root的手机可能无效）</string>
+    <string name="message_forwarding">短信转发</string>
     <string name="get_random">随机数生成器</string>
     <string name="rank_record">可排序记录表</string>
     <string name="text_to_speak"><![CDATA[语音生成&识别]]></string>
@@ -17,6 +19,7 @@
     <string name="group_list">方案列表</string>
     <string name="add_group">添加分组</string>
     <string name="scheme_group">方案分组</string>
+    <string name="save">保存</string>
     <string name="change">修改</string>
     <string name="pickup">收起</string>
     <string name="delete">删除</string>
@@ -31,6 +34,9 @@
     <string name="text_right_select">右侧选择框</string>
     <string name="text_get_move_speed">获取滑动速度</string>
     <string name="text_get_location">获取定位</string>
+    <string name="text_sms_manage">短信管理器</string>
+    <string name="text_receive_phone_number">接收手机号：</string>
+    <string name="text_message_forwarding_tip">开启短信转发功能，需要收到去设置中给本APP打开“发送短信”和“接收短信”权限，该功能会将本手机号收到的短信，转发到其他手机号上。短信转发费用跟手机卡相关。</string>
     <string name="text_input_text">请输入文字的内容</string>
     <string name="simple_recycler_view_adapter_unprocessed_data">未处理的数据类型[%1$s] %2$s</string>
     <string name="text_click_to_start_speech">点击猫猫开始识别语音</string>

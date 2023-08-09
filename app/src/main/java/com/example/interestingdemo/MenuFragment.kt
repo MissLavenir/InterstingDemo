@@ -63,6 +63,9 @@ class MenuFragment : Fragment() {
         citySelect.setOnClickListener {
             view.findNavController().navigate(R.id.action_MenuFragment_to_citySelect)
         }
+        smsManage.setOnClickListener {
+            startActivity(Intent(requireContext(),SmsManagerActivity::class.java))
+        }
 
         getSpeed.setOnClickListener {
             startActivity(Intent(requireContext(),TouchSpeedActivity::class.java))

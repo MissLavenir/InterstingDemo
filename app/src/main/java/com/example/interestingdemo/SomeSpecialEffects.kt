@@ -15,7 +15,6 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.res.ResourcesCompat
@@ -114,6 +113,7 @@ class SomeSpecialEffects : Fragment(), EasyPermissions.PermissionCallbacks {
         }
 
         longTextView.makeTextClick(
+            ResourcesCompat.getColor(resources, R.color.red_500, requireContext().theme),
             Pair("《服务协议》", object : View.OnClickListener {
                 override fun onClick(p0: View?) {
                     val dialog = LayoutInflater.from(context).inflate(R.layout.dialog_sure_btn, null, false)
@@ -184,7 +184,7 @@ class SomeSpecialEffects : Fragment(), EasyPermissions.PermissionCallbacks {
 
         rightSelect.setOnClickListener {
             if (selectWindow == null){
-                val array = arrayListOf("膜拜大佬", "感谢美工", "别改需求了", "这不是bug", "上代码啊", "上报错信息", "上页面显示", "你找别人吧我不会")
+                val array = arrayListOf("膜拜大佬", "别改UI了", "别改需求了", "这不是bug", "上代码啊", "上报错信息", "上页面显示", "你找别人吧我不会")
                 selectWindow = RightQuickFunctionWindow(requireContext(), array, object : RightQuickFunctionWindow.OnSelectListener {
                     override fun onSelect(select: ArrayList<String>) {
                         toast("已选择$select")

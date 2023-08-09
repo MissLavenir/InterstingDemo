@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".SmsManagerActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/messageForwardingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="4dp"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/messageForwardingDec"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="4dp"
+            android:text="@string/text_message_forwarding_tip"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/decPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/messageForwardingDec"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/text_receive_phone_number"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="6dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/receivePhone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/bg_round_rectangle_stroke_grey_corner20"
+            android:hint="@string/input_please"
+            android:inputType="number"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="6dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/decPhone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/decPhone"
+            app:layout_constraintTop_toTopOf="@id/decPhone"
+            />
+
+        <TextView
+            android:id="@+id/savePhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/bg_round_rectangle_blue_500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/decPhone"
+            app:layout_constraintBottom_toBottomOf="@id/decPhone"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
+
+        <TextView
+            android:id="@+id/applyPermission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:text="请求短信权限"
+            android:textColor="@color/white"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/bg_round_rectangle_blue_500"
+            />
+
+        <TextView
+            android:id="@+id/startService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:text="开启前台服务"
+            android:textColor="@color/white"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/bg_round_rectangle_blue_500"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sendMessageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/grey_100"
+        android:layout_marginTop="40dp"
+        android:paddingVertical="8dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="短信发送测试"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+
+            android:text="将短信发送到："
+            android:textColor="@color/grey_800"
+            />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/inputPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_round_rectangle_stroke_grey"
+            android:textSize="14sp"
+            android:hint="请在此处输入手机号"
+            android:textColorHint="@color/grey_500"
+            android:inputType="number"
+            />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/inputMessage"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_round_rectangle_stroke_grey"
+            android:textSize="14sp"
+            android:gravity="start"
+            android:hint="请在此处输入短信内容请在此处输入短信内容"
+            android:textColorHint="@color/grey_500"
+            />
+
+        <TextView
+            android:id="@+id/sendSms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送短信测试"
+            android:textColor="@color/blue_500"
+            android:background="@drawable/bg_round_rectangle_stroke_blue_500"
+            android:paddingHorizontal="100dp"
+            android:layout_marginTop="30dp"
+            />
+
+
+    </LinearLayout>
+
+</LinearLayout>

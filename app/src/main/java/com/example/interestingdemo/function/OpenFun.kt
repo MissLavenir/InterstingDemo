@@ -29,7 +29,7 @@ open class OpenFun {
         val pixels = IntArray(width*height)
 
         if (!TextUtils.isEmpty(error_level)){
-            hints.put(EncodeHintType.ERROR_CORRECTION,error_level)
+            hints[EncodeHintType.ERROR_CORRECTION] = error_level
         }
 
         //渲染颜色

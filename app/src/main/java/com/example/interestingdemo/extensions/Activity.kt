@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.ResultReceiver
+import android.util.Log
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -66,4 +67,8 @@ fun Activity.shareTextContent(content : String, titleRes : String = "分享到")
     intent.putExtra(Intent.EXTRA_TEXT, content)
     intent.type = "text/plain"
     startActivity(Intent.createChooser(intent, titleRes))
+}
+
+fun Activity.eLog(tag: String, string: String){
+    Log.e("debug_$tag",string)
 }
