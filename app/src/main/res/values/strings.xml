@@ -109,4 +109,7 @@
     <string name="text_title">标题</string>
     <string name="text_content">内容</string>
     <string name="text_english_colon">:</string>
+    <string name="accessibility_service">无障碍单击服务</string>
+    <string name="accessibility_service_dec">模拟点击的无障碍服务，目前版本1.0.0</string>
+
 </resources>
