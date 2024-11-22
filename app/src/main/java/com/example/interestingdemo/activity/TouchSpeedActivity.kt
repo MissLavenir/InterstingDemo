@@ -1,9 +1,10 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.VelocityTracker
+import com.example.interestingdemo.R
 import com.example.interestingdemo.util.DialogUtil
 import kotlinx.android.synthetic.main.activity_touch_speed.*
 import kotlin.math.abs

@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.telephony.SmsManager
 import com.example.interestingdemo.GlobalSetting
-import com.example.interestingdemo.SmsManagerActivity
 
 object SendMessageUtil {
 

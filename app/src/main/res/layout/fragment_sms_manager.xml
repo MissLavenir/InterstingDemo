@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".SmsManagerActivity">
+    tools:context=".activity.SmsManagerActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

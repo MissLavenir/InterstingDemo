@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.fragment
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.interestingdemo.R
 import com.example.interestingdemo.database.scheme.Scheme
 import com.example.interestingdemo.database.scheme.SchemeGroup
 import com.example.interestingdemo.extensions.hitTest
@@ -33,7 +34,7 @@ import kotlinx.android.synthetic.main.viewholder_scheme_group_manger.view.*
 import kotlinx.android.synthetic.main.viewholder_scheme_manger.view.*
 
 
-class SchemeGroupList : Fragment(){
+class SchemeGroupListFragment : Fragment(){
     //能否跨分组移动
     private var mAllowItemsMoveAcrossSections = true
     private val adapter = ExpandableDraggableWithSectionAdapter()
@@ -161,12 +162,16 @@ class SchemeGroupList : Fragment(){
         fun applyData(data : SchemeGroup){
             if (expandState.isExpanded){
                 itemView.downArrow.rotation = 90f
-                itemView.downArrow.setColorFilter(ResourcesCompat.getColor(resources, R.color.blue_200, context?.theme))
-                itemView.groupText.setTextColor(ResourcesCompat.getColor(resources, R.color.blue_500, context?.theme))
+                itemView.downArrow.setColorFilter(ResourcesCompat.getColor(resources,
+                    R.color.blue_200, context?.theme))
+                itemView.groupText.setTextColor(ResourcesCompat.getColor(resources,
+                    R.color.blue_500, context?.theme))
             }else{
                 itemView.downArrow.rotation = 0f
-                itemView.downArrow.setColorFilter(ResourcesCompat.getColor(resources, R.color.grey_400, context?.theme))
-                itemView.groupText.setTextColor(ResourcesCompat.getColor(resources, R.color.grey_800, context?.theme))
+                itemView.downArrow.setColorFilter(ResourcesCompat.getColor(resources,
+                    R.color.grey_400, context?.theme))
+                itemView.groupText.setTextColor(ResourcesCompat.getColor(resources,
+                    R.color.grey_800, context?.theme))
             }
             itemView.groupText.text = data.schemeGroupName
             itemView.groupMenu.setOnClickListener {

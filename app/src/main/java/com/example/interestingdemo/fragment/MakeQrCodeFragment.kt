@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.fragment
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import com.example.interestingdemo.R
 import com.example.interestingdemo.extensions.hideSoftKeyBoard
 import com.example.interestingdemo.function.OpenFun
 import com.example.interestingdemo.extensions.toast
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_make_qr_code.*
 import pub.devrel.easypermissions.EasyPermissions
 
 
-class MakeQrCode : Fragment(),EasyPermissions.PermissionCallbacks {
+class MakeQrCodeFragment : Fragment(),EasyPermissions.PermissionCallbacks {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -40,7 +41,9 @@ class MakeQrCode : Fragment(),EasyPermissions.PermissionCallbacks {
                     dialog.sureMessage.text = "请选择以下生成二维码的两种格式之一"
                     dialog.sureBtn.text = "二维码中心加logo"
                     dialog.sureBtn.setOnClickListener {
-                        val logoBitmap = BitmapFactory.decodeResource(resources,R.drawable.ic_launcher)
+                        val logoBitmap = BitmapFactory.decodeResource(resources,
+                            R.drawable.ic_launcher
+                        )
                         val bitmap = OpenFun().createQRImage(text,640,640, logoBitmap = logoBitmap)
                         qrCode.setImageBitmap(bitmap)
                         alert.dismiss()

@@ -5,6 +5,15 @@ import android.view.MotionEvent
 import android.view.View
 
 /**
+ * 设置View的显示隐藏
+ */
+fun View.visible(visible: Boolean = true): View{
+    this.visibility = if (visible) View.VISIBLE else View.GONE
+    return this
+}
+
+
+/**
  * 判断给定的x,y坐标是否落在View上
  *
  * @param x 相对于父层的x

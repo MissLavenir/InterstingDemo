@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import com.example.interestingdemo.R
 import com.example.interestingdemo.util.DialogUtil
 import com.example.interestingdemo.extensions.toast
 import kotlinx.android.synthetic.main.activity_get_location.*
@@ -39,7 +40,7 @@ class GetLocationActivity : AppCompatActivity(),EasyPermissions.PermissionCallba
             isGetLocation = true
             startLocation.isEnabled = false
             startLocation.text = "正在定位..."
-            startLocation.setTextColor(ResourcesCompat.getColor(resources,R.color.grey_400,this.theme))
+            startLocation.setTextColor(ResourcesCompat.getColor(resources, R.color.grey_400,this.theme))
             if (hasPermission){
                 getLocation()
             } else {
@@ -95,7 +96,7 @@ class GetLocationActivity : AppCompatActivity(),EasyPermissions.PermissionCallba
         val coder = Geocoder(this, Locale.CHINESE)
         try {
             val addressList = coder.getFromLocation(location.latitude, location.longitude, 1)
-            if (addressList.isNotEmpty()){
+            if (!addressList.isNullOrEmpty()){
                 val address = addressList[0].getAddressLine(0)
                 when(status){
                     1 -> {
@@ -135,7 +136,7 @@ class GetLocationActivity : AppCompatActivity(),EasyPermissions.PermissionCallba
         thisLocation = false
         startLocation.isEnabled = true
         startLocation.text = "开始定位"
-        startLocation.setTextColor(ResourcesCompat.getColor(resources,R.color.blue_500,this.theme))
+        startLocation.setTextColor(ResourcesCompat.getColor(resources, R.color.blue_500,this.theme))
     }
 
     private val listener: LocationListener = object : LocationListener {

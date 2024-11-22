@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.fragment
 
 import android.Manifest
 import android.app.Activity
@@ -16,6 +16,7 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import com.example.interestingdemo.R
 import com.example.interestingdemo.extensions.dp2px
 import com.example.interestingdemo.util.CameraUtil
 import com.example.interestingdemo.extensions.isAlive
@@ -32,7 +33,7 @@ import pub.devrel.easypermissions.EasyPermissions
 import java.io.File
 
 
-class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
+class CropPictureFragment : Fragment(), EasyPermissions.PermissionCallbacks{
 
     private var tempPhoto = ""
     private var tempVideo = ""
@@ -67,7 +68,8 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
             dialog.sureMessage.text = "请选择以下方式来获取手机图片"
             dialog.sureBtn.text = "拍照"
             dialog.cancelBtn.text = "相册"
-            dialog.cancelBtn.setTextColor(ResourcesCompat.getColor(resources, R.color.blue_300, context?.theme))
+            dialog.cancelBtn.setTextColor(ResourcesCompat.getColor(resources,
+                R.color.blue_300, context?.theme))
             dialog.sureBtn.setOnClickListener {
                 startTake(REQUEST_TAKE_PHOTO)
                 alert.dismiss()
@@ -92,7 +94,8 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
             dialog.sureMessage.text = "请选择以下方式获取手机视频"
             dialog.sureBtn.text = "摄像"
             dialog.cancelBtn.text = "相册"
-            dialog.cancelBtn.setTextColor(ResourcesCompat.getColor(resources, R.color.blue_300, context?.theme))
+            dialog.cancelBtn.setTextColor(ResourcesCompat.getColor(resources,
+                R.color.blue_300, context?.theme))
             dialog.sureBtn.setOnClickListener {
                 startTake(REQUEST_TAKE_VIDEO)
                 alert.dismiss()
@@ -334,15 +337,15 @@ class CropPicture : Fragment(), EasyPermissions.PermissionCallbacks{
         options.setToolbarTitle("正在进行裁剪")//标题栏的文字
         options.setHideBottomControls(false)//隐藏下方控制栏，默认false
         options.setCircleDimmedLayer(false)//圆形裁剪框，默认false
-        options.setToolbarColor(ResourcesCompat.getColor(resources,R.color.black,context?.theme))//标题栏颜色
-        options.setToolbarWidgetColor(ResourcesCompat.getColor(resources,R.color.white,context?.theme))//标题和按钮颜色
-        options.setStatusBarColor(ResourcesCompat.getColor(resources,R.color.black,context?.theme))//最上方状态栏颜色
+        options.setToolbarColor(ResourcesCompat.getColor(resources, R.color.black,context?.theme))//标题栏颜色
+        options.setToolbarWidgetColor(ResourcesCompat.getColor(resources, R.color.white,context?.theme))//标题和按钮颜色
+        options.setStatusBarColor(ResourcesCompat.getColor(resources, R.color.black,context?.theme))//最上方状态栏颜色
         options.setCropGridColumnCount(2)//剪辑框内纵向网格线数量
         options.setCropGridRowCount(2)//剪辑框内横向网格线数量
         options.setCropGridStrokeWidth(1)//剪辑框网格线宽度
-        options.setCropGridColor(ResourcesCompat.getColor(resources,R.color.white,context?.theme))//剪辑框网格线颜色
+        options.setCropGridColor(ResourcesCompat.getColor(resources, R.color.white,context?.theme))//剪辑框网格线颜色
         options.setCropFrameStrokeWidth(2)//剪辑框宽度
-        options.setCropFrameColor(ResourcesCompat.getColor(resources,R.color.red_a200,context?.theme))//裁剪框颜色
+        options.setCropFrameColor(ResourcesCompat.getColor(resources, R.color.red_a200,context?.theme))//裁剪框颜色
 //        options.setToolbarCropDrawable(R.drawable.up_down_move)//设置确定图标
 //        options.setToolbarCancelDrawable(R.drawable.up_down_move)//设置返回图标
 //        options.setCropGridCornerColor(ResourcesCompat.getColor(resources,R.color.grey_500,context?.theme))//剪辑框四角颜色

@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.fragment
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -12,13 +12,14 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.interestingdemo.R
 import com.example.interestingdemo.model.PlaceModel
 import kotlinx.android.synthetic.main.dialog_sure_btn.view.*
 import kotlinx.android.synthetic.main.fragment_city_select.*
 import kotlinx.android.synthetic.main.item_single_textview.view.*
 
 
-class CitySelect : Fragment() {
+class CitySelectFragment : Fragment() {
     private val allCity = getCity()
     private var cityModels = ArrayList<PlaceModel>()
     private val adapter = CityAdapter(cityModels)
@@ -84,7 +85,8 @@ class CitySelect : Fragment() {
             0 -> {
                 val textTab = LayoutInflater.from(context).inflate(R.layout.item_single_textview, selectTab, false)
                 textTab.textViewName.text = model.name
-                textTab.textViewName.setTextColor(ResourcesCompat.getColor(resources, R.color.blue_400, context?.theme))
+                textTab.textViewName.setTextColor(ResourcesCompat.getColor(resources,
+                    R.color.blue_400, context?.theme))
                 textTab.textViewName.setOnClickListener {
                     selectNext(model.parentId ?: 0)
                     selectPlease.visibility = View.VISIBLE

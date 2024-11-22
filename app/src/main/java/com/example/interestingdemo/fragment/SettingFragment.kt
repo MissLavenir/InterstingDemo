@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.fragment
 
 import android.media.RingtoneManager
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.interestingdemo.R
 import com.example.interestingdemo.extensions.secureDisplay
 import com.example.interestingdemo.function.ConfigurationFun
 import kotlinx.android.synthetic.main.fragment_setting.*

@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.activity
 
 import android.Manifest
 import android.content.Intent
@@ -10,6 +10,8 @@ import android.provider.Settings
 import android.provider.Telephony
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.interestingdemo.GlobalSetting
+import com.example.interestingdemo.R
 import com.example.interestingdemo.broadacst.MessageControlBroadcast
 import com.example.interestingdemo.extensions.toast
 import com.example.interestingdemo.service.MessageService
@@ -72,7 +74,8 @@ class SmsManagerActivity : AppCompatActivity(), EasyPermissions.PermissionCallba
                         startService.text = "关闭前台服务"
                         isStartService = true
                     } else {
-                        EasyPermissions.requestPermissions(this,"需要开启前台服务",APPLY_SERVICE_PERMISSION, *permissions)
+                        EasyPermissions.requestPermissions(this,"需要开启前台服务",
+                            APPLY_SERVICE_PERMISSION, *permissions)
                     }
                 } else {
                     startService(Intent(applicationContext, MessageService::class.java))
@@ -98,14 +101,16 @@ class SmsManagerActivity : AppCompatActivity(), EasyPermissions.PermissionCallba
                 if (EasyPermissions.hasPermissions(this, *permissions)){
                     sendPhoneMessage(GlobalSetting.phoneNumber,inputMessage.text.toString())
                 } else {
-                    EasyPermissions.requestPermissions(this,"需要短信权限才可进行发送短信",APPLY_SMS_PERMISSION, *permissions)
+                    EasyPermissions.requestPermissions(this,"需要短信权限才可进行发送短信",
+                        APPLY_SMS_PERMISSION, *permissions)
                 }
             }
         }
 
         applyPermission.setOnClickListener {
             val permissions = arrayOf(Manifest.permission.READ_SMS,Manifest.permission.RECEIVE_SMS,Manifest.permission.SEND_SMS)
-            EasyPermissions.requestPermissions(this,"需要短信权限才可进行发送短信",APPLY_SMS_PERMISSION, *permissions)
+            EasyPermissions.requestPermissions(this,"需要短信权限才可进行发送短信",
+                APPLY_SMS_PERMISSION, *permissions)
         }
 
     }

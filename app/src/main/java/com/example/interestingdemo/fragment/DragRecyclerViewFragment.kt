@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.fragment
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.interestingdemo.R
 import com.example.interestingdemo.function.SimpleDaoFun
 import com.example.interestingdemo.database.SimpleData
 import com.example.interestingdemo.extensions.hideSoftKeyBoard
@@ -21,7 +22,7 @@ import kotlinx.android.synthetic.main.dialog_drag_detail.view.*
 import kotlinx.android.synthetic.main.fragment_drag_recyclerview.*
 import kotlin.collections.ArrayList
 
-class DragRecyclerView : Fragment() {
+class DragRecyclerViewFragment : Fragment() {
     private val thisModel = ArrayList<SimpleData>()
     private val adapter = DragAdapter(thisModel)
     private lateinit var myWrapperAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>

@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.fragment
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.interestingdemo.R
 import com.example.interestingdemo.extensions.toast
 import com.king.zxing.CaptureHelper
 import com.king.zxing.OnCaptureCallback

@@ -35,6 +35,8 @@
     <string name="text_get_move_speed">获取滑动速度</string>
     <string name="text_get_location">获取定位</string>
     <string name="text_sms_manage">短信管理器</string>
+    <string name="text_socket_server">Socket服务器</string>
+    <string name="text_socket_client">Socket客户端</string>
     <string name="text_receive_phone_number">接收手机号：</string>
     <string name="text_message_forwarding_tip">开启短信转发功能，需要收到去设置中给本APP打开“发送短信”和“接收短信”权限，该功能会将本手机号收到的短信，转发到其他手机号上。短信转发费用跟手机卡相关。</string>
     <string name="text_input_text">请输入文字的内容</string>

@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.fragment
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,6 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import com.example.interestingdemo.R
+import com.example.interestingdemo.activity.GetLocationActivity
+import com.example.interestingdemo.activity.SmsManagerActivity
+import com.example.interestingdemo.activity.SocketClientActivity
+import com.example.interestingdemo.activity.SocketServerActivity
+import com.example.interestingdemo.activity.TouchSpeedActivity
+import com.example.interestingdemo.util.SocketManagerUtil
 import kotlinx.android.synthetic.main.fragment_menu.*
 
 class MenuFragment : Fragment() {
@@ -64,15 +71,28 @@ class MenuFragment : Fragment() {
             view.findNavController().navigate(R.id.action_MenuFragment_to_citySelect)
         }
         smsManage.setOnClickListener {
-            startActivity(Intent(requireContext(),SmsManagerActivity::class.java))
+            startActivity(Intent(requireContext(), SmsManagerActivity::class.java))
         }
 
         getSpeed.setOnClickListener {
-            startActivity(Intent(requireContext(),TouchSpeedActivity::class.java))
+            startActivity(Intent(requireContext(), TouchSpeedActivity::class.java))
         }
 
         locationGet.setOnClickListener{
-            startActivity(Intent(requireContext(),GetLocationActivity::class.java))
+            startActivity(Intent(requireContext(), GetLocationActivity::class.java))
+        }
+
+        socketServer.setOnClickListener{
+            startActivity(Intent(requireContext(), SocketServerActivity::class.java))
+        }
+
+        socketClient.setOnClickListener{
+            startActivity(Intent(requireContext(), SocketClientActivity::class.java))
+        }
+
+        stopSocketServer.setOnClickListener{
+            SocketManagerUtil.stopServerSocket()
+            SocketManagerUtil.stopClientSocket()
         }
 
     }

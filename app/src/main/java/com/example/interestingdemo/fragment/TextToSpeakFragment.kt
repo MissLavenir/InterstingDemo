@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.fragment
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -23,6 +23,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import androidx.core.content.ContextCompat
+import com.example.interestingdemo.R
 import com.example.interestingdemo.util.DialogUtil
 import com.example.interestingdemo.extensions.coverToTTSFriendlyString
 import com.example.interestingdemo.extensions.dLog
@@ -35,7 +36,7 @@ import java.util.*
 import kotlin.collections.HashMap
 
 
-class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
+class TextToSpeakFragment : Fragment(),EasyPermissions.PermissionCallbacks {
     //TTS语音播报队列
     private val speakQueue = arrayListOf<String>()
     //TTS引擎初始化锁
@@ -64,7 +65,7 @@ class TextToSpeak : Fragment(),EasyPermissions.PermissionCallbacks {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //初始化动画
-        rotate = AnimationUtils.loadAnimation(requireContext(),R.anim.rotate_robot).apply {
+        rotate = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_robot).apply {
             repeatMode = Animation.REVERSE
             repeatCount = -1
             duration = 1000

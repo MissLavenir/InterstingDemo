@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/grey_100"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".DragRecyclerView"
+    tools:context=".fragment.DragRecyclerViewFragment"
     android:padding="10dp"
     >
 

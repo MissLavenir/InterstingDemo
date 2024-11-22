@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.fragment
 
 import android.Manifest
 import android.app.*
@@ -20,6 +20,9 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.example.interestingdemo.R
+import com.example.interestingdemo.activity.CustomViewActivity
+import com.example.interestingdemo.activity.GetLocationActivity
 import com.example.interestingdemo.util.DialogUtil
 import com.example.interestingdemo.extensions.*
 import com.example.interestingdemo.popwindow.RightQuickFunctionWindow
@@ -30,7 +33,7 @@ import java.net.NetworkInterface
 import java.util.*
 
 
-class SomeSpecialEffects : Fragment(), EasyPermissions.PermissionCallbacks {
+class SomeSpecialEffectsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     private var isChangeColor = false
 
@@ -75,13 +78,13 @@ class SomeSpecialEffects : Fragment(), EasyPermissions.PermissionCallbacks {
         createNotificationChannel()
 
         notification.setOnClickListener {
-            val intent = Intent(requireActivity(),GetLocationActivity::class.java)
+            val intent = Intent(requireActivity(), GetLocationActivity::class.java)
             val pendingIntent = TaskStackBuilder.create(requireContext()).run {
                 addNextIntentWithParentStack(intent)
                 getPendingIntent(0,PendingIntent.FLAG_IMMUTABLE)
             }
 
-            val mBp = BitmapFactory.decodeResource(resources,R.drawable.ic_cat)
+            val mBp = BitmapFactory.decodeResource(resources, R.drawable.ic_cat)
             val nullBp: Bitmap? = null
 
             val nb = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -159,15 +162,17 @@ class SomeSpecialEffects : Fragment(), EasyPermissions.PermissionCallbacks {
                 override fun onClick(p0: View?) {
                     isChangeColor = !isChangeColor
                     if (isChangeColor) {
-                        activity?.setStatusBarColor(ResourcesCompat.getColor(resources, R.color.blue_300, context?.theme))
+                        activity?.setStatusBarColor(ResourcesCompat.getColor(resources,
+                            R.color.blue_300, context?.theme))
                     } else {
-                        activity?.setStatusBarColor(ResourcesCompat.getColor(resources, R.color.blue_800, context?.theme))
+                        activity?.setStatusBarColor(ResourcesCompat.getColor(resources,
+                            R.color.blue_800, context?.theme))
                     }
                 }
             }),
             Pair("查看自定义View", object : View.OnClickListener {
                 override fun onClick(p0: View?) {
-                    activity?.startActivity(Intent(requireContext(),CustomViewActivity::class.java))
+                    activity?.startActivity(Intent(requireContext(), CustomViewActivity::class.java))
                 }
             })
         )

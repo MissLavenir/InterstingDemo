@@ -1,13 +1,12 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.activity
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View.LAYER_TYPE_SOFTWARE
-import android.view.animation.*
 import androidx.activity.viewModels
 import androidx.lifecycle.observe
+import com.example.interestingdemo.R
 import com.example.interestingdemo.viewModel.CustomViewViewModel
 import kotlinx.android.synthetic.main.activity_custom_view.*
 

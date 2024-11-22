@@ -8,7 +8,7 @@
     android:orientation="vertical"
     app:divider="@color/splitLine"
     app:showDividers="middle|end"
-    tools:context=".SettingFragment">
+    tools:context=".fragment.SettingFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/secureModel"

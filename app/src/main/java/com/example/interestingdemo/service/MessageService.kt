@@ -11,7 +11,7 @@ import android.provider.Telephony
 import android.util.Log
 import com.example.interestingdemo.GlobalSetting
 import com.example.interestingdemo.R
-import com.example.interestingdemo.SmsManagerActivity
+import com.example.interestingdemo.activity.SmsManagerActivity
 import com.example.interestingdemo.broadacst.MessageControlBroadcast
 import com.example.interestingdemo.util.NotificationUtil
 

@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.fragment
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.core.view.size
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.interestingdemo.R
 import com.example.interestingdemo.extensions.dp2px
 import com.example.interestingdemo.extensions.systemMediumAnimTime
 import com.example.interestingdemo.extensions.toast
@@ -46,9 +47,9 @@ class CalculateFragment : Fragment() {
         countNumber.observe(viewLifecycleOwner, Observer {
             getCount.text = countNumber.value.toString()
             if (getCount.text.toString().toInt() >= 60){
-                getCount.setTextColor(ResourcesCompat.getColor(resources,R.color.red_300,context?.theme))
+                getCount.setTextColor(ResourcesCompat.getColor(resources, R.color.red_300,context?.theme))
             } else {
-                getCount.setTextColor(ResourcesCompat.getColor(resources,R.color.grey_800,context?.theme))
+                getCount.setTextColor(ResourcesCompat.getColor(resources, R.color.grey_800,context?.theme))
             }
         })
 

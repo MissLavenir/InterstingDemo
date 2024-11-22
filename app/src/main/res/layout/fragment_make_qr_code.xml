@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/grey_50"
     android:padding="10dp"
-    tools:context=".MakeQrCode">
+    tools:context=".fragment.MakeQrCodeFragment">
 
 
     <LinearLayout

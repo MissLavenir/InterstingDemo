@@ -6,7 +6,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".CustomViewActivity">
+    tools:context=".activity.CustomViewActivity">
 
     <com.example.interestingdemo.customView.TestTextViews
         android:id="@+id/customView"

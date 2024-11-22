@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="10dp"
-    tools:context=".TextToSpeak">
+    tools:context=".fragment.TextToSpeakFragment">
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/textInput"

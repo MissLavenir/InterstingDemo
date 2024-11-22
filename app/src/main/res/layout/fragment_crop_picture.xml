@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="10dp"
-    tools:context=".CropPicture">
+    tools:context=".fragment.CropPictureFragment">
 
     <LinearLayout
         android:id="@+id/container"

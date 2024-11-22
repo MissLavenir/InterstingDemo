@@ -11,4 +11,6 @@ object GlobalSetting {
     const val MESSAGE_SERVICE_FOREGROUND_ID = 1013
     const val MESSAGE_SERVICE_CHANNEL_ID = "message_service_id"
     const val MESSAGE_SERVICE_CHANNEL_NAME = "message_service"
+
+    const val SOCKET_SERVICE_FOREGROUND_ID = 1014
 }

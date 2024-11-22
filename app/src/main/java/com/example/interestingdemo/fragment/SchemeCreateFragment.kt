@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.fragment
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -14,6 +14,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.interestingdemo.R
 import com.example.interestingdemo.database.scheme.Scheme
 import com.example.interestingdemo.database.scheme.SchemeGroup
 import com.example.interestingdemo.extensions.toast
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.dialog_add_scheme_group.view.*
 import kotlinx.android.synthetic.main.dialog_sure_btn.view.*
 import kotlinx.android.synthetic.main.fragment_scheme_create.*
 
-class SchemeCreate : Fragment() {
+class SchemeCreateFragment : Fragment() {
     private val schemeList = ArrayList<Scheme>()
     private val adapter = MyAdapter(schemeList)
 

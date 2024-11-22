@@ -1,4 +1,4 @@
-package com.example.interestingdemo
+package com.example.interestingdemo.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -10,10 +10,11 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.interestingdemo.R
 import com.example.interestingdemo.extensions.round2Scale
 import kotlinx.android.synthetic.main.get_random_count.*
 
-class GetRandomCount : Fragment() {
+class GetRandomCountFragment : Fragment() {
     private var randomArrayList = ArrayList<Int>()
     private val adapter = ListAdapter(randomArrayList)
     private val layoutManager = LinearLayoutManager(this.context,RecyclerView.HORIZONTAL,false)
