@@ -25,7 +25,12 @@ import com.example.interestingdemo.model.socket.BaseSocketModel
 import com.example.interestingdemo.service.ScreenCaptureService
 import com.example.interestingdemo.util.SocketManagerUtil
 import kotlinx.android.synthetic.main.activity_im.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import pub.devrel.easypermissions.EasyPermissions
+import java.util.concurrent.atomic.AtomicBoolean
 
 class IMActivity : BaseActivity() {
     private val adapter = ImTextAdapter()
@@ -148,26 +153,36 @@ class IMActivity : BaseActivity() {
 
     }
 
-    /**
-     * 将byte数组绘制到SurfaceView
-     */
+    //将byteArray绘制到SurfaceView上
+    private val drawingInProgress = AtomicBoolean(false)
     private fun drawToSurface(byteArray: ByteArray) {
-        val canvas = sfHolder.lockCanvas() ?: return
-        try {
-            // 将 byte 数组转换为 Bitmap
-            val options = BitmapFactory.Options()
-            options.inMutable = true
-            val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size, options)
-            // 调整Bitmap大小
-//            val scaledBitmap = Bitmap.createScaledBitmap(bitmap, width, height, true)
-            val srcRect = Rect(0, 0, bitmap.width, bitmap.height)
-            val dstRect = Rect(0, 0, svBytes.width, svBytes.height)
-            canvas.drawBitmap(bitmap, srcRect, dstRect, null)
-        } catch (e: Exception){
-            e.printStackTrace()
-        } finally {
-            // 释放 Canvas
-            sfHolder.unlockCanvasAndPost(canvas)
+        if (!drawingInProgress.compareAndSet(false, true)) {
+            // 如果已经在绘制，则直接返回
+            Log.e("debug-IMActivity","drop one BytArray")
+            return
+        }
+
+        GlobalScope.launch(Dispatchers.IO) {
+            val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+            withContext(Dispatchers.Main) {
+                val canvas = sfHolder.lockCanvas() ?: run {
+                    drawingInProgress.set(false)
+                    return@withContext
+                }
+                val srcRect = Rect(0, 0, bitmap.width, bitmap.height)
+                val dstRect = Rect(0, 0, svBytes.width, svBytes.height)
+                canvas.drawBitmap(bitmap, srcRect, dstRect, null)
+                sfHolder.unlockCanvasAndPost(canvas)
+                drawingInProgress.set(false)
+            }
+        }
+    }
+
+    override fun onBackPressed() {
+        if (isStartCapture){
+            moveTaskToBack(true)
+        } else {
+            super.onBackPressed()
         }
     }
 

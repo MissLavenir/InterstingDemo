@@ -6,7 +6,7 @@ import kotlinx.android.synthetic.main.common_title_layout.*
 abstract class BaseActivity: AppCompatActivity() {
 
     fun initTitle(title: String){
-        ivBack.setOnClickListener { finish() }
+        ivBack.setOnClickListener { onBackPressed() }
         tvTitle.text = title
     }
 }

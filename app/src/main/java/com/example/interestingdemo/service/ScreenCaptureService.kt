@@ -52,15 +52,25 @@ class ScreenCaptureService: Service() {
 
     private fun startForegroundService(){
         val notification = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val pendingIntent = PendingIntent.getActivity(baseContext,1,Intent(baseContext, IMActivity::class.java), PendingIntent.FLAG_IMMUTABLE)
-            NotificationUtil(applicationContext).getNotification("屏幕捕获","已开启屏幕捕获服务!", pendingIntent)
+            val pendingIntent = PendingIntent.getActivity(
+                baseContext,
+                1,
+                Intent(baseContext, IMActivity::class.java).putExtra("imType", "客户端"),
+                PendingIntent.FLAG_IMMUTABLE
+            )
+            NotificationUtil(applicationContext).getNotification("屏幕捕获","已开启屏幕捕获服务!", pendingIntent).apply {
+                setAutoCancel(false)
+                setOngoing(true)
+                setPriority(Notification.PRIORITY_MAX)
+            }
         } else {
             Notification.Builder(applicationContext)
                 .setContentTitle("屏幕捕获服务")
                 .setContentText("正在进行屏幕捕获!")
                 .setAutoCancel(false)
+                .setOngoing(true)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setPriority(Notification.PRIORITY_HIGH)
+                .setPriority(Notification.PRIORITY_MAX)
                 .setCategory(Notification.CATEGORY_SERVICE)
         }
 
