@@ -5,13 +5,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion "30.0.3"
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.interestingdemo"
-        minSdkVersion 24
-        targetSdkVersion 31
+        minSdkVersion 29
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         multiDexEnabled true

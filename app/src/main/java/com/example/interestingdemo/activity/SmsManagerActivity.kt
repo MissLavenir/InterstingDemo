@@ -10,6 +10,7 @@ import android.provider.Settings
 import android.provider.Telephony
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import com.example.interestingdemo.GlobalSetting
 import com.example.interestingdemo.R
 import com.example.interestingdemo.broadacst.MessageControlBroadcast
@@ -24,10 +25,11 @@ class SmsManagerActivity : AppCompatActivity(), EasyPermissions.PermissionCallba
 
     //开启后后台会发送一次短信转发
     private var isStartService = false
-    //开启后，会在Activity中注册广播，会进行短信转发，若服务也开启，则会出现两次短信转发
+    //开启后，会在Activity中注册广播，会进行短信转发，若服务也开启，则会出现两次短信转发,谨慎开启测试。
     private var isTest = false
 
     private val broadcastReceiver by lazy { MessageControlBroadcast }
+    private val permissions = arrayOf(Manifest.permission.READ_SMS,Manifest.permission.RECEIVE_SMS,Manifest.permission.SEND_SMS)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,20 +99,18 @@ class SmsManagerActivity : AppCompatActivity(), EasyPermissions.PermissionCallba
                 if (inputMessage.text.toString().isEmpty()){
                     return@setOnClickListener toast("短信内容不能为空")
                 }
-                val permissions = arrayOf(Manifest.permission.READ_SMS,Manifest.permission.RECEIVE_SMS,Manifest.permission.SEND_SMS)
-                if (EasyPermissions.hasPermissions(this, *permissions)){
-                    sendPhoneMessage(GlobalSetting.phoneNumber,inputMessage.text.toString())
-                } else {
-                    EasyPermissions.requestPermissions(this,"需要短信权限才可进行发送短信",
-                        APPLY_SMS_PERMISSION, *permissions)
-                }
             }
         }
 
-        applyPermission.setOnClickListener {
-            val permissions = arrayOf(Manifest.permission.READ_SMS,Manifest.permission.RECEIVE_SMS,Manifest.permission.SEND_SMS)
-            EasyPermissions.requestPermissions(this,"需要短信权限才可进行发送短信",
-                APPLY_SMS_PERMISSION, *permissions)
+        if (EasyPermissions.hasPermissions(this, *permissions)){
+            applyPermission.text = "已有短信相关权限"
+            applyPermission.setTextColor(ResourcesCompat.getColor(resources, R.color.green_a700, theme))
+            applyPermission.setBackgroundResource(R.drawable.bg_round_rectangle_stroke_green)
+        } else {
+            applyPermission.setOnClickListener {
+                EasyPermissions.requestPermissions(this,"需要短信权限才可进行发送短信",
+                    APPLY_SMS_PERMISSION, *permissions)
+            }
         }
 
     }

@@ -31,7 +31,7 @@
             android:hint="请输入服务器地址"
             android:maxLines="1"
             android:singleLine="true"
-            android:text="240e:46c:8311:7762:b0bb:98ff:fe18:f185"
+            android:text="172.16.8.31"
             android:paddingHorizontal="12dp"
             android:paddingVertical="8dp"
             android:textSize="13sp" />

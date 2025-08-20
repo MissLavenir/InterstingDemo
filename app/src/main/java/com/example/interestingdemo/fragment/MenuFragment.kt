@@ -31,10 +31,6 @@ class MenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getRandom.setOnClickListener{
-            view.findNavController().navigate(R.id.action_MenuFragment_to_GetRandomCount)
-        }
-
         rankRecord.setOnClickListener {
             view.findNavController().navigate(R.id.action_MenuFragment_to_dragRecyclerView)
         }
@@ -63,13 +59,6 @@ class MenuFragment : Fragment() {
             view.findNavController().navigate(R.id.action_MenuFragment_to_someSpecialEffects)
         }
 
-        calculateProblem.setOnClickListener {
-            view.findNavController().navigate(R.id.action_MenuFragment_to_calculateFragment)
-        }
-
-        citySelect.setOnClickListener {
-            view.findNavController().navigate(R.id.action_MenuFragment_to_citySelect)
-        }
         smsManage.setOnClickListener {
             startActivity(Intent(requireContext(), SmsManagerActivity::class.java))
         }

@@ -75,10 +75,6 @@ class DragRecyclerViewFragment : Fragment() {
         }
 
         searchBtn.setOnClickListener {
-            if (inputThingsText.text.toString().trim().isBlank()){
-                toast("输入不能为空")
-                return@setOnClickListener
-            }
             activity?.hideSoftKeyBoard()
             refresh(inputThingsText.text.toString())
         }

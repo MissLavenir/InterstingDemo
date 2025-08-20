@@ -30,7 +30,7 @@ class SocketServerActivity : BaseActivity() {
 
         initTitle("服务器端")
         val host = NetworkUtil.getLocalIpAddress()
-        tvIp.text = "地址: ${host?.hostAddress ?: "--"}\n\n蜂窝网环境则进入下方网站\nhttps://test-ipv6.com/ \n 复制其中的IPv6公网地址供客户端使用"
+        tvIp.text = "地址: ${host?.hostAddress ?: ""}\n\n蜂窝网环境则进入下方网站\nhttps://test-ipv6.com/ \n 复制其中的IPv6公网地址供客户端使用"
 
 
         startData.observe(this){

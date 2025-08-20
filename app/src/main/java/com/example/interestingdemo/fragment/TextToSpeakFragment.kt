@@ -311,7 +311,6 @@ class TextToSpeakFragment : Fragment(),EasyPermissions.PermissionCallbacks {
             } ?: kotlin.run {
                 toast("无法使用系统语音识别功能")
             }
-
         } else {
             toast( "没有语音识别可用")
         }

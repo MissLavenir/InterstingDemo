@@ -11,9 +11,6 @@
         android:label="主菜单"
         tools:layout="@layout/fragment_menu">
         <action
-            android:id="@+id/action_MenuFragment_to_GetRandomCount"
-            app:destination="@id/randomCount" />
-        <action
             android:id="@+id/action_MenuFragment_to_dragRecyclerView"
             app:destination="@id/dragRecyclerView" />
         <action
@@ -34,18 +31,7 @@
         <action
             android:id="@+id/action_MenuFragment_to_someSpecialEffects"
             app:destination="@id/someSpecialEffects" />
-        <action
-            android:id="@+id/action_MenuFragment_to_citySelect"
-            app:destination="@id/citySelect" />
-        <action
-            android:id="@+id/action_MenuFragment_to_calculateFragment"
-            app:destination="@id/calculateFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/randomCount"
-        android:name="com.example.interestingdemo.fragment.GetRandomCountFragment"
-        android:label="获得随机数"
-        tools:layout="@layout/get_random_count"/>
     <fragment
         android:id="@+id/dragRecyclerView"
         android:name="com.example.interestingdemo.fragment.DragRecyclerViewFragment"
@@ -103,14 +89,5 @@
             android:id="@+id/action_someSpecialEffects_to_schemeGroupList2"
             app:destination="@id/schemeGroupList2" />
     </fragment>
-    <fragment
-        android:id="@+id/citySelect"
-        android:name="com.example.interestingdemo.fragment.CitySelectFragment"
-        android:label="地区选择"
-        tools:layout="@layout/fragment_city_select" />
-    <fragment
-        android:id="@+id/calculateFragment"
-        android:name="com.example.interestingdemo.fragment.CalculateFragment"
-        android:label="计算题生成器"
-        tools:layout="@layout/fragment_calculate" />
+
 </navigation>

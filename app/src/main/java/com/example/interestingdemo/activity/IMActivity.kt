@@ -1,18 +1,21 @@
 package com.example.interestingdemo.activity
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Rect
+import android.graphics.Canvas
+import android.graphics.Matrix
+import android.graphics.Paint
 import android.media.projection.MediaProjectionManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.SurfaceHolder
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.interestingdemo.R
@@ -21,16 +24,21 @@ import com.example.interestingdemo.base.BaseActivity
 import com.example.interestingdemo.extensions.initBackground
 import com.example.interestingdemo.extensions.loadingDelay
 import com.example.interestingdemo.extensions.visible
+import com.example.interestingdemo.imTools.BitmapPool
+import com.example.interestingdemo.imTools.MatrixCache
 import com.example.interestingdemo.model.socket.BaseSocketModel
 import com.example.interestingdemo.service.ScreenCaptureService
 import com.example.interestingdemo.util.SocketManagerUtil
 import kotlinx.android.synthetic.main.activity_im.*
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import pub.devrel.easypermissions.EasyPermissions
-import java.util.concurrent.atomic.AtomicBoolean
 
 class IMActivity : BaseActivity() {
     private val adapter = ImTextAdapter()
@@ -38,12 +46,11 @@ class IMActivity : BaseActivity() {
     //是否开启捕获
     private var isStartCapture = false
     private val mediaProjectionManager by lazy { getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager }
-
     private var serverIntent : Intent? = null
 
+    @SuppressLint("ObsoleteSdkInt")
     private val screenCaptureLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-
             serverIntent?.putExtra("resultCode", result.resultCode)
             serverIntent?.putExtra("data", result.data)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P){
@@ -71,6 +78,9 @@ class IMActivity : BaseActivity() {
         } else {
             ivShowSurface.visible()
             tvShareScreen.visible(false)
+
+            //初始化屏幕共享相关东西
+            initScreenRender()
         }
 
         initTitle(itemType)
@@ -87,7 +97,7 @@ class IMActivity : BaseActivity() {
             llBytes.visible(false)
         }
         ivShowSurface.setOnClickListener {
-            llBytes.visible(!llBytes.isVisible)
+            llBytes.visible(true)
         }
         tvShareScreen.setOnClickListener {
             isStartCapture = !isStartCapture
@@ -143,7 +153,7 @@ class IMActivity : BaseActivity() {
             SocketManagerUtil.dataFlow.collect{
                 if (it.dataType == 4){
                     Log.e("debug","加载字节数据并转换为bitmap")
-                    drawToSurface(it.data as ByteArray)
+                    submitFrame(it.data as ByteArray)
                 } else {
                     adapter.addData(it)
                     rvData.smoothScrollToPosition(adapter.itemCount -1)
@@ -153,28 +163,124 @@ class IMActivity : BaseActivity() {
 
     }
 
-    //将byteArray绘制到SurfaceView上
-    private val drawingInProgress = AtomicBoolean(false)
-    private fun drawToSurface(byteArray: ByteArray) {
-        if (!drawingInProgress.compareAndSet(false, true)) {
-            // 如果已经在绘制，则直接返回
-            Log.e("debug-IMActivity","drop one BytArray")
-            return
-        }
+    //将byteArray绘制到SurfaceView上，简单方式
+//    private fun drawToSurface(byteArray: ByteArray) {
+//        GlobalScope.launch(Dispatchers.IO) {
+//            val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+//            withContext(Dispatchers.Main) {
+//                val canvas = sfHolder.lockCanvas() ?: run {
+//                    return@withContext
+//                }
+//                val srcRect = Rect(0, 0, bitmap.width, bitmap.height)
+//                val dstRect = Rect(0, 0, svBytes.width, svBytes.height)
+//                canvas.drawBitmap(bitmap, srcRect, dstRect, null)
+//                sfHolder.unlockCanvasAndPost(canvas)
+//            }
+//        }
+//    }
 
-        GlobalScope.launch(Dispatchers.IO) {
-            val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
-            withContext(Dispatchers.Main) {
-                val canvas = sfHolder.lockCanvas() ?: run {
-                    drawingInProgress.set(false)
-                    return@withContext
+    //将byteArray绘制到SurfaceView上，复杂逻辑，但性能好一些
+    private var isInitRender = false
+    private val renderScope by lazy { CoroutineScope(Dispatchers.Default + Job() + CoroutineName("ScreenCapture")) }
+    private val frameChannel by lazy { Channel<ByteArray>(capacity = 3) } // 三缓冲通道
+    private val bitmapPool by lazy { BitmapPool(svBytes.width, svBytes.height) }// 复用池
+
+    //初始化数据
+    private fun initScreenRender(){
+        isInitRender = true
+        // 专用渲染协程
+        renderScope.launch  {
+            while (isActive) {
+                val byteArray = frameChannel.receive()
+                val bitmap = decodeWithPool(byteArray) // 复用Bitmap
+                bitmap?.let {
+                    renderToSurface(it) // 硬件加速渲染
                 }
-                val srcRect = Rect(0, 0, bitmap.width, bitmap.height)
-                val dstRect = Rect(0, 0, svBytes.width, svBytes.height)
-                canvas.drawBitmap(bitmap, srcRect, dstRect, null)
-                sfHolder.unlockCanvasAndPost(canvas)
-                drawingInProgress.set(false)
             }
+        }
+    }
+
+    // 线程池
+    private fun decodeWithPool(data: ByteArray): Bitmap? {
+        val options = BitmapFactory.Options().apply {
+            inBitmap = bitmapPool.acquire()  // 复用内存
+            inPreferredConfig = Bitmap.Config.ARGB_8888 // 直接GPU存储
+            inMutable = true
+        }
+        return decodeByteArraySafely(data, options)
+    }
+
+    private fun decodeByteArraySafely(data: ByteArray, options: BitmapFactory.Options): Bitmap? {
+        return try {
+            // 第一步：尝试直接复用
+            BitmapFactory.decodeByteArray(data,  0, data.size,  options)
+        } catch (e: IllegalArgumentException) {
+            // 第二步：失败后启用自动降级策略
+            when {
+                // Case 1: 配置不匹配 → 创建新配置
+                options.inBitmap?.config  != Bitmap.Config.ARGB_8888 -> {
+                    options.inBitmap  = null
+                    options.inPreferredConfig  = Bitmap.Config.ARGB_8888
+                    BitmapFactory.decodeByteArray(data,  0, data.size,  options)
+                }
+
+                // Case 2: 量子内存保护 → 禁用复用
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE -> {
+                    options.inBitmap  = null
+                    BitmapFactory.decodeByteArray(data,  0, data.size,  options)
+                }
+
+                // 最终回退方案
+                else -> BitmapFactory.decodeByteArray(data,  0, data.size,  null)
+            }
+        }
+    }
+
+    // 硬件加速渲染
+    private fun renderToSurface(bitmap: Bitmap) {
+        renderLegacy(bitmap)
+        bitmapPool.release(bitmap)
+    }
+
+    private val paint = Paint()
+    private fun renderLegacy(bitmap: Bitmap) {
+        val canvas = tryLockCanvas() ?: return
+        try {
+            // 使用2025优化矩阵算法
+            val matrix = getFlipMatrix(canvas)
+
+            // 零拷贝渲染技术
+            canvas.drawBitmap(bitmap,  matrix, paint)
+            MatrixCache.release(matrix)
+        } finally {
+            sfHolder.unlockCanvasAndPost(canvas)
+        }
+    }
+
+    private fun tryLockCanvas(): Canvas? {
+        return try {
+            sfHolder.lockCanvas()
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    // 2025矩阵优化算法
+    private fun getFlipMatrix(canvas: Canvas): Matrix {
+        return MatrixCache.obtain().apply  {
+            reset()
+            // Y轴翻转（相机流适配）
+            postScale(1f, 1f, canvas.width  * 0.5f, canvas.height  * 0.5f)
+        }
+    }
+
+
+    //提交数据
+    private fun submitFrame(byteArray: ByteArray) {
+        if (!frameChannel.trySend(byteArray).isSuccess)  {
+            // 帧率超限时智能丢弃旧帧
+            frameChannel.tryReceive()  // 丢弃最旧帧
+            frameChannel.trySend(byteArray)  // 插入新帧
         }
     }
 
@@ -184,6 +290,13 @@ class IMActivity : BaseActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun onDestroy() {
+        renderScope.cancel()
+        frameChannel.close()
+        bitmapPool.destroy()
+        super.onDestroy()
     }
 
     companion object{

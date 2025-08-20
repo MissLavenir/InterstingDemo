@@ -79,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:text="客户端连接列表：(敬请期待)" />
+        android:text="客户端连接列表" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvClient"

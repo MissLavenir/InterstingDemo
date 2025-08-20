@@ -17,7 +17,7 @@ class SocketServer(private val port: Int, private val callback: (Int, Any, Strin
     override val coroutineContext: CoroutineContext = Dispatchers.IO + job + CoroutineName("ServerJob")
 
     private var serverSocket: ServerSocket? = null
-    private val clients = ConcurrentHashMap<String, DataOutputStream>()
+    private val clients = ConcurrentHashMap<String, Socket>()
     private var clCallBack : (() -> Unit)? = null
 
     fun start() {
@@ -43,11 +43,9 @@ class SocketServer(private val port: Int, private val callback: (Int, Any, Strin
     private fun handleClient(clientSocket: Socket) = runBlocking(coroutineContext) {
         try {
             val input = DataInputStream(clientSocket.getInputStream())
-            val output = DataOutputStream(clientSocket.getOutputStream())
-
             clientSocket.inetAddress.hostAddress?.let { clAddress ->
                 try {
-                    clients[clAddress] = output
+                    clients[clAddress] = clientSocket
                     clCallBack?.invoke()
 //                    ToastUtil.show("客户端：${clAddress}已连接")
                     Log.d("SocketServer", "客户端：${clAddress}已连接")
@@ -55,7 +53,7 @@ class SocketServer(private val port: Int, private val callback: (Int, Any, Strin
                         try {
                             DataStreamUtil.receiveData(input, "SocketServer:$clAddress"){ dataType, data ->
                                 if (dataType == -1){
-                                    stopClientSocket(clientSocket)
+                                    stopClientSocket(clAddress)
 //                                    ToastUtil.show("客户端：${clAddress}已断开连接，指令-1")
                                     Log.e("SocketServer", "客户端: ${clAddress}断开连接，指令-1")
                                     return@receiveData
@@ -66,13 +64,13 @@ class SocketServer(private val port: Int, private val callback: (Int, Any, Strin
                             }
                         } catch (e: IOException) {
                             e.printStackTrace()
-                            stopClientSocket(clientSocket)
+                            stopClientSocket(clAddress)
                             Log.e("SocketServer", "客户端${clAddress}断开连接，手动关闭socket")
                             break
                         }
                     }
                 } catch (e: Exception) {
-                    stopClientSocket(clientSocket)
+                    stopClientSocket(clAddress)
 //                    ToastUtil.show("客户端：${clAddress}网络异常，已断开连接")
                     Log.e("SocketServer", "客户端：${clAddress}网络异常，已断开连接, ${e.message}")
                     e.printStackTrace()
@@ -90,19 +88,21 @@ class SocketServer(private val port: Int, private val callback: (Int, Any, Strin
     fun sendMessageToClient(message: Any, clAddress: String) {
         runBlocking(coroutineContext) {
             clients[clAddress]?.apply {
-                DataStreamUtil.sendData(message,this)
+                val output = DataOutputStream(getOutputStream())
+                DataStreamUtil.sendData(message,output)
             }
         }
     }
 
     fun stopClAddress(clAddress: String){
         Log.e("SocketServer","服务端主动断开与${clAddress}的连接")
+        clients[clAddress]?.close()
     }
 
     fun sendMessageToAllClients(message: String) {
         clients.values.forEachIndexed { index, it ->
             runBlocking(coroutineContext) {
-                DataStreamUtil.sendData(message,it)
+                DataStreamUtil.sendData(message, DataOutputStream(it.getOutputStream()))
                 Log.e("SocketServer","发送数据到${clients.keys.toList()[index]}客户端: $message")
             }
         }
@@ -112,11 +112,9 @@ class SocketServer(private val port: Int, private val callback: (Int, Any, Strin
         return clients.keys.toList()
     }
 
-    fun stopClientSocket(clientSocket: Socket){
-        clientSocket.inetAddress.hostAddress?.let {
-            clients.remove(it)
-        }
-        clientSocket.close()
+    fun stopClientSocket(clAddress: String){
+        clients[clAddress]?.close()
+        clients.remove(clAddress)
         clCallBack?.invoke()
     }
 
